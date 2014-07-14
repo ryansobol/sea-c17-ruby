@@ -1,5 +1,6 @@
 # Section 6.2 on page 32
 # 4 points
+#
 # Here’s something for you to do in order to play around more with center,
 # ljust, and rjust: write a program that will display a table of contents so
 # that it looks like this:

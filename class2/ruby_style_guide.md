@@ -1,0 +1,138 @@
+## Ruby Style Guide
+
+* Use soft-tabs with a two space indent
+* Keep lines fewer than 80 characters
+* Never leave trailing whitespace
+* End each file with a blank newline
+
+##### Preferences for Sublime Text 2
+
+Navigate to the following menu:
+
+```
+Sublime Text 2 > Preferences > Settings - User
+```
+
+Then copy and paste the following JSON object:
+
+```json
+{
+  "translate_tabs_to_spaces": true,
+  "tab_size": 2,
+  "rulers": [80],
+  "trim_trailing_white_space_on_save": true,
+  "ensure_newline_at_eof_on_save": true
+}
+```
+
+Don't forget to save the file.
+
+#### Use spaces around operators
+
+```ruby
+# bad
+sum=1+2
+
+# good
+sum = 1 + 2
+```
+
+#### No spaces after ( or before )
+
+```ruby
+# bad
+title.center( 50 )
+
+# good
+title.center(50)
+```
+
+#### Omit parentheses for methods with no arguments
+
+```ruby
+# bad
+name.length()
+
+# good
+name.length
+```
+
+#### Omit parentheses for "keyword" methods
+
+```ruby
+# bad
+puts(42)
+
+# good
+puts 42
+```
+
+#### Use snake case for naming variables
+
+```ruby
+# bad
+firstName = "Sierra"
+
+# good
+first_name = "Sierra"
+```
+
+#### Use snake_case for naming files
+
+```ruby
+# bad
+helloWorld.rb
+
+# good
+hello_world.rb
+```
+
+#### Prefer string interpolation instead of string concatenation
+
+```ruby
+# bad
+first_name + " the answer is " + 42.to_s
+
+# good
+"#{first_name} the answer is #{42}"
+```
+
+#### Prefer double-quoted strings
+
+```ruby
+# bad
+'I\'ll be back'
+
+# good
+"I'll be back"
+```
+
+##### Handles string interpolation
+
+```ruby
+# doesn't work
+'Hello #{name}'
+
+# works
+"Hello #{name}"
+```
+
+##### Handles special escape characters
+
+```ruby
+# doesn't work
+'\nGoodbye'
+
+# works
+"\nGoodbye"
+```
+
+##### Use single-quoted strings if it contains a "
+
+```ruby
+# bad
+"\"Be yourself – everyone else is taken.\" - Anonymous"
+
+# good
+'"Be yourself – everyone else is taken." - Anonymous'
+```
