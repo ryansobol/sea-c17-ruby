@@ -9,3 +9,7 @@
 # Chapter 1:  Getting Started                page  1
 # Chapter 2:  Numbers                        page  9
 # Chapter 3:  Letters                        page 13
+
+puts('Chapter 1:' +  '  Getting Started' + 'page  1'.rjust(43))
+puts('Chapter 2:'.ljust(12) + 'Numbers' + 'page  9'.rjust(51))
+puts('Chapter 3:' + '  Letters' + 'page 13'.rjust(51))
