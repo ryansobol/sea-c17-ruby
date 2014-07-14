@@ -7,6 +7,6 @@
 #
 # WHADDAYA MEAN "I WANT A RAISE"?!? YOU'RE FIRED!!
 
-puts 'What do you want?'
+puts "What do you want?"
 response = gets.chomp
-puts 'WHADDAYA MEAN ' + '"' + response.upcase  + '"' + '?!? YOU\'RE FIRED!!'
+puts "WHADDAYA MEAN #{response.upcase}?!? YOU'RE FIRED!!"
