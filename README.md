@@ -158,7 +158,7 @@ Then run the following command:
 ```
 echo 'alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"' >> ~/.bash_profile
 
-export EDITOR="subl -w"
+echo 'export EDITOR="subl -w"' >> ~/.bash_profile
 
 source ~/.bash_profile
 ```
