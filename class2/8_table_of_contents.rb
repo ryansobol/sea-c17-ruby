@@ -9,3 +9,12 @@
 # Chapter 1:  Getting Started                page  1
 # Chapter 2:  Numbers                        page  9
 # Chapter 3:  Letters                        page 13
+
+
+puts ""
+puts "Table of Contents".center(80)
+puts ""
+puts ("Chapter 1:  ".ljust(0) + "Getting Started".ljust(60) + "Page 1".ljust(80))
+puts ("Chapter 2:  ".ljust(0) + "Numbers".ljust(60) + "Page 9".ljust(80))
+puts ("Chapter 3:  ".ljust(0) + "Letters".ljust(60) + "Page 13".ljust(80))
+puts ""
