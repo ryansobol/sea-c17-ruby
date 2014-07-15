@@ -5,3 +5,7 @@
 # example, if you type in I want a raise, it should yell back like this:
 #
 # WHADDAYA MEAN "I WANT A RAISE"?!? YOU'RE FIRED!!
+
+puts "WHAT THE HECK DO YOU WANT!?"
+input = gets.chomp
+puts "WHADDAYA MEAN \"#{input.upcase}\"?!? YOU'RE FIRED!!"
