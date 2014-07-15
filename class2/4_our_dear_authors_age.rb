@@ -10,7 +10,7 @@ $time = Time.new()
 def is_a_leap_year(year)
 	@year = year
 	if @year % 4 == 0 && @year % 100 != 0 || @year % 400 == 0
-		return true 
+		return true
 	else
 		return false
 	end
@@ -30,7 +30,7 @@ def date_n_seconds_ago(seconds)
 		end
 		year -= 1
 	end
-	while (!is_a_leap_year(year) && days >= days_in_month[month]) || (is_a_leap_year(year) && (days >= days_in_month[month] || month == 1 && days >= 29)) 
+	while (!is_a_leap_year(year) && days >= days_in_month[month]) || (is_a_leap_year(year) && (days >= days_in_month[month] || month == 1 && days >= 29))
 		days -= days_in_month[month]
 		if month == 0
 			month = 11
@@ -46,3 +46,6 @@ def date_n_seconds_ago(seconds)
 	return "DOB: #{month+1}/#{day}/#{year} \nThe author is #{$time.year - year} years old"
 end
 puts date_n_seconds_ago(1160000000)
+
+# simpler alternative that returns the correct age
+# puts 1160000000 / 60 / 60 / 24 / 365

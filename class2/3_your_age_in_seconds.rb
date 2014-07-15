@@ -7,7 +7,7 @@ days = 0
 days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 def is_a_leap_year(year)
 	if year % 4 == 0 && year % 100 != 0 || year % 400 == 0
-		return true 
+		return true
 	else
 		return false
 	end
@@ -26,3 +26,6 @@ for y in 1995..2013
 end
 days -= 3
 puts days * seconds_in_a_day
+
+# a simpler alternative
+# puts 60 * 60 * 24 * 365 * 19
