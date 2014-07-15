@@ -9,9 +9,9 @@ puts 'Hello! I really love numbers. What is your favorite number?'
 favorite_number_string = gets
 better_number = favorite_number_string.to_i + 1
 
-puts ''
+puts
 puts 'You know, ' + favorite_number_string.chomp + ' isn\'t bad.'
-puts ''
+puts
 puts better_number.to_s + ' is just a little bit better though, isn\'t it?'
-puts ''
+puts
 puts 'If you think about it, by definition ' + better_number.to_s + ' is a bigger, and therefore better, favorite number.'
