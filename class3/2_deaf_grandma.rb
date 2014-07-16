@@ -26,3 +26,15 @@
 # Hint 3: People often ask me, “How can I make rand give me a number in a range
 # not starting at zero?” But you don’t need it to. Is there something you could
 # do to the number rand returns to you?
+
+puts "What's that, sonny?"
+words = gets.chomp
+while words != "BYE"
+  if words == words.upcase
+    year = rand(21) + 1930
+    puts "NO, NOT SINCE #{year}"
+  else
+    puts "HUH?! SPEAK UP, SONNY!"
+  end
+  words = gets.chomp
+end
