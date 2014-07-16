@@ -3,4 +3,4 @@
 #
 # How many minutes are in a decade?
 
-print (60 * 24) * (365 * 10) 
+print 60 * 24 * 365 * 10
