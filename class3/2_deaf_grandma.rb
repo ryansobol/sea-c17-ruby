@@ -26,3 +26,26 @@
 # Hint 3: People often ask me, “How can I make rand give me a number in a range
 # not starting at zero?” But you don’t need it to. Is there something you could
 # do to the number rand returns to you?
+
+begin
+
+year = rand(1900..2014)
+puts "Say something to Grandma: "
+input = gets.chomp
+
+if input != "BYE" && input == input.upcase
+  puts "NO, NOT SINCE #{year}\n"
+
+elsif input == "BYE"
+  puts "BYE,SONNY\n"
+
+else
+  puts "HUH?! SPEAK UP, SONNY!\n"
+
+end
+
+end while input != "BYE"
+
+
+
+
