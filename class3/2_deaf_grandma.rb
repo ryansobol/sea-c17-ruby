@@ -28,24 +28,15 @@
 # do to the number rand returns to you?
 
 begin
+  year = rand(1900..2014)
+  puts "Say something to Grandma:"
+  input = gets.chomp
 
-year = rand(1900..2014)
-puts "Say something to Grandma: "
-input = gets.chomp
-
-if input != "BYE" && input == input.upcase
-  puts "NO, NOT SINCE #{year}\n"
-
-elsif input == "BYE"
-  puts "BYE,SONNY\n"
-
-else
-  puts "HUH?! SPEAK UP, SONNY!\n"
-
-end
-
+  if input != "BYE" && input == input.upcase
+    puts "NO, NOT SINCE #{year}!\n"
+  elsif input == "BYE"
+    puts "BYE, SONNY\n"
+  else
+    puts "HUH?! SPEAK UP, SONNY!\n"
+  end
 end while input != "BYE"
-
-
-
-

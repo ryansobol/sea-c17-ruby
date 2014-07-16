@@ -10,29 +10,22 @@ count = 0
 done = false
 
 begin
+  year = rand(1900..2014)
+  puts "\nSay something to Grandma:"
+  input = gets.chomp
 
-year = rand(1900..2014)
-puts "\nSay something to Grandma: "
-input = gets.chomp
-
-if input != "BYE" && input == input.upcase
-  puts "\nGMA - NO, NOT SINCE #{year}\n"
-  count = 0
-
-elsif input == "BYE" && count == 2
-  puts "\nGMA - BYE, SONNY\n"
-  done = true
-  count = count + 1
-
-
-elsif input == "BYE" && count < 2
-  puts "..."
-  count = count + 1
-
-else
-  puts "\nGMA - HUH?! SPEAK UP, SONNY!\n"
-  count = 0
-
-end
-
+  if input != "BYE" && input == input.upcase
+    puts "\nNO, NOT SINCE #{year}!\n"
+    count = 0
+  elsif input == "BYE" && count == 2
+    puts "\nBYE, SONNY\n"
+    done = true
+    count = count + 1
+  elsif input == "BYE" && count < 2
+    puts "..."
+    count = count + 1
+  else
+    puts "\nHUH?! SPEAK UP, SONNY!\n"
+    count = 0
+  end
 end while done == false

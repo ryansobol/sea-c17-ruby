@@ -10,26 +10,20 @@
 
 
 puts "\nPlease input a starting year: "
-s = gets.chomp
+start_year = gets.chomp
 puts "\nThanks, please input and ending year: "
-e = gets.chomp
+end_year = gets.chomp
 
 puts "\nGreat, here are the leap years between that range: \n\n"
 
-for i in s..e
-
+for i in start_year..end_year
   if i.to_i % 100 == 0
-
     if i.to_i % 400 == 0
-    puts i
-    end
-
-    elsif i.to_i % 4 == 0
       puts i
     end
-
+  elsif i.to_i % 4 == 0
+    puts i
   end
+end
 
 puts
-
-
