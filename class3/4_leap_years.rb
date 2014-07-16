@@ -14,9 +14,12 @@ puts "Enter an ending year: "
 ending = gets.chomp
 
 puts "Leap years from #{start} to #{ending} are:"
+
 for year in (start..ending)
-  if year.to_i % 4 == 0
+  year = year.to_i
+  if year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
     print "#{year} "
   end
 end
+
 puts

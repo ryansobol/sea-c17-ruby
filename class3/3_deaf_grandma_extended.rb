@@ -9,8 +9,8 @@
 puts "What's that, sonny?"
 words = gets.chomp
 bye_count = 0
-while words
 
+while words
   if words == "BYE"
     bye_count += 1
   else
