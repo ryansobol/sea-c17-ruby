@@ -36,6 +36,5 @@ while true
   elsif input == "BYE"
     puts "NO, NOT SINCE #{year_rand}!"
   break
-
   end
 end
