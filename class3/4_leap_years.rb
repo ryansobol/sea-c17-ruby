@@ -20,7 +20,7 @@ puts "Here are your leap years:"
 
 while start_year <= end_year
   if start_year % 4 == 0 && start_year % 100 != 0 || start_year %400 == 0
-    puts start_year.to_s
+    puts "#{start_year}"
   end
   start_year = start_year + 1
 end

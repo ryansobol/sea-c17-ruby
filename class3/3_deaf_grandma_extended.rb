@@ -14,7 +14,7 @@ while goodbye < 3
   puts "What would you like to say to Grandma?"
   conversation = gets.chomp
   if conversation == conversation.upcase
-    puts "NO, NOT SINCE " + (rand(21) + 1930).to_s + "!"
+    puts "NO, NOT SINCE #{(rand(21) + 1930)}!"
   else
     puts "HUH?! SPEAK UP, SONNY!"
   end

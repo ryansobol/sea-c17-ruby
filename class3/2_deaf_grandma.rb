@@ -27,7 +27,7 @@ while true
     puts "GOODBYE DEAR!"
     break
   elsif conversation == conversation.upcase
-    puts "NO, NOT SINCE " + (rand(21) + 1930).to_s + "!"
+    puts "NO, NOT SINCE #{(rand(21) + 1930)}!"
   else
     puts "HUH?! SPEAK UP, SONNY!"
   end
