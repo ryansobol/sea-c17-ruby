@@ -8,7 +8,7 @@
 # are also divisible by 400 (such as 1600 and 2000, which were in fact leap
 # years). What a mess!
 
-puts "Hi! Enter a starting year and ending year and I'll tell you how many leap years are in between!"
+puts "Hi! Enter a starting year and ending year and I'll tell you which leap years are in between!"
 puts "Enter your starting year:"
 start_year = gets.chomp.to_i
 puts "Enter your ending year:"
