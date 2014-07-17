@@ -22,7 +22,9 @@ puts "You have arrived at Grandma's house. Be friendly."
 
 while true
   puts "What would you like to say to Grandma?"
+
   conversation = gets.chomp
+
   if conversation == "BYE"
     puts "GOODBYE DEAR!"
     break

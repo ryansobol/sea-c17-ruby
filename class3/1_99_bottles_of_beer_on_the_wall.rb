@@ -13,7 +13,14 @@ while verse < 99
   puts "#{beers - verse} bottles of beer on the wall,"
   puts "#{beers - verse} bottles of beer,"
   puts "You take one down and pass it around,"
-  puts "#{beers - verse} bottles of beer on the wall!"
+
+  if verse == 99
+    left = 'No more'
+  else
+    left = beers - verse - 1
+  end
+
+  puts "#{left} bottles of beer on the wall!"
   puts
 end
 
