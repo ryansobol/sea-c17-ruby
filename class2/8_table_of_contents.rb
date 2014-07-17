@@ -22,11 +22,10 @@ c = "Chapter 3:  Letters"
 x = "page 1"
 y = "page 9"
 z = "page 13"
-	
 
-puts TOC.center(lineWidth)
 
-puts a.ljust(lineWidth/2) + x.rjust(lineWidth/2)
-puts b.ljust(lineWidth/2) + y.rjust(lineWidth/2)
-puts c.ljust(lineWidth/2) + z.rjust(lineWidth/2)
+puts TOC.center(50)
 
+puts a.ljust(30) + x.rjust(20)
+puts b.ljust(30) + y.rjust(20)
+puts c.ljust(30) + z.rjust(20)
