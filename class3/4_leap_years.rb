@@ -7,3 +7,21 @@
 # years divisible by 100 are not leap years (such as 1800 and 1900) unless they
 # are also divisible by 400 (such as 1600 and 2000, which were in fact leap
 # years). What a mess!
+
+puts "What's the starting year?"
+start_year = gets.chomp
+puts "What's the ending year?"
+end_year = gets.chomp
+while start_year.to_i <= end_year.to_i
+  if start_year % 400 == 0
+    puts start_year
+  elsif
+    start_year % 100 == 0
+  elsif
+    start_year % 4 == 0
+    puts start_year
+end
+
+start_year = start_year.to_i + 1
+
+end
