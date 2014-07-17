@@ -17,12 +17,18 @@
 # number generator on page 33.) You can’t stop talking to Grandma until you
 # shout BYE.
 #
-# Hint 1: Don’t forget about chomp! 'BYE' with an Enter at the end is not the
-# same as 'BYE' without one!
-#
-# Hint 2: Try to think about what parts of your program should happen over and
-# over again. All of those should be in your while loop.
-#
-# Hint 3: People often ask me, “How can I make rand give me a number in a range
-# not starting at zero?” But you don’t need it to. Is there something you could
-# do to the number rand returns to you?
+
+puts "You have arrived at Grandma's house. Be friendly."
+
+while true
+  puts "What would you like to say to Grandma?"
+  conversation = gets.chomp
+  if conversation == "BYE"
+    puts "GOODBYE DEAR!"
+    break
+  elsif conversation == conversation.upcase
+    puts "NO, NOT SINCE " + (rand(21) + 1930).to_s + "!"
+  else
+    puts "HUH?! SPEAK UP, SONNY!"
+  end
+end
