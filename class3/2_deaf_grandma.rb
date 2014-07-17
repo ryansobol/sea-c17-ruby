@@ -26,3 +26,13 @@
 # Hint 3: People often ask me, “How can I make rand give me a number in a range
 # not starting at zero?” But you don’t need it to. Is there something you could
 # do to the number rand returns to you?
+
+print "Type your message to Grandma here: "
+speak = gets.chomp
+
+while speak != speak.upcase
+  puts "HUH?! SPEAK UP, SONNY!"
+  speak = gets.chomp
+end
+
+puts "NO, NOT SINCE #{( rand(20) + 1931 )}!"
