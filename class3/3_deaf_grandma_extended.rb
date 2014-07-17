@@ -9,10 +9,12 @@
 puts "You have arrived at Grandma's house. Be friendly."
 
 goodbye = 0
-while goodbye < 3
 
+while goodbye < 3
   puts "What would you like to say to Grandma?"
+
   conversation = gets.chomp
+
   if conversation == conversation.upcase
     puts "NO, NOT SINCE #{(rand(21) + 1930)}!"
   else
