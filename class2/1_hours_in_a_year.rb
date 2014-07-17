@@ -7,4 +7,4 @@
 days_per_year = 365
 hours_per_day = 24
 
-puts days_per_year*hours_per_day
+puts days_per_year * hours_per_day

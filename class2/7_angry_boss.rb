@@ -7,7 +7,7 @@
 #
 # WHADDAYA MEAN "I WANT A RAISE"?!? YOU'RE FIRED!!
 
-print "WHAT exactly do you want, my little pathetic minion?"
+print "WHAT exactly do you want, my little pathetic minion? "
 
 request = gets.chomp.to_s
 
