@@ -28,9 +28,14 @@ git config --global credential.helper cache
 git config --global credential.helper 'cache --timeout=3600'
 
 
-#### List current git aliases
+#### color.diff
 
-git alias
+# Use customized color for diff output
+git config --global color.diff.frag 'magenta bold'
+git config --global color.diff.func 'normal bold'
+git config --global color.diff.meta 'yellow bold'
+git config --global color.diff.new 'green bold'
+git config --global color.diff.old 'red bold'
 
 
 #### alias.df
