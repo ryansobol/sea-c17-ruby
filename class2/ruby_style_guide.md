@@ -136,3 +136,25 @@ first_name + " the answer is " + 42.to_s
 # good
 '"Be yourself – everyone else is taken." - Anonymous'
 ```
+
+#### Use shorthand self assignment operators whenever applicable
+
+```ruby
+# bad
+x = x + y
+x = x - y
+x = x * y
+x = x / y
+x = x ** y
+x = x || y
+x = x && y
+
+# good
+x += y
+x -= y
+x *= y
+x /= y
+x **= y
+x ||= y
+x &&= y
+```
