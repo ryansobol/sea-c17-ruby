@@ -35,8 +35,23 @@
 #   $ ruby 4_old_school_roman_numerals.rb 9
 #   VIIII
 
-def old_school_roman_numeral(num)
-  # your solution here
+def old_school_roman_numeral(input)
+  puts "The input is: #{input}"
+  i = 0
+  arabic = [1000, 500, 100, 50, 10, 5, 1]
+  roman = ["M", "D", "C", "L", "X", "V", "I"]
+
+  remainder = input
+
+  while i <= (arabic.length - 1)
+    rom_num = []
+    n = remainder / arabic [i]
+    rom_num.push (roman [i] * n)
+    remainder = remainder % arabic [i]
+    puts "There are #{n} #{roman [i]}'s"
+    i += 1
+  end
+  puts "The roman numeral for your arabic number is #{rom_num}"
 end
 
 input = ARGV[0].to_i
@@ -46,4 +61,4 @@ if input <= 0 || input > 3000
   exit
 end
 
-puts old_school_roman_numeral(input)
+old_school_roman_numeral(input)
