@@ -14,7 +14,7 @@ puts "WELCOME TO THE LEAP YEAR GENERATOR!".center(table_length)
 puts
 
 puts "The first leap year in the modern sense was 1752,".center(table_length)
-puts "when 11 days were'lost' from the month September".center(table_length)
+puts "when 11 days were 'lost' from the month September".center(table_length)
 puts "with the adoption of the Gregorian calendar by".center(table_length)
 puts "Britain and her colonies. After 1752 we adopted".center(table_length)
 puts "the system still in use today where an additional day".center(table_length)
@@ -29,8 +29,9 @@ puts "the year 1752.  Thank you for your understanding.".center(table_length)
 puts
 
 while true
-print "Please enter the starting year: "
-start_year = gets.chomp.to_i
+  print "Please enter the starting year: "
+  start_year = gets.chomp.to_i
+
   if start_year < 1752
     puts "Please enter a year no earlier than 1752."
     puts "Long live the Queen!"
@@ -43,6 +44,7 @@ end
 print "Now please enter an ending year: "
 while true
   end_year = gets.chomp.to_i
+
   if start_year > end_year && end_year > 0
     print "I'm sorry #{end_year} occured before #{start_year}. Please try again: "
   elsif end_year <= 0
@@ -57,8 +59,10 @@ end
 puts "STARTING YEAR: #{start_year}".ljust(table_length/2) + "ENDING YEAR: #{end_year}".rjust(table_length/2)
 puts
 puts "LEAP YEARS".center(table_length)
+
 year = start_year
 counter = 0
+
 while year <= end_year
   if year % 4 != 0
     year += 1
@@ -74,12 +78,13 @@ while year <= end_year
 end
 
 puts
+
 if counter == 0
   puts "No leap years fell between #{start_year} & #{end_year}.".center(table_length)
 else
   puts "TOTAL NUMBER OF LEAP YEARS: #{counter}".center(table_length)
 end
+
 puts
 puts "GOOD-BYE".center(table_length)
 puts
-
