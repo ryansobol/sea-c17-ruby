@@ -16,26 +16,27 @@ puts "sitting in her favorite rocker."
 puts '"OH, IT\'S YOU ' + name.upcase + '! WHY DIDN\'T YOU SAY?"'
 puts '"NEVER MIND, NEVER MIND. SIT! TELL ME, WHAT DO YOU HAVE TO ALLOW?"'
 
-bye_int = 0
+count = 0
+
 while true
-salutation = gets.chomp
+  salutation = gets.chomp
+
   if salutation == salutation.upcase && salutation == "BYE"
-    if bye_int !=2
-      bye_int += 1
+    if count !=2
+      count += 1
       puts '"WHAT\'S THE RUSH? HAVE ANOTHER COOKIE AND SPIN ME A YARN!"'
-    else bye_int == 2
+    else count == 2
       puts '"SO GOOD TO SEE YOU ' + name.upcase + '!'
       puts 'PLEASE GET THE DOOR ON YOUR WAY OUT!"'
       break
     end
   elsif salutation == salutation.upcase
-    int = rand(21)
-    year = 1930 + int
+    year = 1930 + rand(21)
     puts "\"OH NO DEAR, NOT SINCE #{year}! NOW GO ON, TELL ME MORE.\""
-    bye_int = 0
-  elsif salutation != salutation.upcase
+    count = 0
+  elsif
     puts "\"HUH? OH DO SPEAK UP, #{name.upcase}, YOU ALWAYS WERE SO MEEK!\""
-    bye_int = 0
+    count = 0
   end
 end
 
@@ -45,4 +46,3 @@ appear too inconsistent.
 I'm also not sure if the bye_int is the best way to resolve the 3-in-a-row
 problem as it (again) appears to violate the DRY rule. But hell, it works.
 =end
-

@@ -37,17 +37,17 @@ puts "sitting in her favorite rocker."
 puts '"OH, IT\'S YOU ' + name.upcase + '! WHY DIDN\'T YOU SAY?"'
 puts '"NEVER MIND, NEVER MIND. SIT! TELL ME, WHAT DO YOU HAVE TO ALLOW?"'
 
-while true
-salutation = gets.chomp
+loop do
+  salutation = gets.chomp
+
   if salutation == salutation.upcase && salutation == "BYE"
-  puts '"SO GOOD TO SEE YOU ' + name.upcase + '!'
-  puts 'PLEASE GET THE DOOR ON YOUR WAY OUT!"'
-  break
+    puts '"SO GOOD TO SEE YOU ' + name.upcase + '!'
+    puts 'PLEASE GET THE DOOR ON YOUR WAY OUT!"'
+    break
   elsif salutation == salutation.upcase
-  int = rand(21)
-  year = 1930 + int
-  puts "\"OH NO DEAR, NOT SINCE #{year}! NOW GO ON, TELL ME MORE.\""
-  elsif salutation != salutation.upcase
-puts "\"HUH? OH DO SPEAK UP, #{name.upcase}, YOU ALWAYS WERE SO MEEK!\""
+    year = 1930 + rand(21)
+    puts "\"OH NO DEAR, NOT SINCE #{year}! NOW GO ON, TELL ME MORE.\""
+  else
+    puts "\"HUH? OH DO SPEAK UP, #{name.upcase}, YOU ALWAYS WERE SO MEEK!\""
   end
 end
