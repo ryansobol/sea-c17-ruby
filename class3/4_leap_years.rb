@@ -45,14 +45,12 @@ while true
   end_year = gets.chomp.to_i
   if start_year > end_year && end_year > 0
     print "I'm sorry #{end_year} occured before #{start_year}. Please try again: "
-  else
-    if end_year <= 0
+  elsif end_year <= 0
       print "Please enter a date no earlier than #{start_year}: "
-    else
+  else
       puts "Thank you."
       puts
       break
-    end
   end
 end
 
