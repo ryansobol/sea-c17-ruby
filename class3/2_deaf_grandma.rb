@@ -28,11 +28,14 @@
 # do to the number rand returns to you?
 
 print "Type your message to Grandma here: "
-speak = gets.chomp
 
-while speak != speak.upcase
-  puts "HUH?! SPEAK UP, SONNY!"
+loop do
   speak = gets.chomp
-end
+  break if speak == "BYE"
 
-puts "NO, NOT SINCE #{(rand(21) + 1931)}!"
+  if speak == speak.upcase
+    puts "NO, NOT SINCE #{rand(21) + 1931}!"
+  else
+    puts "HUH?! SPEAK UP, SONNY!"
+  end
+end
