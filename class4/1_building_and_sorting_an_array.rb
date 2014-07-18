@@ -26,3 +26,16 @@
 #
 # Hint: There’s a lovely array method that will give you a sorted version of
 # an array called `sort`. Use it!
+
+words = []
+
+print "Type as many words as you want."
+print "Hit enter and I'll repeat them back in alphabetical order."
+
+loop do
+  input = gets.chomp
+  words.push input
+  break if input ==""
+end
+
+puts words.sort
