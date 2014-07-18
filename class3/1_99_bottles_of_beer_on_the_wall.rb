@@ -17,22 +17,21 @@
 
 bottles = 99
 bottle_plural = "bottles"
-while bottles
 
-    puts "#{bottles} #{bottle_plural} of beer on the wall,"\
-         " #{bottles} #{bottle_plural} of beer!"
-    print "Take one down, pass it around, "
-    bottles -= 1
+while true
+  puts "#{bottles} #{bottle_plural} of beer on the wall,"\
+       " #{bottles} #{bottle_plural} of beer!"
+  print "Take one down, pass it around, "
 
-    if bottles == 1
-      bottle_plural = "bottle"
-    end
+  bottles -= 1
 
-    if bottles == 0
-      break
-    end
+  if bottles == 1
+    bottle_plural = "bottle"
+  elsif bottles == 0
+    break
+  end
 
-    puts "#{bottles} #{bottle_plural} of beer on the wall!"
+  puts "#{bottles} #{bottle_plural} of beer on the wall!"
 end
 
 puts "no more bottles of beer on the wall!"

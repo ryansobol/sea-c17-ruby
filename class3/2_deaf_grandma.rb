@@ -29,6 +29,7 @@
 
 puts "What's that, sonny?"
 words = gets.chomp
+
 while words != "BYE"
   if words == words.upcase
     year = rand(21) + 1930
@@ -36,5 +37,6 @@ while words != "BYE"
   else
     puts "HUH?! SPEAK UP, SONNY!"
   end
+  
   words = gets.chomp
 end
