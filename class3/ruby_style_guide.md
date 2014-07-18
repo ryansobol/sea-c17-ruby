@@ -10,7 +10,7 @@ not true
 !true
 ```
 
-#### Favor modifier `if/unless` usage when you have a single-line body
+#### Favor modifier usage of `if/unless` when you have a single-line body
 
 ```ruby
 # bad
@@ -53,21 +53,7 @@ else
 end
 ```
 
-#### Never use `then` for multi-line `if/unless`
-
-```ruby
-# bad
-if some_condition then
-  # body omitted
-end
-
-# good
-if some_condition
-  # body omitted
-end
-```
-
-#### Always put the condition on the same line as the `if/unless` in a multi-line conditional
+#### Always put the condition on the same line as the `if/unless`
 
 ```ruby
 # bad
@@ -88,17 +74,17 @@ end
 
 ```ruby
 # bad
-if (x > 10)
+if (chapter == 8)
   # body omitted
 end
 
 # good
-if x > 10
+if chapter == 8
   # body omitted
 end
 ```
 
-#### Favor modifier `while/until` usage when you have a single-line body
+#### Favor modifier usage of `while/until` when you have a single-line body
 
 ```ruby
 # bad
@@ -110,7 +96,7 @@ end
 do_something while some_condition
 ```
 
-#### Favor `until` over `while` for negative conditions.
+#### Favor `until` over `while` for negative conditions
 
 ```ruby
 # bad
@@ -123,21 +109,7 @@ do_something while not some_condition
 do_something until some_condition
 ```
 
-#### Never use `do` for multi-line `while/until`
-
-```ruby
-# bad
-while x > 5 do
-  # body omitted
-end
-
-# good
-while x > 5
-  # body omitted
-end
-```
-
-#### Always put the condition on the same line as the `while/until` in a multi-line conditional
+#### Always put the condition on the same line as the `while/until`
 
 ```ruby
 # bad
@@ -158,12 +130,12 @@ end
 
 ```ruby
 # bad
-while (x > 10)
+while (chapter < 15)
   # body omitted
 end
 
 # good
-while x > 10
+while chapter < 15
   # body omitted
 end
 ```
@@ -176,6 +148,7 @@ while true
   do_something
 end
 
+# bad
 until false
   do_something
 end
@@ -189,6 +162,11 @@ end
 #### For post-loop tests, use `loop` with `break` rather than `begin/end while/until`
 
 ```ruby
+# bad
+begin
+  input = gets.chomp
+end while input != "stop"
+
 # bad
 begin
   input = gets.chomp
