@@ -28,13 +28,11 @@
 # do to the number rand returns to you?
 
 puts "Grandma! It's so good to see you! I have a question for you:"
-bye_var = "BYE"
 
-while true
+loop do
 	question = gets.chomp
-	if question == bye_var
-		break
-	end
+  break if question == "BYE"
+
 	if question == question.upcase
 		year = 1930 + rand(21)
 		puts "NO, NOT SINCE #{year}!"
@@ -44,5 +42,3 @@ while true
 end
 
 puts "GRANNY LOVES YOU BYE BYE NOW"
-
-
