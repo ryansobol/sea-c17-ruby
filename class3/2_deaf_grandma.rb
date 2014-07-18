@@ -35,4 +35,4 @@ while speak != speak.upcase
   speak = gets.chomp
 end
 
-puts "NO, NOT SINCE #{(rand(21) + 1930)}!"
+puts "NO, NOT SINCE #{(rand(21) + 1931)}!"
