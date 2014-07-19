@@ -11,13 +11,16 @@
 puts "Hi! Enter a starting year and ending year and I'll tell you which leap years are in between!"
 puts "Enter your starting year:"
 start_year = gets.chomp.to_i
+
 puts "Enter your ending year:"
 end_year = gets.chomp.to_i
+
 puts "Calculating.....Done. Here are the leap years within your range:"
 
 while start_year <= end_year
 	if start_year % 4 == 0 && (start_year % 100 != 0 || start_year % 400 == 0)
-			puts start_year
+		puts start_year
 	end
+
 	start_year += 1
 end

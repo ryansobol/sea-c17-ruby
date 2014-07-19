@@ -10,15 +10,17 @@ puts "Grandma! It's so good to see you! I have a question for you:"
 bye_var = "BYE"
 bye_num = 0
 
-while true
+loop do
 	question = gets.chomp
-	if question == bye_var
+
+  if question == bye_var
 		bye_num += 1
 		puts "WHAT?! YOU WANT A FRENCH FRY?"
 	else
 		bye_num = 0
 	end
-	break if bye_num > 2
+
+  break if bye_num > 2
 
 	if question == question.upcase && question != bye_var
 		year = 1930 + rand(21)
@@ -29,6 +31,3 @@ while true
 end
 
 puts "DON'T LET THEM PUT ME IN THAT NURSING HOME!"
-		
-		
-		

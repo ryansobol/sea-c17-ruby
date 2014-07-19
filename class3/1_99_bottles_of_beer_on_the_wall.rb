@@ -21,7 +21,7 @@ num_bottles = 10  #To start with 99, change 10 to 99.
 while num_bottles > 2
 	puts "#{num_bottles} bottles of beer on the wall, #{num_bottles} bottles of beer!"
 	puts "Take one down, pass it around, #{num_bottles - 1} bottles of beer!"
-	num_bottles = num_bottles - 1
+	num_bottles -= 1
 end
 
 puts "2 bottles of beer on the wall, 2 bottles of beer!"
