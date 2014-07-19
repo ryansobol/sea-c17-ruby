@@ -6,18 +6,20 @@
 # shout BYE three times in a row. Make sure to test your program: if you shout
 # BYE three times but not in a row, you should still be talking to Grandma.
 
+puts "SAY SOMETHING, SONNY!"
 bye_count = 0
 while true
-  puts "SAY SOMETHING, SONNY!"
-  input = gets.chomp
-  if input == "BYE" && bye_count < 3
-    bye_count = bye_count + 1
-  end
-  if input == "BYE" && bye_count == 3
+input = gets.chomp
+  if input == "BYE"
+    bye_count += 1
     puts "NO, NOT SINCE 1938!"
-    break
   elsif input != "BYE"
     bye_count = 0
-    puts "HUH!  SPEAK UP, SONNY!"
+    puts "HUH! SPEAK UP, SONNY!"
+  end
+  break if bye_count == 3
+  if input == input.upcase && input != "BYE"
+    bye_count = 0
+    puts "NO NOT SINCE 1938!"
   end
 end

@@ -12,6 +12,7 @@ puts "What's the starting year?"
 start_year = gets.chomp
 puts "What's the ending year?"
 end_year = gets.chomp
+puts ''
 while start_year.to_i <= end_year.to_i
   if start_year % 400 == 0
     puts start_year
@@ -21,7 +22,5 @@ while start_year.to_i <= end_year.to_i
     start_year % 4 == 0
     puts start_year
 end
-
 start_year = start_year.to_i + 1
-
 end
