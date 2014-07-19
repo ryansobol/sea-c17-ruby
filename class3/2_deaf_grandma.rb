@@ -26,3 +26,14 @@
 # Hint 3: People often ask me, “How can I make rand give me a number in a range
 # not starting at zero?” But you don’t need it to. Is there something you could
 # do to the number rand returns to you?
+
+while true
+  statement = gets.chomp
+  puts "HUH?! SPEAK UP, SONNY!"
+
+  if statement == "BYE"
+    break
+  elsif statement == statement.upcase
+    puts 'NO, NOT SINCE 19' + rand(30..51).to_s + '!'
+  end
+end
