@@ -26,3 +26,30 @@
 #
 # Hint: There’s a lovely array method that will give you a sorted version of
 # an array called `sort`. Use it!
+
+count = 0
+input = []
+
+puts "Give me some words, and I will sort them: "
+
+loop do
+inp = gets.chomp
+  if inp != ""
+  input[count] = inp
+  end
+count += 1
+
+break if inp == ""
+end
+
+puts "Sweet! Here they are, sorted:"
+input.sort!
+
+input.each do |i|
+  puts i
+end
+
+puts
+
+
+
