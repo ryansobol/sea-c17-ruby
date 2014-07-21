@@ -10,7 +10,7 @@
 #
 # Hint: I've already structured your program. Aren't you lucky? :)
 
-def ask question
+def ask(question)
   loop do
     puts question
     reply = gets.chomp.downcase

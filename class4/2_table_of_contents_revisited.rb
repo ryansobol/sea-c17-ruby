@@ -24,8 +24,7 @@ arr = [["Chapter 1: Getting Started", "page  1      "],
        ["Chapter 3: Letters",         "page 13"      ]]
 
 arr.each do |obj|
-  chp_name = obj[0]
-  page = obj[1]
+  chp_name, page = obj
 
   puts chp_name.ljust(20) + page.rjust(30)
 end
