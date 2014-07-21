@@ -14,17 +14,15 @@
 # Chapter 2:  Numbers                        page  9
 # Chapter 3:  Letters                        page 13
 
-title = "Table of Contents"
-puts title.center(50)
-
+puts "Table of Contents".center(50)
 puts
 
-arr = [["Chapter 1: Getting Started", "page  1      "],
-       ["Chapter 2: Numbers",         "page  9"      ],
-       ["Chapter 3: Letters",         "page 13"      ]]
+chapters = [["Chapter 1:  Getting Started", "page  1"],
+            ["Chapter 2:  Numbers",         "page  9"],
+            ["Chapter 3:  Letters",         "page 13"]]
 
-arr.each do |obj|
-  chp_name, page = obj
+chapters.each do |chapter|
+  name, page = chapter
 
-  puts chp_name.ljust(20) + page.rjust(30)
+  puts name.ljust(30) + page.rjust(20)
 end
