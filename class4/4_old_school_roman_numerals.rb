@@ -56,7 +56,7 @@ def old_school_roman_numeral(num)
 
   if num >= 50
     roman_numeral += ("L" * (num / 50))
-    num = num % 50
+    num %= 50
   end
 
   if num >= 10
