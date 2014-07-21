@@ -13,3 +13,19 @@
 # Chapter 1:  Getting Started                page  1
 # Chapter 2:  Numbers                        page  9
 # Chapter 3:  Letters                        page 13
+
+title = "Table of Contents"
+puts title.center(50)
+
+puts
+
+arr = [["Chapter 1: Getting Started", "page  1      "],
+       ["Chapter 2: Numbers",         "page  9"      ],
+       ["Chapter 3: Letters",         "page 13"      ]]
+
+arr.each do |obj|
+  chp_name = obj[0]
+  page = obj[1]
+
+  puts chp_name.ljust(20) + page.rjust(30)
+end

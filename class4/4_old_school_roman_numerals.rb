@@ -35,8 +35,47 @@
 #   $ ruby 4_old_school_roman_numerals.rb 9
 #   VIIII
 
-def old_school_roman_numeral(num)
-  # your solution here
+
+def old_school_roman_numeral num
+  roman_numeral = ""
+
+  if num >= 1000
+    roman_numeral = roman_numeral + ("M" * (num / 1000))
+    num = num % 1000
+  end
+
+  if num >= 500
+    roman_numeral = roman_numeral + ("D" * (num / 500))
+    num = num % 500
+  end
+
+  if num >= 100
+    roman_numeral = roman_numeral + ("C" * (num / 100))
+    num = num % 100
+  end
+
+  if num >= 50
+    roman_numeral = roman_numeral + ("L" * (num / 50))
+    num = num % 50
+  end
+
+  if num >= 10
+    roman_numeral = roman_numeral + ("X" * (num / 10))
+    num = num % 10
+  end
+
+  if num >= 5
+    roman_numeral = roman_numeral + ("V" * (num / 5))
+    num = num % 5
+  end
+
+  if num >= 1
+    roman_numeral = roman_numeral + ("I" * (num / 1))
+    num = num % 1
+  end
+
+  roman_numeral
+
 end
 
 input = ARGV[0].to_i
