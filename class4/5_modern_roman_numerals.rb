@@ -26,81 +26,93 @@ def modern_roman_numeral(num)
 
   roman_array = []
 
-  m_count  = 0
-  cm_count = 0 # test 900
-  d_count  = 0
-  cd_count = 0 # test 400
-  c_count  = 0
-  xc_count = 0 # test 90
-  l_count  = 0
-  xl_count = 0 # test 40
-  x_count  = 0
-  ix_count = 0 # test 9
-  v_count  = 0
-  iv_count = 0 # test 4
-  i_count  = 0
+  m_count  = 0 # 1000
+  cm_count = 0 # 900
+  d_count  = 0 # 500
+  cd_count = 0 # 400
+  c_count  = 0 # 100
+  xc_count = 0 # 90
+  l_count  = 0 # 50
+  xl_count = 0 # 40
+  x_count  = 0 # 10
+  ix_count = 0 # 9
+  v_count  = 0 # 5
+  iv_count = 0 # 4
+  i_count  = 0 # 1
 
-
+  # checks for M
   if num >= 1000
     m_count = num / 1000
     num = num % 1000
   end
 
+  # checks for CM
   if num >= 900
     cm_count = num / 900
     num = num % 900
   end
 
+  # checks for D
   if num >= 500
     d_count = num / 500
     num = num % 500
   end
 
+  # checks for CD
   if num >= 400
     cd_count = num / 400
     num = num % 400
   end
 
+  # checks for C
   if num >= 100
     c_count = num / 100
     num = num % 100
   end
 
+  # checks for XC
   if num >= 90
     xc_count = num / 90
     num = num % 90
   end
 
+  # checks for L
   if num >= 50
     l_count = num / 50
     num = num % 50
   end
 
+  # checks for XL
   if num >= 40
     xl_count = num / 40
     num = num % 40
   end
 
+  # checks for X
   if num >= 10
     x_count = num / 10
     num = num % 10
   end
 
+  # checks for IX
   if num >= 9
     ix_count = num / 9
     num = num % 9
   end
 
+  # checks for V
   if num >= 5
     v_count = num / 5
     num = num % 5
   end
 
+  # checks for IV
   if num >= 4
     iv_count = num / 4
     num = num % 4
   end
 
+  # checks for I
   if num < 4
     i_count = num / 1
     num = num % 10
@@ -108,7 +120,7 @@ def modern_roman_numeral(num)
 
 #puts m_count
 #puts num
-
+  # Pushes objects to array
   roman_array.push "M"  * m_count
   roman_array.push "CM" * cm_count
   roman_array.push "D"  * d_count

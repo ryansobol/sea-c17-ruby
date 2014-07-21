@@ -33,8 +33,10 @@ while true
   word = gets.chomp.downcase
   word_array.push word
   break if word == ''
-word_array.sort
 end
+word_array.pop
+word_array.sort
+
 puts "Sweet! Here they are sorted:"
 puts word_array.sort
 

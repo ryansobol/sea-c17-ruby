@@ -36,51 +36,69 @@
 #   VIIII
 
 def old_school_roman_numeral(num)
-  m_count = 0
-  d_count = 0
-  c_count = 0
-  l_count = 0
-  x_count = 0
-  v_count = 0
-  i_count = 0
+  roman_array = []
 
+  m_count = 0 # 1000
+  d_count = 0 # 500
+  c_count = 0 # 100
+  l_count = 0 # 50
+  x_count = 0 # 10
+  v_count = 0 # 5
+  i_count = 0 # 1
+
+  #  M count
   if num >= 1000
     m_count = num / 1000
     num = num % 1000
   end
 
+  #  D count
   if num >= 500
     d_count = num / 500
     num = num % 500
   end
 
+  #  C count
   if num >= 100
     c_count = num / 100
     num = num % 100
   end
 
+  #  L count
   if num >= 50
     l_count = num / 50
     num = num % 50
   end
 
+  #  X count
   if num >= 10
     x_count = num / 10
     num = num % 10
   end
 
+  #  V count
   if num >= 5
     v_count = num / 5
     num = num % 5
   end
 
+  #  I count
   if num < 5
     i_count = num / 1
     num = num % 10
   end
 
-puts 'M' * m_count + 'D' * d_count + 'C' * c_count + 'L' * l_count +
-     'X' * x_count + 'V' * v_count + 'I' * i_count
+# Pushes objects to array
+  roman_array.push "M"  * m_count
+  roman_array.push "D"  * d_count
+  roman_array.push "C"  * c_count
+  roman_array.push "L"  * l_count
+  roman_array.push "X"  * x_count
+  roman_array.push "V"  * v_count
+  roman_array.push "I"  * i_count
+
+  #puts roman_array
+  puts roman_array.join
 
 end
 
