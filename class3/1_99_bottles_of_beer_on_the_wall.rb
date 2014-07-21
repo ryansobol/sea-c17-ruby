@@ -32,6 +32,15 @@ while bottles_of_beer > 0
     puts "#{bottles_of_beer} #{verse6}, #{bottles_of_beer} #{verse4}"
     bottles_of_beer = bottles_of_beer -1
     puts "#{verse3} #{verse5}"
+
+while bottles_of_beer > 0
+  puts "#{bottles_of_beer} bottles of beer on the wall"
+  puts "#{bottles_of_beer} bottles of beer"
+  puts "Take one down pass it around"
+  bottles_of_beer -= 1
+  puts "#{bottles_of_beer} bottles of beer on the wall"
+  puts
+
 end
 # No more bottles of beer on the wall, no more bottles of beer!
 # Go to the store and buy some more, 99 bottles of beer on the wall!

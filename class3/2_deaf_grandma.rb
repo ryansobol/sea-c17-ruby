@@ -37,7 +37,15 @@ while true
   end
   if input == input.upcase
     puts "NO, NOT SINCE 1938!"
+
+loop do
+  input = gets.chomp
+
+  if input.upcase == input
+    puts "NO, NOT SINCE #{rand(1938..1950)}!"
   else
     puts "HUH?!  SPEAK UP, SONNY!"
   end
+
+  break if input == "BYE"
 end

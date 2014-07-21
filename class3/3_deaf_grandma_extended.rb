@@ -14,6 +14,15 @@ input = gets.chomp
     bye_count += 1
     puts "NO, NOT SINCE 1938!"
   elsif input != "BYE"
+
+bye_count = 0
+
+while bye_count < 3
+  input = gets.chomp
+
+  if input == "BYE" && bye_count < 3
+    bye_count += 1
+  elsif
     bye_count = 0
     puts "HUH! SPEAK UP, SONNY!"
   end
@@ -21,5 +30,11 @@ input = gets.chomp
   if input == input.upcase && input != "BYE"
     bye_count = 0
     puts "NO NOT SINCE 1938!"
+  end
+
+  if input.upcase == input
+    puts "NO, NOT SINCE #{rand(1938..1950)}!"
+  else
+    puts "HUH?!  SPEAK UP, SONNY!"
   end
 end
