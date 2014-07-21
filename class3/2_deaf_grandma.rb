@@ -27,24 +27,16 @@
 # not starting at zero?” But you don’t need it to. Is there something you could
 # do to the number rand returns to you?
 
-rand_year = rand(1930..1950)
+
 puts "SAY SOMETHING, SONNY!"
-while true
-  input = gets.chomp
-  if input == "BYE"
-    puts "NO, NOT SINCE #{rand_year}!"
-    break
-  end
-  if input == input.upcase
-    puts "NO, NOT SINCE 1938!"
 
 loop do
   input = gets.chomp
 
   if input.upcase == input
-    puts "NO, NOT SINCE #{rand(1938..1950)}!"
+    puts "NO, NOT SINCE #{rand(21) + 1930}!"
   else
-    puts "HUH?!  SPEAK UP, SONNY!"
+    puts "HUH?! SPEAK UP, SONNY!"
   end
 
   break if input == "BYE"

@@ -9,18 +9,17 @@
 # years). What a mess!
 
 puts "What's the starting year?"
-start_year = gets.chomp
+start_year = gets.chomp.to_i
+
 puts "What's the ending year?"
-end_year = gets.chomp
-puts ''
-while start_year.to_i <= end_year.to_i
-  if start_year % 400 == 0
+end_year = gets.chomp.to_i
+
+puts
+
+while start_year <= end_year
+  if start_year % 4 == 0 && start_year % 100 != 0 || start_year % 400 == 0
     puts start_year
-  elsif
-    start_year % 100 == 0
-  elsif
-    start_year % 4 == 0
-    puts start_year
-end
-start_year = start_year.to_i + 1
+  end
+
+  start_year += 1
 end

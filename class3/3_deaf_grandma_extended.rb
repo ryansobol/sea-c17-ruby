@@ -7,34 +7,21 @@
 # BYE three times but not in a row, you should still be talking to Grandma.
 
 puts "SAY SOMETHING, SONNY!"
-bye_count = 0
-while true
-input = gets.chomp
-  if input == "BYE"
-    bye_count += 1
-    puts "NO, NOT SINCE 1938!"
-  elsif input != "BYE"
 
 bye_count = 0
 
 while bye_count < 3
   input = gets.chomp
 
-  if input == "BYE" && bye_count < 3
+  if input == "BYE"
     bye_count += 1
-  elsif
+  else
     bye_count = 0
-    puts "HUH! SPEAK UP, SONNY!"
-  end
-  break if bye_count == 3
-  if input == input.upcase && input != "BYE"
-    bye_count = 0
-    puts "NO NOT SINCE 1938!"
   end
 
   if input.upcase == input
-    puts "NO, NOT SINCE #{rand(1938..1950)}!"
+    puts "NO, NOT SINCE #{rand(21) + 1930}!"
   else
-    puts "HUH?!  SPEAK UP, SONNY!"
+    puts "HUH?! SPEAK UP, SONNY!"
   end
 end
