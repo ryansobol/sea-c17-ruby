@@ -14,8 +14,12 @@
 # Chapter 2:  Numbers                        page  9
 # Chapter 3:  Letters                        page 13
 
-contents = ["Chapter 1:  Getting Started", "page  1", "Chapter 2:  Numbers",
-            "page  9", "Chapter 3:  Letters", "page 13", "Table of Contents"]
+contents = [
+  "Chapter 1:  Getting Started", "page  1",
+  "Chapter 2:  Numbers",         "page  9",
+  "Chapter 3:  Letters",         "page 13",
+  "Table of Contents"
+]
 
 puts contents[6].center(50)
 puts
