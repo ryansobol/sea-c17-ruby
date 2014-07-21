@@ -35,7 +35,6 @@
 #   $ ruby 4_old_school_roman_numerals.rb 9
 #   VIIII
 
-
 def old_school_roman_numeral(num)
   roman_numeral = ""
 
@@ -75,7 +74,6 @@ def old_school_roman_numeral(num)
   end
 
   roman_numeral
-
 end
 
 input = ARGV[0].to_i

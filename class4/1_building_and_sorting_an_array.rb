@@ -27,19 +27,18 @@
 # Hint: There’s a lovely array method that will give you a sorted version of
 # an array called `sort`. Use it!
 
-
 puts "Hi! Give me some words and I will sort them alphabetically."
 puts "Type only one word per line and press enter when that word is complete."
 puts "Type as many words as you would like, and when you're ready to stop, press enter on a blank line."
 
-word_array = []
+words = []
 
 loop do
 	word = gets.chomp
-	word_array.push word
-
 	break if word == ""
+
+	words.push(word)
 end
 
 puts "Cool! Here they are in alphabetical order."
-puts word_array.sort
+puts words.sort
