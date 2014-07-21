@@ -17,14 +17,18 @@ end_year = gets.chomp
 i = start_year.to_i
 while i < end_year.to_i
   if i % 4 == 0
-    if i % 100 == 0 && i % 400 != 0
+    if i % 100 == 0 && i % 400 == 0
+      puts i
+    elsif !(i % 100 == 0)
       puts i
     end
   end
   i += 1
 end
 
-
+# years divisible by 4
+# no years divisible by 100
+# except years divisible by 400
 
 # i = start_year
 # while i < end_year
