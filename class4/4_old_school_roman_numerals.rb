@@ -36,7 +36,52 @@
 #   VIIII
 
 def old_school_roman_numeral(num)
-  # your solution here
+  m_count = 0
+  d_count = 0
+  c_count = 0
+  l_count = 0
+  x_count = 0
+  v_count = 0
+  i_count = 0
+
+  if num >= 1000
+    m_count = num / 1000
+    num = num % 1000
+  end
+
+  if num >= 500
+    d_count = num / 500
+    num = num % 500
+  end
+
+  if num >= 100
+    c_count = num / 100
+    num = num % 100
+  end
+
+  if num >= 50
+    l_count = num / 50
+    num = num % 50
+  end
+
+  if num >= 10
+    x_count = num / 10
+    num = num % 10
+  end
+
+  if num >= 5
+    v_count = num / 5
+    num = num % 5
+  end
+
+  if num < 5
+    i_count = num / 1
+    num = num % 10
+  end
+
+puts 'M' * m_count + 'D' * d_count + 'C' * c_count + 'L' * l_count +
+     'X' * x_count + 'V' * v_count + 'I' * i_count
+
 end
 
 input = ARGV[0].to_i
