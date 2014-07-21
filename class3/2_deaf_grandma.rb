@@ -28,13 +28,15 @@
 # do to the number rand returns to you?
 
 puts "SAY SOMETHING, SONNY!"
-year_rand = rand(1938..1950)
-while true
+
+loop do
   input = gets.chomp
-  if input != "BYE"
+
+  if input.upcase == input
+    puts "NO, NOT SINCE #{rand(1938..1950)}!"
+  else
     puts "HUH?!  SPEAK UP, SONNY!"
-  elsif input == "BYE"
-    puts "NO, NOT SINCE #{year_rand}!"
-  break
   end
+
+  break if input == "BYE"
 end
