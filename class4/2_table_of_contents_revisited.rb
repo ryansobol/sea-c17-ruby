@@ -13,3 +13,12 @@
 # Chapter 1:  Getting Started                page  1
 # Chapter 2:  Numbers                        page  9
 # Chapter 3:  Letters                        page 13
+
+contents = ["Chapter 1:  Getting Started", "page  1", "Chapter 2:  Numbers",
+            "page  9", "Chapter 3:  Letters", "page 13", "Table of Contents"]
+
+puts contents[6].center(50)
+puts
+puts contents[0].ljust(30) + contents[1].rjust(20)
+puts contents[2].ljust(30) + contents[3].rjust(20)
+puts contents[4].ljust(30) + contents[5].rjust(20)
