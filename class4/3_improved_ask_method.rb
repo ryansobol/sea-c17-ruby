@@ -11,7 +11,18 @@
 # Hint: I've already structured your program. Aren't you lucky? :)
 
 def ask(question)
-  # your solution here
+  while true
+    puts question
+    inp = gets.chomp.downcase
+
+    if inp == "yes"
+       return true
+    elsif inp == "no"
+       return false
+    end
+    puts 'Please answer "yes" or "no".'
+  end
 end
 
-puts ask('Do you like eating tacos?')
+ask "Do you like eating tacos?"
+ask "Do you like eating burritos?"

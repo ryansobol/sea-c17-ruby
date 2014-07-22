@@ -35,10 +35,26 @@
 #   $ ruby 4_old_school_roman_numerals.rb 9
 #   VIIII
 
+
 def old_school_roman_numeral(num)
-  # your solution here
+
+  roman_numeral = "" #values will be appended
+  numerals = ["M", "D", "C", "L", "X", "V", "I"]
+  arabic =   [1000,500, 100, 50, 10, 5, 1]
+
+  i = 0 #iterate through the arrays
+
+  while i <= 6 #while within the array length
+    while num >= arabic[i]
+      num -= arabic[i] # remove the val
+      roman_numeral += numerals[i] # assign the rom
+    end
+    i += 1 # increment
+  end
+  roman_numeral # return the rom to terminal
 end
 
+# take argument from terminal
 input = ARGV[0].to_i
 
 if input <= 0 || input > 3000

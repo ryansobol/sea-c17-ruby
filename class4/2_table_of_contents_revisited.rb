@@ -17,6 +17,7 @@
 contents = ["Table of Contents", "Chapter 1:  ", "Getting Started", "Page  1",
   "Chapter 2:  ", "Numbers", "Page  9", "Chapter 3:  ", "Letters", "Page 13"]
 
+puts
 puts contents[0].center(50)
 puts
 
