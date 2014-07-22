@@ -26,15 +26,17 @@
 # Hint 3: People often ask me, “How can I make rand give me a number in a range
 # not starting at zero?” But you don’t need it to. Is there something you could
 # do to the number rand returns to you?
-input = ""
-while input != "BYE"
+
+loop do
   input = gets.chomp
-  if input == input.upcase && input != "BYE"
+  break if input == "BYE"
+
+  if input == input.upcase
     random_year = 1930 + rand(21)
     puts "NO, NOT SINCE #{random_year}!"
-  elsif input == "BYE"
-    puts "ALRIGHT, WELL COME BACK SOON!"
   else
     puts "HUH!? SPEAK UP SONNY!"
   end
 end
+
+puts "ALRIGHT, WELL COME BACK SOON!"

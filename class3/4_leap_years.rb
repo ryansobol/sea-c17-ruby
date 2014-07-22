@@ -11,11 +11,12 @@
 
 puts "Define a starting year."
 year_1 = gets.chomp.to_i
+
 puts "Define an ending year."
 year_2 = gets.chomp.to_i
+
 puts "The leap years in that range are:"
-for y in year_1 .. year_2
-  if y % 4 == 0 && y % 100 != 0 || y % 400 == 0
-    puts y
-  end
+
+for y in year_1..year_2
+  puts y if y % 4 == 0 && y % 100 != 0 || y % 400 == 0
 end
