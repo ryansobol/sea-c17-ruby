@@ -62,7 +62,7 @@ loop do
     if x == 1
       print "Ready? Sock it to me, sucka! "
     else
-      print "Care for go number #{x}? "
+      print "Care to go for number #{x}? "
     end
 
   bally = gets.chomp
