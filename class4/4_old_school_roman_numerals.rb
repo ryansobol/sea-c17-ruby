@@ -36,7 +36,41 @@
 #   VIIII
 
 def old_school_roman_numeral(num)
-  # your solution here
+  roman = ["I","V","X","L","C","D","M"]
+  digit = [1, 5, 10, 50, 100, 500, 1000]
+  position = []
+  roman_numeral = ""
+
+  def math(x,y,z)
+    if (y == 1000 && z != 500)
+      return x / y
+    else
+      return (x % y) / z
+    end
+  end
+
+  counter = 0
+  until counter == 7
+    if counter == 6
+      position.push math(num, digit[counter], 1)
+    elsif counter == 0
+      position.push math(num, digit[counter +1], 1)
+    else
+      position.push math(num, digit[counter + 1], digit[counter])
+    end
+    counter += 1
+  end
+
+  for num in 1..7
+    a = position.pop
+    b = roman.pop
+    until a == 0
+      roman_numeral += b
+      a -= 1
+    end
+  end
+  puts roman_numeral
+  puts
 end
 
 input = ARGV[0].to_i
@@ -47,3 +81,4 @@ if input <= 0 || input > 3000
 end
 
 puts old_school_roman_numeral(input)
+
