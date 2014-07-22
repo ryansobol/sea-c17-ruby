@@ -11,7 +11,7 @@
 # Hint: I've already structured your program. Aren't you lucky? :)
 
 def ask(question)
-  # your solution here
+  puts "My terrific solution"
 end
 
 puts ask('Do you like eating tacos?')

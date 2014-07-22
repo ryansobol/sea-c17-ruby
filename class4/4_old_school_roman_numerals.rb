@@ -36,7 +36,7 @@
 #   VIIII
 
 def old_school_roman_numeral(num)
-  # your solution here
+  puts "My amazing solution"
 end
 
 input = ARGV[0].to_i
