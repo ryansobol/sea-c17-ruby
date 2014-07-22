@@ -13,3 +13,12 @@
 # Chapter 1:  Getting Started                page  1
 # Chapter 2:  Numbers                        page  9
 # Chapter 3:  Letters                        page 13
+
+table = [["Getting Started", "1"], ["Numbers", "9"],["Letters", "13"]]
+
+puts "Table of Contents".center(50)
+puts
+for i in 0..table.length-1
+  puts "Chapter #{i+1}: #{table[i][0]}".ljust(30) +
+  "page #{table[i][1]}".rjust(20)
+end

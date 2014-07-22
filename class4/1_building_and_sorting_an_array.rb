@@ -26,3 +26,13 @@
 #
 # Hint: There’s a lovely array method that will give you a sorted version of
 # an array called `sort`. Use it!
+
+words = []
+input = nil
+puts "Enter some words to sort them alphbetically."
+until input == ""
+  input = gets.chomp
+  words.push input
+end
+words = words.sort
+puts words
