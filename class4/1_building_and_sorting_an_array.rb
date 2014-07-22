@@ -26,3 +26,12 @@
 #
 # Hint: There’s a lovely array method that will give you a sorted version of
 # an array called `sort`. Use it!
+
+puts "Hi there! Give me some words, and I will sort them for you."
+puts "When you feel you have enough words, press enter."
+
+words = []
+words.push gets.chomp until words.last == ""
+
+puts "Perfect! Here are your sorted words:"
+puts words.sort
