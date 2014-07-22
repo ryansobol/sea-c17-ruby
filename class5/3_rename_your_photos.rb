@@ -16,7 +16,7 @@
 # For example, the program should output to the shell:
 #
 #   $ ruby 2_rename_your_photos.rb target source
-#   => Copied 10 photos from target to source
+#   => Copied 10 photos from source to target
 #
 # If both source and target directories are not given, the program should output
 # a helpful usage message and immediately exit. For example:
@@ -42,8 +42,6 @@
 #
 #     Copies the file contents of source_path to target_path, both of which must
 #     be a file path.
-#
-# ===> WARNING: DO NOT COMMIT THE COPIED FILES INTO THE REPOSITORY <===
 
 require "fileutils"
 
