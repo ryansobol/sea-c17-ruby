@@ -36,22 +36,24 @@
 #   VIIII
 
 def old_school_roman_numeral(input)
-  puts "The input is: #{input}"
+  puts "The Arabic input is: #{input}"
+
   i = 0
   arabic = [1000, 500, 100, 50, 10, 5, 1]
   roman = ["M", "D", "C", "L", "X", "V", "I"]
-
+  rom_num = []
   remainder = input
 
-  while i <= (arabic.length - 1)
-    rom_num = []
-    n = remainder / arabic [i]
-    rom_num.push (roman [i] * n)
-    remainder = remainder % arabic [i]
-    puts "There are #{n} #{roman [i]}'s"
+  while i <= arabic.length - 1
+    n = remainder / arabic[i]
+    rom_num.push roman[i] * n if n > 0
+    remainder = remainder % arabic[i]
+    #puts "There are #{n} #{roman[i]}'s"
     i += 1
   end
-  puts "The roman numeral for your arabic number is #{rom_num}"
+  roman_final = rom_num
+  puts "The roman number is below:"
+  puts roman_final.join("")
 end
 
 input = ARGV[0].to_i
