@@ -120,6 +120,7 @@ def modern_roman_numeral(num)
 
 #puts m_count
 #puts num
+
   # Pushes objects to array
   roman_array.push "M"  * m_count
   roman_array.push "CM" * cm_count
@@ -135,7 +136,6 @@ def modern_roman_numeral(num)
   roman_array.push "IV" * iv_count
   roman_array.push "I"  * i_count
 
-  #puts roman_array
   puts roman_array.join
 end
 
