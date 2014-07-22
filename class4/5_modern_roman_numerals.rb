@@ -45,8 +45,10 @@ def modern_roman_numeral(num)
     arabic = arabic_to_roman.first
     roman = arabic_to_roman.last
 
-    answer.push(roman * (num / arabic))
+    quotient = num / arabic
+    next if quotient == 0
 
+    answer.push(roman * quotient)
     num %= arabic
   end
 
