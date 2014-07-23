@@ -33,9 +33,7 @@ def modern_roman_numeral(input)
 
   while i <= arabic.length - 1
     n = remainder / arabic[i]
-
     rom_num.push roman[i] * n if n > 0 && n < 4
-
     remainder = remainder % arabic[i]
     i += 1
   end
