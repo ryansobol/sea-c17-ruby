@@ -27,13 +27,14 @@
 # not starting at zero?” But you don’t need it to. Is there something you could
 # do to the number rand returns to you?
 
-while true
+loop do
   statement = gets.chomp
-  puts "HUH?! SPEAK UP, SONNY!"
 
-  if statement == "BYE"
-    break
-  elsif statement == statement.upcase
-    puts 'NO, NOT SINCE 19' + rand(30..51).to_s + '!'
+  break if statement == "BYE"
+
+  if statement == statement.upcase
+    puts "NO, NOT SINCE 19#{rand(30..50)}!"
+  else
+    puts "HUH?! SPEAK UP, SONNY!"
   end
 end
