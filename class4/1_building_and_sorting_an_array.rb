@@ -26,3 +26,19 @@
 #
 # Hint: There’s a lovely array method that will give you a sorted version of
 # an array called `sort`. Use it!
+
+
+puts "Give me some words, and I will sort them:"
+
+while true
+  words = []
+  answer = gets.chomp.downcase
+  if ( answer != '')
+    words.push answer
+  else
+    words.sort
+    puts 'Sweet, Here they are, sorted:'
+    puts words
+    break
+  end
+end
