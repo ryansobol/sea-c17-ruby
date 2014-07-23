@@ -80,14 +80,14 @@ item # => 99
 ```ruby
 # bad
 [1, 2, 3].each do |item|
-  if item == 2 && item == 3
+  if item >= 2
     puts item
   end
 end
 
 # good
 [1, 2, 3].each do |item|
-  next if item == 1
+  next if item < 2
   puts item
 end
 ```
@@ -105,7 +105,7 @@ end
 
 # good
 [1, 2, 3].each do |item|
-  break unless item < 2
+  break if item >= 2
   puts item
 end
 ```
@@ -136,6 +136,12 @@ some_method(42)
 #### Omit parentheses when defining methods without parameters
 
 ```ruby
+# bad
+def some_method()
+ # body omitted
+end
+
+# good
 def some_method
  # body omitted
 end
@@ -145,6 +151,12 @@ end
 #### Use parentheses when defining methods with parameters
 
 ```ruby
+# bad
+def some_method param1, param2
+ # body omitted
+end
+
+# good
 def some_method(param1, param2)
  # body omitted
 end
