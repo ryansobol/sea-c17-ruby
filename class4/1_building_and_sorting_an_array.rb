@@ -37,7 +37,7 @@ while true
     words.push answer
   else
     puts 'Sweet, Here they are, sorted:'
-    puts words
+    puts words.sort
     break
   end
 end
