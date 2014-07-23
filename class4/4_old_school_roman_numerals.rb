@@ -39,16 +39,15 @@ def old_school_roman_numeral(num)
   numerals = "MDCLXVI"
   divisors = [1000, 500, 100, 50, 10, 5, 1]
   answer = []
-
   index = 0
+
   divisors.each do |divisor|
-    answer.push(numerals[index] * ( num / divisor))
-    num = num % divisor
+    answer.push(numerals[index] * (num / divisor))
+    num %= divisor
     index += 1
   end
 
-  return answer.join('')
-
+  answer.join('')
 end
 
 input = ARGV[0].to_i

@@ -31,8 +31,8 @@ words = []
 puts "Give me some words, and I will sort them: "
 
 loop do
-  word = gets
-  break if word == "\n"
+  word = gets.chomp
+  break if word == ""
   words.push(word)
 end
 
