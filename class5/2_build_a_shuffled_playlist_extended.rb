@@ -75,13 +75,32 @@ file_name = file_name + ".m3u" if is_m3u == false
 
 puts "Usage 2_build_a_shuffled_playlist_extended.rb PLAYLIST" if file_name == ""
 
+
 #Checks to see if file exists, if it exists then give warning
 file_exists = File.exists?(file_name)
+
 puts "file exists is #{file_exists}" #REMOVE WHEN DONE
 
 #Logic for file formatting if file exists. CHECK STYLE GUIDE.
-if file_exists == true
-  puts "WARNING: #{file_name} already exists" if file_exists == true
-  puts "(c)ancel, (o)verwrite, or (a)ppend"
-  action = gets.chomp
+puts "WARNING: #{file_name} already exists" if file_exists == true
+puts "(c)ancel, (o)verwrite, or (a)ppend" if file_exists == true
+
+
+def file_action
+  action = STDIN.gets.chomp ## Okay, not totally sure why STDIN.gets  works but I discovered this fix
+  if action == "c"
+    puts "Canceled"
+  elsif action == "o"
+    puts "Writing over"
+    File.open(file_name, "w") { |file| }
+  elsif action == "a"
+    "Appending to existing file"
+    File.open(file_name, "a") { |file| }
+  else
+    puts "Please enter c, o, or a"
+    file_action #playing around with recursion here
+  end
 end
+
+file_action
+
