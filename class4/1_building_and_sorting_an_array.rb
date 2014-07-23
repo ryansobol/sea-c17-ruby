@@ -36,7 +36,6 @@ while true
   if ( answer != '')
     words.push answer
   else
-    words.sort
     puts 'Sweet, Here they are, sorted:'
     puts words
     break

@@ -35,15 +35,23 @@
 #   $ ruby 4_old_school_roman_numerals.rb 9
 #   VIIII
 
+
 def old_school_roman_numeral(num)
-  # your solution here
+  roman_dict = [["M", 1000], ["D", 500], ["C", 100], ["L", 50], ["X", 10], ["V", 5], ["I", 1]]
+  roman = ""
+  puts "Enter a number between 1 and 3000"
+
+  roman_dict.each do |value|
+    if (num >= value[1])
+      roman += value[0] * ( num / value[1] )
+      num = num % value[1]
+    end
+  end
+  return roman
 end
 
 input = ARGV[0].to_i
 
-if input <= 0 || input > 3000
-  puts "Usage: 4_old_school_roman_numerals [1-3000]"
-  exit
-end
+
 
 puts old_school_roman_numeral(input)
