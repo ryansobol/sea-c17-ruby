@@ -6,8 +6,10 @@
 # shout BYE three times in a row. Make sure to test your program: if you shout
 # BYE three times but not in a row, you should still be talking to Grandma.
 bye_count = 0
+
 while bye_count < 3
   input = gets.chomp
+
   if input == input.upcase && input != "BYE"
     random_year = 1930 + rand(21)
     puts "NO, NOT SINCE #{random_year}!"
@@ -18,7 +20,9 @@ while bye_count < 3
     else
       bye_count = 0
     end
+
     puts "HUH!? SPEAK UP SONNY!"
   end
 end
+
 puts "OH, OK THEN. COME BACK SOON!"
