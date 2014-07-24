@@ -31,3 +31,20 @@
 #     Using a pattern String, return an Array of file paths that match.
 #
 #     Dir["code/*.{rb,js}"]  #=> ["code/file1.rb", "code/file2.js"]
+filename = "playlist.m3u"
+playlists = []
+tracks = Dir["songs/*.{mp3,m4a}"]
+playlists.push tracks
+test_string = playlists.shuffle
+File.open filename, "w" do |f|
+  f.puts(playlists)
+end
+puts "=> Build a shuffled playlist
+=> Created playlist.m3u with 16 songs"
+
+
+
+
+
+
+
