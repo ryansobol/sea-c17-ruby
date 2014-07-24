@@ -86,7 +86,7 @@ puts "WARNING: #{file_name} already exists" if file_exists == true
 puts "(c)ancel, (o)verwrite, or (a)ppend" if file_exists == true
 
 
-def file_action
+def file_action(file_name)
   action = STDIN.gets.chomp ## Okay, not totally sure why STDIN.gets  works but I discovered this fix
   if action == "c"
     puts "Canceled"
@@ -102,5 +102,4 @@ def file_action
   end
 end
 
-file_action
-
+file_action(file_name)
