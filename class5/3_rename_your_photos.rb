@@ -46,3 +46,42 @@
 require "fileutils"
 
 # your code here
+source = ARGV[0].to_s
+target = ARGV[1].to_s
+
+#Displays message if source path or target path are blank
+path_correct = true
+path_correct = false if source == ""
+path_correct = false  if target == ""
+
+
+file_exists = File.exists?(target) #Makes new directory if target directory doesn't exist
+
+
+
+
+if path_correct == false
+  puts "Usage: 3_rename_your_photos.rb SOURCE TARGET"
+elsif file_exists == false
+  puts "Error: The target directory does not exist. You need to first create the target directory"
+  puts "Hint: Try using mkdir"
+else
+  source_list = Dir['**/*.{jpg,JPG}']
+  source_list.each do |item|
+    source_path = item
+    file_size = File.size(source_path)
+    target_base = File.basename(item, ".jpg")
+    target_path = "#{target}/#{target_base}_#{file_size}.jpg"
+    target_path_exist = File.exists?(target_path)
+    if target_path_exist == true
+      puts "At least one file already exists: #{target_path}"
+      puts "Aborting..."
+      puts "Please make sure the target directory is clear of duplicate files"
+      break
+    elsif target_path_exist == false
+      FileUtils.copy_file(source_path, target_path)
+    else
+      break
+    end
+  end
+end
