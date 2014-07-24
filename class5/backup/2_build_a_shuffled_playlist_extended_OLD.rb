@@ -66,67 +66,56 @@
 # your code here
 
 
-file_name = ARGV[0]
-file_name = file_name.to_s
+
 
 #Checks to see if file ends with .m3u extension & adds if it does not
-is_m3u = file_name.end_with?(".m3u")
-file_name = file_name + ".m3u" if is_m3u == false
-file_blank = true if file_name == ""
+file_name = ARGV[0].to_s
+file_name = file_name.to_s
 
-#Writes this if the file name is blank
-puts "Usage 2_build_a_shuffled_playlist_extended.rb PLAYLIST" if file_name == ""
+def file_write
+  if file_name == ""
+    puts "Usage 2_build_a_shuffled_playlist_extended.rb PLAYLIST"
+    Return
+  elsif ### PUT IN THE CASE WHEN FILENAME DOES NOT EXIST
+    puts "filename does not exist case"
 
-var = "w" # default value is write. This will happen if playlister is run & if file doesn't exist.
-
-def playlister(file_name, var)
-puts "     -----------      "
-Dir.pwd
-  #Search song directory for mp3 and mp4 files and store in an array
-  song_names = Dir['**/*.{mp3,MP3,m4a,M4A}']
-  #randomize song names
-  random_list = song_names.shuffle
-  puts random_list #Remove
-
-  #Writes to file
-  f = File.open(file_name, var)
-  f.puts song_names
-
-  puts "  "
-  puts "Created playlist.m3u with 16 songs"
-  puts "     -----------      "
-end
-
-#Checks to see if file exists, if it exists then give warning
-file_exists = File.exists?(file_name)
-
-if file_exists == true
-  valid_answer = false
-  puts "WARNING: #{file_name} already exists"
-  puts "(c)ancel, (o)verwrite, or (a)ppend"
-  action = STDIN.gets.chomp ## Not totally sure why get.chomp doesn't work but this does
-  while valid_answer == false
+  else
+    file_exists = File.exists?(file_name) # Case when filename already exists
+    puts "WARNING: #{file_name} already exists" if file_exists == true
+    puts "(c)ancel, (o)verwrite, or (a)ppend" if file_exists == true
+    action = STDIN.gets.chomp ## Okay, not totally sure why STDIN.gets  works but I discovered this fix
     if action == "c"
       puts "Canceled"
-      valid_answer = true
+      Return
     elsif action == "o"
       puts "Writing over"
-      playlister(file_name, "w")
-      valid_answer = true
+      File.open(file_name, "w") { |file| }
     elsif action == "a"
       "Appending to existing file"
-      playlister(file_name, "a")
-      valid_answer = true
+      File.open(file_name, "a") { |file| }
     else
       puts "Please enter c, o, or a"
-      puts "(c)ancel, (o)verwrite, or (a)ppend"
-      action = STDIN.gets.chomp
-      valid_answer = false
+      file_write #playing around with recursion here. will loop back
     end
   end
-else
-  playlister(file_name, "w") #if file_blank == false
 end
 
+file_write
 
+
+
+#Checks to see if file exists, if it exists then give warning
+
+
+
+
+#Logic for file formatting if file exists. CHECK STYLE GUIDE.
+
+
+
+def file_action
+
+end
+
+file_action
 
