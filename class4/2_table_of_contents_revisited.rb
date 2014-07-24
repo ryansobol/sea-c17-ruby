@@ -14,12 +14,15 @@
 # Chapter 2:  Numbers                        page  9
 # Chapter 3:  Letters                        page 13
 
-line_width = 50
-table_of_contents = ["Table of Contents", "Chapter 1:  Getting Started",
-  "Chapter 2:  Numbers", "Chapter 3:  Letters", "page  1", "page  9",
-  "page 13"]
-puts table_of_contents[0].center(line_width)
+chapters = [
+  ["Chapter 1:  Getting Started", "page  1"],
+  ["Chapter 2:  Numbers",         "page  9"],
+  ["Chapter 3:  Letters",         "page 13"]
+]
+
+puts "Table of Contents".center(50)
 puts
-puts table_of_contents[1].ljust(30) + table_of_contents[4].rjust(20)
-puts table_of_contents[2].ljust(30) + table_of_contents[5].rjust(20)
-puts table_of_contents[3].ljust(30) + table_of_contents[6].rjust(20)
+
+chapters.each do |chapter|
+  puts chapter.first.ljust(30) + chapter.last.rjust(20)
+end

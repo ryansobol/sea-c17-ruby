@@ -10,32 +10,16 @@
 #
 # Hint: I've already structured your program. Aren't you lucky? :)
 
-def ask question
-  while true
+def ask(question)
+  loop do
     puts question
     reply = gets.chomp.downcase
-    if reply == "yes"
-      return true
-    else
-      if reply == "no"
-        return false
-      else
-        puts "Please answer \"yes\" or \"no\"."
-      end
-    end
+
+    return true if reply == "yes"
+    return false if reply == "no"
+
+    puts 'Please answer "yes" or "no".'
   end
 end
 
 puts ask('Do you like eating tacos?')
-ask "Do you like eating burritos?"   #And this one
-wets_bed = ask "Do you wet the bed?" #Save this return value
-ask "Do you like eating chimichanga?"
-ask "Do you like eating sopapilas?"
-puts "Just a few more questions..."
-ask "Do you like drinking horchata?"
-ask "Do you like eating flautas?"
-puts
-puts "DEBRIEFING"
-puts "Thank you for..."
-puts
-puts wets_bed

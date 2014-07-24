@@ -27,16 +27,14 @@
 # Hint: There’s a lovely array method that will give you a sorted version of
 # an array called `sort`. Use it!
 
-word_array = []
+words = []
 puts "Give me some words, and I will sort them:"
-while true
+
+loop do
   word = gets.chomp.downcase
-  word_array.push word
+  words.push(word)
   break if word == ''
 end
-word_array.pop
-word_array.sort
 
 puts "Sweet! Here they are sorted:"
-puts word_array.sort
-
+puts words.sort
