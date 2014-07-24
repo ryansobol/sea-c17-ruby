@@ -23,54 +23,36 @@
 #   IX
 
 def modern_roman_numeral(num)
-  roman = ["I","V","X","L","C","D","M"]
-  digit = [1, 5, 10, 50, 100, 500, 1000]
-  position = []
-  roman_numeral = ""
+  arabics_to_romans = [
+    [1000, "M"],
+    [900, "CM"],
+    [500, "D"],
+    [400, "CD"],
+    [100, "C"],
+    [90, "XC"],
+    [50, "L"],
+    [40, "XL"],
+    [10, "X"],
+    [9, "IX"],
+    [5, "V"],
+    [4, "IV"],
+    [1, "I"]
+  ]
 
-  def math(x,y,z)
-    if (y == 1000 && z != 500)
-       x / y
-    else
-       (x % y) / z
-    end
+  answer = []
+
+  arabics_to_romans.each do |arabic_to_roman|
+    arabic = arabic_to_roman.first
+    roman = arabic_to_roman.last
+
+    quotient = num / arabic
+    next if quotient == 0
+
+    answer.push(roman * quotient)
+    num %= arabic
   end
 
-  counter = 0
-  until counter == 7
-    if counter == 6
-      position.push math(num, digit[counter], 1)
-    elsif counter == 0
-      position.push math(num, digit[counter +1], 1)
-    else
-      position.push math(num, digit[counter + 1], digit[counter])
-    end
-    counter += 1
-  end
-
-  num = 6
-  while num >= 0
-  a = position[num]
-  b = roman[num]
-    until a == -1
-      if (position[num] == 1 && position[num - 1] == 4)
-        roman_numeral = roman_numeral + roman[num - 1] + roman[num + 1]
-        break
-      elsif (position[num] == 0 && position[num - 1] == 4)
-        roman_numeral = roman_numeral + roman[num - 1] + roman[num]
-        break
-      elsif (position[num] == 0 || position[num] == 4)
-        break
-      else
-        break if a == 0
-          roman_numeral += b
-          a -= 1
-      end
-    end
-    num -= 1
-  end
-  puts roman_numeral
-  puts
+  answer.join
 end
 
 input = ARGV[0].to_i

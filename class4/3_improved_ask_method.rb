@@ -11,20 +11,14 @@
 # Hint: I've already structured your program. Aren't you lucky? :)
 
 def ask(question)
-  # your solution here
-  while true
+  loop do
     puts question
     reply = gets.chomp.downcase
 
-    if (reply == "yes" || reply == "no")
-      if reply == "yes"
-        return true
-      else
-        return false
-      end
-    else
-      puts 'Please answer "yes" or "no".'
-    end
+    return true if reply == "yes"
+    return false if reply == "no"
+
+    puts 'Please answer "yes" or "no".'
   end
 end
 

@@ -36,41 +36,30 @@
 #   VIIII
 
 def old_school_roman_numeral(num)
-  roman = ["I","V","X","L","C","D","M"]
-  digit = [1, 5, 10, 50, 100, 500, 1000]
-  position = []
-  roman_numeral = ""
+  arabics_to_romans = [
+    [1000, "M"],
+    [500, "D"],
+    [100, "C"],
+    [50, "L"],
+    [10, "X"],
+    [5, "V"],
+    [1, "I"]
+  ]
 
-  def math(x,y,z)
-    if (y == 1000 && z != 500)
-      return x / y
-    else
-      return (x % y) / z
-    end
+  answer = []
+
+  arabics_to_romans.each do |arabic_to_roman|
+    arabic = arabic_to_roman.first
+    roman = arabic_to_roman.last
+
+    quotient = num / arabic
+    next if quotient == 0
+
+    answer.push(roman * quotient)
+    num %= arabic
   end
 
-  counter = 0
-  until counter == 7
-    if counter == 6
-      position.push math(num, digit[counter], 1)
-    elsif counter == 0
-      position.push math(num, digit[counter +1], 1)
-    else
-      position.push math(num, digit[counter + 1], digit[counter])
-    end
-    counter += 1
-  end
-
-  for num in 1..7
-    a = position.pop
-    b = roman.pop
-    until a == 0
-      roman_numeral += b
-      a -= 1
-    end
-  end
-  puts roman_numeral
-  puts
+  answer.join
 end
 
 input = ARGV[0].to_i
@@ -81,4 +70,3 @@ if input <= 0 || input > 3000
 end
 
 puts old_school_roman_numeral(input)
-

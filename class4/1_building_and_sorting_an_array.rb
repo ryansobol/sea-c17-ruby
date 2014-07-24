@@ -40,56 +40,16 @@ puts "one at time.  When you're done, just hit enter without typing anything"
 puts "else and I'll do my voo-doo."
 puts
 
-def word_check(word)
-  loop do
-    if word =~ / ./
-      puts "NO SHENANIGANS! I refuse to accept \"#{word}!\""
-      puts "What? You don't think I'll notice? C'mon, I'm a computer, try again!"
-      print "Resubmit: "
-      $resub = gets.chomp
-      word = $resub
-    else
-      break
-    end
-  end
-end
-
 words = []
-x = 1
+puts "Give me some words, and I will sort them:"
 
 loop do
-  $resub = nil
-    if x == 1
-      print "Ready? Sock it to me, sucka! "
-    else
-      print "Care to go for number #{x}? "
-    end
-
-  bally = gets.chomp
-  x += 1
-  word_check(bally)
-
-  if $resub == nil
-    words.push bally.capitalize
-    break if bally == ""
-  elsif $resub == ""
-    break
-  else
-    words.push $resub.capitalize
-  end
+  input = gets.chomp
+  break if input == ""
+  words.push(input)
 end
 
-  if x < 3
-    puts
-    puts "Seriously man? You gave me nothing! Sod off!"
-  elsif x == 3
-    puts
-    puts "I guess we can alphabetize one thing.  It looks like this:"
-  else
-    puts
-    puts "Easy! Here they are sorted:"
-  end
-    puts words.sort
-    puts
-
-
+if words.length > 0
+  puts "Sweet! Here they are, sorted:"
+  puts words.sort()
+end
