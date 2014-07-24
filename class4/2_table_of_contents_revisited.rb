@@ -14,20 +14,16 @@
 # Chapter 2:  Numbers                        page  9
 # Chapter 3:  Letters                        page 13
 
-contents = ["Table of Contents", "Chapter 1:  ", "Getting Started", "Page  1",
-  "Chapter 2:  ", "Numbers", "Page  9", "Chapter 3:  ", "Letters", "Page 13"]
+chapters = [
+  ["Chapter 1:  Getting Started", "page  1"],
+  ["Chapter 2:  Numbers",         "page  9"],
+  ["Chapter 3:  Letters",         "page 13"]
+]
 
 puts
-puts contents[0].center(50)
+puts "Table of Contents".center(50)
 puts
 
-
-for i in 1..contents.length
-  if i == 1
-  puts contents[i].ljust(0) + contents[i+1].ljust(12) + contents[i+2].rjust(17)
-  elsif i == 4 || i == 7
-  puts contents[i].ljust(0) + contents[i+1].ljust(12) + contents[i+2].rjust(20)
-  end
+chapters.each do |chapter|
+  puts chapter.first.ljust(30) + chapter.last.rjust(20)
 end
-
-puts

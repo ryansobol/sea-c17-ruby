@@ -37,21 +37,30 @@
 
 
 def old_school_roman_numeral(num)
+  arabics_to_romans = [
+    [1000, "M"],
+    [500, "D"],
+    [100, "C"],
+    [50, "L"],
+    [10, "X"],
+    [5, "V"],
+    [1, "I"]
+  ]
 
-  roman_numeral = "" #values will be appended
-  numerals = ["M", "D", "C", "L", "X", "V", "I"]
-  arabic =   [1000,500, 100, 50, 10, 5, 1]
+  answer = []
 
-  i = 0 #iterate through the arrays
+  arabics_to_romans.each do |arabic_to_roman|
+    arabic = arabic_to_roman.first
+    roman = arabic_to_roman.last
 
-  while i <= 6 #while within the array length
-    while num >= arabic[i]
-      num -= arabic[i] # remove the val
-      roman_numeral += numerals[i] # assign the rom
-    end
-    i += 1 # increment
+    quotient = num / arabic
+    next if quotient == 0
+
+    answer.push(roman * quotient)
+    num %= arabic
   end
-  roman_numeral # return the rom to terminal
+
+  answer.join
 end
 
 # take argument from terminal
