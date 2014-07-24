@@ -63,4 +63,42 @@
 #     "a"   Starts at end of a file, if it exists, otherwise creates a new file
 #           for writing.
 
-# your code here
+songs = Dir["songs/*.{mp3,m4a}"]
+songs.shuffle
+
+file_name = ARGV[0]
+
+file_name += ".m3u" if file_name && !file_name.end_with?(".m3u")
+
+if file_name == nil
+  puts "A file name must be given."
+elsif File.exists?(file_name)
+  puts "WARNING: #{file_name} already exists"
+  loop do
+    puts "(c)ancel, (o)verwrite, or (a)ppend"
+    option = $stdin.gets.chomp
+    if option == "c"
+      puts "The program will now exit."
+      break
+    elsif option == "o"
+      puts "Overwriting #{file_name} with #{songs.length} songs."
+      File.open("#{file_name}", "w") do |f|
+        songs.each {|s| f.write(s + "\n")}
+      end
+      break
+    elsif option == "a"
+      puts "Appending #{file_name} with #{songs.length} songs."
+      File.open("#{file_name}", "a") do |f|
+        songs.each {|s| f.write(s + "\n")}
+      end
+      break
+    else
+      puts "Incorrect input."
+    end
+  end
+else
+  puts "Creating #{file_name} with #{songs.length} songs."
+  File.open("#{file_name}", "w") do |f|
+    songs.each {|s| f.write(s + "\n")}
+  end
+end

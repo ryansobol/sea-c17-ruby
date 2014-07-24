@@ -21,7 +21,7 @@
 # If both source and target directories are not given, the program should output
 # a helpful usage message and immediately exit. For example:
 #
-#   $ ruby 2_rename_your_photos.rb
+#   $ ruby 3_rename_your_photos.rb
 #   Usage: 3_rename_your_photos.rb SOURCE TARGET
 #
 # A few methods you might find useful are:
@@ -45,4 +45,20 @@
 
 require "fileutils"
 
-# your code here
+source = ARGV[0]
+target = ARGV[1]
+photos = Dir["#{source}/*.jpg"]
+
+if source && target
+  photos.each do |i|
+    size = File.size(i).to_s
+    new_photo = File.basename(i, ".jpg")
+    new_photo += "_#{size}.jpg"
+    new_photo.prepend("#{target}/")
+    FileUtils.copy_file(i, new_photo)
+  end
+else
+  puts "Usage: 3_rename_your_photos.rb SOURCE TARGET"
+end
+
+
