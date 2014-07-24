@@ -54,11 +54,7 @@ path_correct = true
 path_correct = false if source == ""
 path_correct = false  if target == ""
 
-
 file_exists = File.exists?(target) #Makes new directory if target directory doesn't exist
-
-
-
 
 if path_correct == false
   puts "Usage: 3_rename_your_photos.rb SOURCE TARGET"

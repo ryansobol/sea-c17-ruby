@@ -128,5 +128,3 @@ else
   playlister(file_name, "w") #if file_blank == false
 end
 
-
-

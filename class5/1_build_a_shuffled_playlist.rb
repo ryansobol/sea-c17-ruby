@@ -54,6 +54,3 @@ Dir.pwd
 end
 
 playlister
-
-
-
