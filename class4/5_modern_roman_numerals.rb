@@ -30,9 +30,9 @@ def modern_roman_numeral(num)
 
   def math(x,y,z)
     if (y == 1000 && z != 500)
-      return x / y
+       x / y
     else
-      return (x % y) / z
+       (x % y) / z
     end
   end
 
