@@ -59,6 +59,10 @@
 #     hi
 #     hi
 
+def cheer(date)
+puts date.to_s
+end
+
 year = ARGV[0].to_i
 month = ARGV[1].to_i
 day = ARGV[2].to_i
@@ -68,4 +72,5 @@ unless year && month && day
   exit
 end
 
-# your code here
+date = Time.utc(year,month,day)
+cheer(date)
