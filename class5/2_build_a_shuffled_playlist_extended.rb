@@ -64,3 +64,36 @@
 #           for writing.
 
 # your code here
+
+name = ARGV[0]
+abort "Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST" if name == nil
+name.end_with?(".m3u") ? filename = name : filename = "#{name}.m3u"
+puts "=> Build a shuffled playlist"
+user_choice = "w"
+
+if File.exists?(filename)
+  file_existed = true
+  puts "=> WARNING: #{filename} already exists"
+  puts "=> (c)ancel, over(w)rite, or (a)ppend > "
+
+  loop do
+    user_choice = $stdin.gets.chomp
+    break if ["c", "w", "a"].include? user_choice
+    puts "Invalid selection"
+    puts "=> (c)ancel, over(w)rite, or (a)ppend > "
+  end
+
+  abort "Cancelled" if user_choice == "c"
+else
+  file_existed = false
+end
+
+songs = Dir["songs/*.{mp3,m4a}"]
+File.open filename, "#{user_choice}" do |f|
+  songs.shuffle.each { |song| f.write "#{song}\n" }
+end
+
+modifier = "Created"
+modifier = "Overwrote" if user_choice == "w" && file_existed
+modifier = "Appended"  if user_choice == "a"
+puts "=> #{modifier} #{filename} with #{songs.length} songs"
