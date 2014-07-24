@@ -64,3 +64,98 @@
 #           for writing.
 
 # your code here
+
+def playlist(filename)
+
+
+work_dir = '/Users/balinlarson/Projects/CF/sea-c17-ruby/class5'
+Dir.chdir work_dir
+
+#fill song_names with all m4a and mp3 files in songs dir
+song_names = Dir['songs/*.{mp3,m4a}']
+
+#shuffle the playlist
+song_names.shuffle!
+res = ""
+
+#check if file exists
+if File.exist?(filename)
+  puts "=> WARNING: " + filename + " already exists!"
+  print "=> (c)ancel, (o)verwrite, or (a)ppend: "
+  #for some reason gets.chomp alone didn't wait here $stdin makes sure it waits
+  res = $stdin.gets.chomp
+else
+  #open file and write all the song names
+  File.open filename, 'w' do |s|
+    for i in 0..song_names.length
+      if i == song_names.length
+      s.write song_names[i].to_s
+      else
+      s.write song_names[i].to_s + "\n"
+      end
+    end
+  end
+end
+
+#logic for cancel, overwrite, append
+if res == "c"
+  puts "=> Canceling operation...\n"
+  exit
+
+elsif res == "o"
+
+  #open file (overwrite) and write all the song names
+  File.open filename, 'w' do |s|
+    for i in 0..song_names.length
+      if i == song_names.length
+      s.write song_names[i].to_s
+      else
+      s.write song_names[i].to_s + "\n"
+      end
+    end
+  end
+
+puts "=> Overwrote playlist.m3u with " + song_names.length.to_s + " songs."
+
+elsif res == "a"
+
+  #open file (append) and write all the song names
+  File.open filename, 'a' do |s|
+    for i in 0..song_names.length
+      if i == song_names.length
+      s.write song_names[i].to_s
+      else
+      s.write song_names[i].to_s + "\n"
+      end
+    end
+  end
+
+  puts "=> Appended " + song_names.length.to_s + " songs to playlist.m3u."
+
+end
+
+  puts "=> Playlist located in " + work_dir + ".\n\n"
+
+end
+
+#-----------------------------------------------------------------------------#
+# take argument from terminal
+input = ARGV[0]
+
+# empty string?
+if input.to_s.empty?
+  puts "\nUsage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST_NAME\n\n"
+  exit
+else
+# reassign to remove 'frozen string' issue when appending
+name = input.dup
+end
+
+if !name.include? ".m3u"
+  name << ".m3u"
+end
+
+puts "\n=> Building a shuffled playlist called " + name
+
+playlist name
+

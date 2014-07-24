@@ -31,3 +31,28 @@
 #     Using a pattern String, return an Array of file paths that match.
 #
 #     Dir["code/*.{rb,js}"]  #=> ["code/file1.rb", "code/file2.js"]
+
+#change working directory
+work_dir = '/Users/balinlarson/Projects/CF/sea-c17-ruby/class5'
+
+Dir.chdir work_dir
+
+puts "=> Build a shuffled playlist"
+
+#fill song_names with all m4a and mp3 files in songs dir
+song_names = Dir['songs/*.{mp3,m4a}']
+
+#shuffle the playlist
+song_names.shuffle!
+#
+filename = "playlist.m3u"
+
+#open file and write all the song names
+File.open filename, 'w' do |s|
+  for i in 0..song_names.length
+  s.write song_names[i].to_s + "\n"
+  end
+end
+
+puts "=> Created playlist.m3u with " + song_names.length.to_s + " songs"
+puts "=> Located in " + work_dir
