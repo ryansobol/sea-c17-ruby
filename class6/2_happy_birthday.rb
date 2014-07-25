@@ -75,6 +75,6 @@ today = Time.new.utc
 
 puts "The birth date is #{bday}"
 puts "CHEER!" if today.month > bday.month || \
-                (today.month = bday.month && today.day >= bday.day)
+                (today.month == bday.month && today.day >= bday.day)
 
-(today.year - bday.year).times do puts "CHEER!" end
+(today.year - bday.year - 1).times do puts "CHEER!" end

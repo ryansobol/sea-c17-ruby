@@ -51,3 +51,7 @@
 #
 #     Daylight Savings begins at 2:00am on the second Sunday in March and
 #     reverts to standard time on the first Sunday in November.
+
+my_bday = Time.new(1987, 11, 26, 07, 00, 00, "-06:00")
+puts "I was born on #{my_bday}"
+puts "And I turn 1 billion seconds old on : #{my_bday + 1000000000}"

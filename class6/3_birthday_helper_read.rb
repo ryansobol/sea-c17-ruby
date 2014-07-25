@@ -54,3 +54,25 @@ if name.nil?
 end
 
 # your code here
+
+birth_dates = File.read("birth_dates.yml")
+birth_dates = YAML.load("#{birth_dates}")
+name = name.capitalize
+
+unless birth_dates.keys.include? name
+  puts "Unknown birth date for #{name}"
+  exit
+end
+
+bday = birth_dates[name]
+today = Time.now.utc
+if today.month > bday.month || \
+  (today.month == bday.month && today.day >= bday.day)
+  this_year_bday = 1
+else
+  this_year_bday = 0
+end
+
+next_bday = Time.utc(today.year + this_year_bday, bday.month, bday.day)
+age = next_bday.year - bday.year
+puts "#{name} will be #{age} on #{next_bday.strftime("%F")}"
