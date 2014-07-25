@@ -64,4 +64,4 @@ photos.each do |f|
   FileUtils.copy_file(f, final_name)
 end
 
-puts "Copied #{photos.length} photos from source to target."
+puts "Copied #{photos.length} photos from #{source_dir} to #{target_dir}."
