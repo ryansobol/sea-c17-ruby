@@ -70,12 +70,19 @@ playlist = ARGV[0].to_s
 song_names = Dir["songs/*.{mp3,m4a}"].shuffle
 
 
-def create_playlist song_names, playlist
-  playlist += ".m3u"
-  File.open playlist, "w" do |p|
+def create_playlist song_names, playlist, activity
+  if !playlist.end_with?(".m3u")
+    playlist += ".m3u"
+  end
+  if activity == "Created" || activity == "Overwrote"
+    mode = "w"
+  else
+    mode = "a"
+  end
+  File.open playlist, mode do |p|
     p.write(song_names.to_yaml)
   end
-  puts "Created #{playlist} with #{playlist.length} songs"
+  puts "=> #{activity} #{playlist} with #{playlist.length} songs"
 end
 
 while true
@@ -84,24 +91,24 @@ while true
     break
   else
     puts "=> Build a shuffled playlist"
-    while File.exists?(playlist + '.m3u')
+    if File.exists?(playlist + '.m3u')
       puts "=> WARNING: #{playlist}.m3u already exists"
-      puts "=> (c)ancel, (o)verwrite, or (a)ppend > o"
+      puts "=> (c)ancel, (o)verwrite, or (a)ppend >"
       answer = STDIN.gets.chomp
+
       if answer == "c"
         puts "Canceled"
-        return false
+        break
       elsif answer == "o"
-        create_playlist song_names, playlist
+        create_playlist song_names, playlist, "Overwrote"
+        break
+      elsif answer == "a"
+        create_playlist song_names, playlist, "Appended"
+        break
       end
-
+    else
+        create_playlist song_names, playlist, "Created"
+        break
     end
-
   end
 end
-
-
-
-
-
-
