@@ -48,7 +48,7 @@ require 'yaml'
 
 name = ARGV.first
 
-unless name
+if name.nil?
   puts "Usage: 3_birthday_helper_read.rb NAME"
   exit
 end
