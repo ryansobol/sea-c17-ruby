@@ -50,7 +50,7 @@ def photo_copy(source, target)
   source = “source”
   target = “target”
   #require pp
-photos = Dir[“#{source/*.jpg}"]
+photos = Dir[“source/*.jpg"]
 puts photos
 
 puts photo.inspect
