@@ -69,7 +69,7 @@ def new_playlist(filename)
   playlists = []
   tracks = Dir["songs/*.{mp3,m4a}"]
   playlists.push tracks
-  test_string = playlists[0..-1].shuffle
+  test_string = playlists.shuffle
   File.open filename, "w" do |f|
     f.puts(playlists)
   end
