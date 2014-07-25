@@ -99,7 +99,7 @@ end
 
 input = ARGV.first
 
-unless input
+if input.nil?
   puts "Usage: 4_arabic_numbers.rb ROMAN_NUMERAL"
   exit
 end
