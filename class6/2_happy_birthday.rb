@@ -63,9 +63,18 @@ year = ARGV[0].to_i
 month = ARGV[1].to_i
 day = ARGV[2].to_i
 
-unless year && month && day
+if year == 0 || month == 0 || day == 0
   puts "Usage: 2_happy_birthday.rb YEAR MONTH DAY"
   exit
 end
 
 # your code here
+
+bday = Time.utc(year, month, day)
+today = Time.new.utc
+
+puts "The birth date is #{bday}"
+puts "CHEER!" if today.month > bday.month || \
+                (today.month = bday.month && today.day >= bday.day)
+
+(today.year - bday.year).times do puts "CHEER!" end
