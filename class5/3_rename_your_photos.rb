@@ -42,28 +42,28 @@
 #
 #     Copies the file contents of source_path to target_path, both of which must
 #     be a file path.
-require "yaml"
 require "fileutils"
+require "pp"
+
 
 def photo_copy(source, target)
-  old_files_array = []
-  # filename
-  File.open filename, "w" do |f|
-  f.puts(playlists.shuffle)
+  source = “source”
+  target = “target”
+  #require pp
+photos = Dir[“#{source/*.jpg}"]
+puts photos
+
+puts photo.inspect
+photos.each do |photo|
+  base_name = File.basename(photo, “.jpg”)
+  newname = “#{target}/#{base_name}"_#{File.size(photo)}.jpg”
+  FileUtils.copy_file(photo, new name)
 end
-  new_files_array = []
-  Dir[]
 
 
-  FileUtils.copy_file(source, target)
-end
-
-File
-
-input = ARGV[1].to_s
+input = ARGV[0].to_s
 
 if input == ''
   puts "Usage: 3_rename_your_photos.rb SOURCE TARGET"
   exit
 end
-puts ARGV[0..-1]
