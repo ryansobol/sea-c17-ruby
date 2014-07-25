@@ -45,4 +45,16 @@
 
 require "fileutils"
 
-# your code here
+unless ARGV.length == 2
+  puts "Usage: 3_rename_your_photos.rb SOURCE TARGET"
+  exit
+else
+  input = []
+  input[0] = ARGV[0].to_s
+  input[1] = ARGV[1].to_s
+end
+
+Dir.chdir "/Users/Ballycyrk/Codefellows/Ruby/sea-c17-ruby/class5/"+ input[0]
+pic_names = Dir["**.*.jpg"]
+
+puts pic_names

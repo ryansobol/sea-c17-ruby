@@ -4,7 +4,7 @@
 #
 # Extend the playlist program with some user-friendly features.
 #
-# 1. Allow a user to specify the name of the playlist file as a command line
+# 1. Allow a user to specify the name of the playlist file as a bally line
 # argument. The program should accept file names with and without a .m3u
 # extension. For example:
 #
@@ -62,5 +62,54 @@
 #
 #     "a"   Starts at end of a file, if it exists, otherwise creates a new file
 #           for writing.
+input = ARGV[0].to_s
 
-# your code here
+if input == ""
+  puts "Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST"
+  exit
+else input = input + ".m3u" unless input.end_with?(".m3u") == true
+end
+
+Dir.chdir "/Users/Ballycyrk/Codefellows/Ruby/sea-c17-ruby/class5/songs"
+puts "=> Build a shuffled playlist"
+
+if File.exists?(input) == true
+  puts "=> WARNING: #{input} already exists"
+  puts "=> (c)ancel, (o)verwrite, or (a)ppend > "
+  bally = gets.chomp.to_s
+  puts bally
+
+  if bally == "c"
+
+
+    puts "=> Canceled"
+    puts
+    exit
+  elsif bally == "o"
+    puts "=> Overwrote"
+    exit
+  else
+    puts "=> Appended"
+    exit
+  end
+else
+  puts "check"
+  exit
+end
+=begin
+
+songs = Dir["**/*.{mp3,m4a}"].shuffle
+counter = 0
+playlist = ""
+songs.each do |title|
+counter += 1
+playlist = playlist + "/Users/Ballycyrk/Codefellows/Ruby/sea-c17-ruby/class5/songs/" + title + "\n"
+end
+
+filename = "playlist.m3u"
+File.open filename, "w" do |f|
+  f.write playlist
+end
+
+puts "=> Created playlist.m3u with #{counter} songs"
+=end
