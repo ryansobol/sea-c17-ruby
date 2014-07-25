@@ -7,17 +7,17 @@
 #
 # For example:
 #
-#   $ ruby 4_arabic_numbers.rb mcmxcix
+#   $ ruby 5_arabic_numbers.rb mcmxcix
 #   1999
 #
 # The program should handle both lowercase and uppercase roman numerals:
 #
-#   $ ruby 4_arabic_numbers.rb CDXLIV
+#   $ ruby 5_arabic_numbers.rb CDXLIV
 #   444
 #
 # And reject strings that aren’t valid Roman numerals:
 #
-#   $ ruby 4_arabic_numbers.rb bigboi
+#   $ ruby 5_arabic_numbers.rb bigboi
 #   Invalid roman numeral 'bigboi'
 #
 # HINT: Draw first, program second. Ask yourself the following questions:
@@ -100,7 +100,7 @@ end
 input = ARGV.first
 
 if input.nil?
-  puts "Usage: 4_arabic_numbers.rb ROMAN_NUMERAL"
+  puts "Usage: 5_arabic_numbers.rb ROMAN_NUMERAL"
   exit
 end
 
