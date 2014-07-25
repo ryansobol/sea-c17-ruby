@@ -64,9 +64,11 @@
 #           for writing.
 
 # your code here
-
 require "yaml"
+
+playlist = ARGV[0].to_s
 song_names = Dir["songs/*.{mp3,m4a}"].shuffle
+
 
 def create_playlist song_names, playlist
   playlist += ".m3u"
@@ -76,4 +78,30 @@ def create_playlist song_names, playlist
   puts "Created #{playlist} with #{playlist.length} songs"
 end
 
-create_playlist song_names, ARGV
+while true
+  if playlist == ""
+    puts "Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST"
+    break
+  else
+    puts "=> Build a shuffled playlist"
+    while File.exists?(playlist + '.m3u')
+      puts "=> WARNING: #{playlist}.m3u already exists"
+      puts "=> (c)ancel, (o)verwrite, or (a)ppend > o"
+      answer = STDIN.gets.chomp
+      if answer == "c"
+        puts "Canceled"
+        return false
+      elsif answer == "o"
+        create_playlist song_names, playlist
+      end
+
+    end
+
+  end
+end
+
+
+
+
+
+
