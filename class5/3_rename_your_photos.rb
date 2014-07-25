@@ -65,21 +65,3 @@ photos.each do |f|
 end
 
 puts "Copied #{photos.length} photos from source to target."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
