@@ -90,7 +90,7 @@ Dir.pwd
 
   #Writes to file
   f = File.open(file_name, var)
-  f.puts song_names
+  f.puts random_list
 
   puts "  "
   puts "Created playlist.m3u with 16 songs"
