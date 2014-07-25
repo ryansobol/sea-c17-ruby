@@ -31,6 +31,7 @@
 #     Using a pattern String, return an Array of file paths that match.
 #
 #     Dir["code/*.{rb,js}"]  #=> ["code/file1.rb", "code/file2.js"]
+
 require "yaml"
 song_names = Dir["songs/*.{mp3,m4a}"].shuffle
 
