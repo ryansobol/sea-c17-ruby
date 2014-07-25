@@ -31,3 +31,28 @@
 #     Using a pattern String, return an Array of file paths that match.
 #
 #     Dir["code/*.{rb,js}"]  #=> ["code/file1.rb", "code/file2.js"]
+
+def create_playlist folder
+  i = 0
+  number_tracks = 0
+  playlist = []
+  number_tracks = folder.length
+
+  while i < number_tracks
+    track_number = i
+    if folder[track_number] != ''
+      playlist.push folder[track_number]
+      folder[track_number] = ''
+      i += 1
+    else
+    end
+  end
+
+filename = "playlist.m3u"
+  File.open filename, "w" do |f|
+    f.puts playlist.shuffle
+  end
+end
+
+songs = Dir["*/*.{mp3,m4a}"]
+create_playlist songs
