@@ -64,3 +64,56 @@
 #           for writing.
 
 # your code here
+
+
+if ARGV.empty?
+  puts "Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST"
+  exit
+end
+
+if ARGV[0].end_with?(".m3u")
+  filename = ARGV[0]
+else
+  filename = ARGV[0] + ".m3u"
+end
+
+
+
+if File.exists?(filename)
+  puts "WARNING: #{filename} already exists \n(c)ancel, (o)verwrite,
+        or (a)ppend > "
+  choice = STDIN.gets.chomp
+
+
+  if choice == "c" || choice == "cancel"
+    puts "Canceled"
+    exit
+  end
+
+  if choice == "o" || choice == "overwrite"
+    File.open(filename, "w") {filename}
+
+    puts "Overwrote #{filename} with 16 songs."
+    exit
+  end
+
+  if choice == "a" || choice == "append"
+    File.open(filename, "a") {filename}
+
+    puts "Appended #{filename} with 16 songs."
+    exit
+  end
+end
+
+shuffled_playlist = Dir["songs/*.{m4a}"] + Dir["songs/*.{mp3}"]
+shuffled_playlist.shuffle!
+puts "Build a shuffled playlist"
+
+
+File.open filename, "w" do |file|
+  shuffled_playlist.each do |song|
+    file.write song + "\n"
+  end
+end
+
+puts "Created #{filename} with #{shuffled_playlist.length} songs"

@@ -46,3 +46,40 @@
 require "fileutils"
 
 # your code here
+
+
+source_dir = ARGV[0].to_s
+target_dir = ARGV[1].to_s
+
+if source_dir.empty? || target_dir.empty?
+  puts "Usage: 3_rename_your_photos SOURCE TARGET"
+  exit
+end
+
+photos = Dir["#{source_dir}**/*.jpg"]
+photos.each do |f|
+  basename = File.basename(f, ".jpg")
+  add_size = "_" + File.size(f).to_s
+  final_name = "#{target_dir}" + basename + add_size + ".jpg"
+  FileUtils.copy_file(f, final_name)
+end
+
+puts "Copied #{photos.length} photos from source to target."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
