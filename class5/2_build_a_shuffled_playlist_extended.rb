@@ -64,3 +64,16 @@
 #           for writing.
 
 # your code here
+
+require "yaml"
+song_names = Dir["songs/*.{mp3,m4a}"].shuffle
+
+def create_playlist song_names, playlist
+  playlist += ".m3u"
+  File.open playlist, "w" do |p|
+    p.write(song_names.to_yaml)
+  end
+  puts "Created #{playlist} with #{playlist.length} songs"
+end
+
+create_playlist song_names, ARGV
