@@ -17,7 +17,7 @@
 #
 # The program should only CHEER! for birthdays that have actually happened.
 #
-# Hint: Dates are best represented as a Time on midnight in UTC.
+# Hint: Represent a birth date as a Time on midnight in UTC.
 #
 # UTC -- or Coordinated Universal Time -- is the primary time standard by which
 # the world regulates clocks and time.
