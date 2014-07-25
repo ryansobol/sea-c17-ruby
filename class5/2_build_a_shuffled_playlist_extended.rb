@@ -63,4 +63,44 @@
 #     "a"   Starts at end of a file, if it exists, otherwise creates a new file
 #           for writing.
 
-# your code here
+def new_playlist(filename)
+
+  filename = ARGV[0]
+  playlists = []
+  tracks = Dir["songs/*.{mp3,m4a}"]
+  playlists.push tracks
+  test_string = playlists[0..-1].shuffle
+  File.open filename, "w" do |f|
+    f.puts(playlists)
+  end
+  puts "=> Build a shuffled playlist\n=> Created " + ARGV[0] + " with 16 songs."
+end
+
+
+
+input = ARGV[0].to_s
+
+error1 = "=> Build a shuffled playlist\n=> WARNING: #{input} already exists
+#=> (c)ancel, (o)verwrite, or (a)ppend >"
+
+if input == ""
+  puts "Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST"
+  exit
+else input = input + ".m3u" unless input.end_with?(".m3u") == true
+end
+
+if File.exist?(input) == true
+  puts error1
+  response = gets.chomp.to_s
+  if response == "c"
+    puts "=> Canceled"
+    exit
+  elsif response == "o"
+    puts "=> Overwrote ARGV[0]"
+    exit
+  else
+    puts "=> Appeneded ARGV[0]"
+  end
+end
+
+new_playlist(input)
