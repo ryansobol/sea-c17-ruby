@@ -51,3 +51,8 @@
 #
 #     Daylight Savings begins at 2:00am on the second Sunday in March and
 #     reverts to standard time on the first Sunday in November.
+
+t = Time.new(1995, 1, 4, 0, 0, 0, "-05:00")
+t += 1000000000
+puts t
+

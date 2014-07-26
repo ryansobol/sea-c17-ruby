@@ -68,4 +68,18 @@ unless year && month && day
   exit
 end
 
-# your code here
+birthday = Time.utc(year, month, day)
+current = Time.new
+current = current.utc
+age = Time.new
+age = current - birthday
+puts age.year
+#cheers = current.year - birthday.year
+
+#if birthday.month == current.month
+#  cheers -= 1 if birthday.day >= current.day
+#elsif birthday.month > current.month
+#  cheers -= 1
+#end
+
+age.year.times { puts "CHEER!\n"}
