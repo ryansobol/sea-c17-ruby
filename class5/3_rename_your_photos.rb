@@ -61,13 +61,3 @@ pic_names.each do |rename|
   new_dir = "#{target}/" + trunk + "_" + File.size(rename).to_s + ".jpg"
   FileUtils.copy_file(rename, new_dir)
 end
-
-
-
-
-
-
-
-
-
-
