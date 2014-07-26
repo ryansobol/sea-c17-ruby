@@ -32,22 +32,17 @@
 #
 #     Dir["code/*.{rb,js}"]  #=> ["code/file1.rb", "code/file2.js"]
 
-
-Dir.chdir "/Users/Ballycyrk/Codefellows/Ruby/sea-c17-ruby/class5/songs"
-songs = Dir["**/*.{mp3,m4a}"].shuffle
+songs = Dir["songs/*.{mp3,m4a}"].shuffle
 puts "=> Build a shuffled playlist"
-counter = 0
-playlist = ""
-songs.each do |title|
-counter += 1
-playlist = playlist + "/Users/Ballycyrk/Codefellows/Ruby/sea-c17-ruby/class5/songs/" + title + "\n"
-end
 
 filename = "playlist.m3u"
-File.open filename, "w" do |f|
-  f.write playlist
+
+File.open(filename, "w") do |f|
+  songs.each do |song|
+  f.write song + "\n"
+  end
 end
 
-puts "=> Created playlist.m3u with #{counter} songs"
+puts "=> Created playlist.m3u with #{songs.length} songs"
 
 

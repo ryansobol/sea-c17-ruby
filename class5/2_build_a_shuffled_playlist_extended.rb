@@ -42,7 +42,7 @@
 #
 # A few methods you might find useful are:
 #
-#   String#end_with?(suffix) → true or false
+#   String.end_with?(suffix) → true or false
 #
 #     Returns true if the string ends with the given suffix, otherwise false.
 #
@@ -62,54 +62,54 @@
 #
 #     "a"   Starts at end of a file, if it exists, otherwise creates a new file
 #           for writing.
+
 input = ARGV[0].to_s
 
-if input == ""
-  puts "Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST"
-  exit
-else input = input + ".m3u" unless input.end_with?(".m3u") == true
+def create(play, list, mode)
+  File.open(play, mode) do |f|
+    list.each do |song|
+    f.write song + "\n"
+    end
+  end
 end
 
-Dir.chdir "/Users/Ballycyrk/Codefellows/Ruby/sea-c17-ruby/class5/songs"
-puts "=> Build a shuffled playlist"
+if input.empty?
+  puts "Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST"
+  exit
+end
 
-if File.exists?(input) == true
-  puts "=> WARNING: #{input} already exists"
-  puts "=> (c)ancel, (o)verwrite, or (a)ppend > "
-  bally = gets.chomp.to_s
-  puts bally
+input += ".m3u" unless input.end_with?(".m3u")
+filename = input
+library = Dir["songs/*.{mp3,m4a}"].shuffle
+
+unless File.exists?(input)
+  puts "=> Build a shuffled playlist"
+  create(input, library, "w")
+  puts "Created #{input} with #{library.length} songs"
+  exit
+end
+
+while true
+    puts "=> WARNING: #{input} already exists"
+    print "=> (c)ancel, (o)verwrite, or (a)ppend > "
+    bally = $stdin.gets.chomp.downcase
 
   if bally == "c"
-
-
     puts "=> Canceled"
     puts
     exit
-  elsif bally == "o"
-    puts "=> Overwrote"
+  end
+
+  if bally == "o"
+    create(input, library, "w")
+    puts "=> Overwrote #{input} with #{library.length} songs"
+    exit
+  elsif bally == "a"
+    create(input, library, "a")
+    puts "=> Appended #{input} with #{library.length} songs"
     exit
   else
-    puts "=> Appended"
-    exit
+    puts
   end
-else
-  puts "check"
-  exit
-end
-=begin
-
-songs = Dir["**/*.{mp3,m4a}"].shuffle
-counter = 0
-playlist = ""
-songs.each do |title|
-counter += 1
-playlist = playlist + "/Users/Ballycyrk/Codefellows/Ruby/sea-c17-ruby/class5/songs/" + title + "\n"
 end
 
-filename = "playlist.m3u"
-File.open filename, "w" do |f|
-  f.write playlist
-end
-
-puts "=> Created playlist.m3u with #{counter} songs"
-=end
