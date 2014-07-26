@@ -44,17 +44,30 @@
 #     be a file path.
 
 require "fileutils"
+require "pp"
 
 unless ARGV.length == 2
   puts "Usage: 3_rename_your_photos.rb SOURCE TARGET"
   exit
 else
-  input = []
-  input[0] = ARGV[0].to_s
-  input[1] = ARGV[1].to_s
+ source = ARGV[0].to_s.downcase
+ target = ARGV[1].to_s.downcase
 end
 
-Dir.chdir "/Users/Ballycyrk/Codefellows/Ruby/sea-c17-ruby/class5/"+ input[0]
-pic_names = Dir["**.*.jpg"]
+pic_names = Dir["#{source}/*.jpg"]
 
-puts pic_names
+pic_names.each do |rename|
+  trunk = File.basename(rename, ".jpg")
+  new_dir = "#{target}/" + trunk + "_" + File.size(rename).to_s + ".jpg"
+  FileUtils.copy_file(rename, new_dir)
+end
+
+
+
+
+
+
+
+
+
+
