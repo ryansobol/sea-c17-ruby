@@ -46,24 +46,25 @@ require "fileutils"
 require "pp"
 
 
-def photo_copy(source, target)
-  source = “source”
-  target = “target”
-  #require pp
-photos = Dir[“source/*.jpg"]
-puts photos
 
-puts photo.inspect
-photos.each do |photo|
-  base_name = File.basename(photo, “.jpg”)
-  newname = “#{target}/#{base_name}"_#{File.size(photo)}.jpg”
-  FileUtils.copy_file(photo, new name)
+def photo_copy(source, target)
+  #require pp
+  photos = Dir["#{source}/*.jpg"]
+  puts photos
+
+  photos.each do |photo|
+    base_name = File.basename(photo, '.jpg')
+    newname = "#{target}/#{base_name}_#{File.size(photo)}.jpg"
+    FileUtils.copy_file(photo, newname)
+  end
 end
 
+source = ARGV[0]
+target = ARGV[1]
 
-input = ARGV[0].to_s
-
-if input == ''
+if source.empty? || target.empty?
   puts "Usage: 3_rename_your_photos.rb SOURCE TARGET"
   exit
 end
+
+photo_copy(source, target)
