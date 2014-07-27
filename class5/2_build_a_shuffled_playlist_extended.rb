@@ -63,99 +63,44 @@
 #     "a"   Starts at end of a file, if it exists, otherwise creates a new file
 #           for writing.
 
-# your code here
+abort "Usage 2_build_a_shuffled_playlist_extended.rb PLAYLIST" unless ARGV.first
 
-def playlist(filename)
+def build_playlist(file_name, mode, action)
+  songs = Dir["songs/*.{mp3,m4a}"].shuffle
 
-
-work_dir = '/Users/balinlarson/Projects/CF/sea-c17-ruby/class5'
-Dir.chdir work_dir
-
-#fill song_names with all m4a and mp3 files in songs dir
-song_names = Dir['songs/*.{mp3,m4a}']
-
-#shuffle the playlist
-song_names.shuffle!
-res = ""
-
-#check if file exists
-if File.exist?(filename)
-  puts "=> WARNING: " + filename + " already exists!"
-  print "=> (c)ancel, (o)verwrite, or (a)ppend: "
-  #for some reason gets.chomp alone didn't wait here $stdin makes sure it waits
-  res = $stdin.gets.chomp
-else
-  #open file and write all the song names
-  File.open filename, 'w' do |s|
-    for i in 0..song_names.length
-      if i == song_names.length
-      s.write song_names[i].to_s
-      else
-      s.write song_names[i].to_s + "\n"
-      end
-    end
+  File.open(file_name, mode) do |f|
+    songs.each { |song| f.write song + "\n" }
   end
+
+  puts "=> #{action} #{file_name} with #{songs.size} songs"
 end
 
-#logic for cancel, overwrite, append
-if res == "c"
-  puts "=> Canceling operation...\n"
+file_name = ARGV.first
+file_name += ".m3u" unless file_name.end_with?(".m3u")
+
+puts "=> Build a shuffled playlist"
+
+unless File.exists?(file_name)
+  build_playlist(file_name, "w", "Created")
   exit
+end
 
-elsif res == "o"
+puts "=> WARNING: #{file_name} already exists"
 
-  #open file (overwrite) and write all the song names
-  File.open filename, 'w' do |s|
-    for i in 0..song_names.length
-      if i == song_names.length
-      s.write song_names[i].to_s
-      else
-      s.write song_names[i].to_s + "\n"
-      end
-    end
+loop do
+  print "=> (c)ancel, (o)verwrite, or (a)ppend > "
+  input = $stdin.gets.chomp
+
+  if input == "c"
+    puts "=> Canceled"
+    break
+  elsif input == "o"
+    build_playlist(file_name, "w", "Overwrote")
+    break
+  elsif input == "a"
+    build_playlist(file_name, "a", "Appended")
+    break
+  else
+    puts "=> Invalid choice '#{input}'"
   end
-
-puts "=> Overwrote playlist.m3u with " + song_names.length.to_s + " songs."
-
-elsif res == "a"
-
-  #open file (append) and write all the song names
-  File.open filename, 'a' do |s|
-    for i in 0..song_names.length
-      if i == song_names.length
-      s.write song_names[i].to_s
-      else
-      s.write song_names[i].to_s + "\n"
-      end
-    end
-  end
-
-  puts "=> Appended " + song_names.length.to_s + " songs to playlist.m3u."
-
 end
-
-  puts "=> Playlist located in " + work_dir + ".\n\n"
-
-end
-
-#-----------------------------------------------------------------------------#
-# take argument from terminal
-input = ARGV[0]
-
-# empty string?
-if input.to_s.empty?
-  puts "\nUsage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST_NAME\n\n"
-  exit
-else
-# reassign to remove 'frozen string' issue when appending
-name = input.dup
-end
-
-if !name.include? ".m3u"
-  name << ".m3u"
-end
-
-puts "\n=> Building a shuffled playlist called " + name
-
-playlist name
-

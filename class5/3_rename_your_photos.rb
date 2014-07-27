@@ -45,39 +45,19 @@
 
 require "fileutils"
 
-def copy_p(source, dest)
-cnt = 0
-puts "\nSource: #{source}\n\n"
-puts "Destination: #{dest}\n\n"
-puts "....Copying files....\n\n"
-#change the working directory
-Dir.chdir(source)
-#find all photos in the directory to be renamed
-#'/Users/balinlarson/Projects/CF/sea-c17-ruby/class5'
-pics = Dir[source.to_s + '/**/*.{JPG,jpg}']
+abort "Usage: 2_rename_your_photos.rb SOURCE TARGET" unless ARGV.size == 2
 
-pics.each do |i|
-d = File.basename(i, '.jpg').to_s + "_" + File.size(i.to_s).to_s
-FileUtils.copy_file(i, "#{dest}/#{d}")
-puts "Created file #{d} in target directory."
-cnt += 1
+source = ARGV.first
+target = ARGV.last
+
+source_paths = Dir["#{source}/*.jpg"]
+
+source_paths.each do |source_path|
+  basename = File.basename(source_path, ".jpg")
+
+  target_path = "#{target}/#{basename}_#{File.size(source_path)}.jpg"
+
+  FileUtils.copy_file(source_path, target_path)
 end
 
-putsruby
-puts "....Completed....\n\n#{cnt} files copied to:\n#{dest}\nFrom:\n#{source}"
-puts
-
-end
-
-#------------------------------------------------------------------------------#
-
-source = ARGV[0]
-dest = ARGV[1]
-
-# empty string?
-if source.to_s.empty? || dest.to_s.empty?
-  puts "\n=> Usage: 3_rename_your_photos.rb SOURCE TARGET\n\n"
-  exit
-end
-
-copy_p(source,dest)
+puts "=> Copied #{source_paths.length} photos from #{source} to #{target}"
