@@ -45,9 +45,8 @@
 
 require "fileutils"
 
-# your code here
+abort "Usage: 3_rename_your_photos.rb SOURCE TARGET" unless ARGV[1]
 
-abort "Usage: 3_rename_your_photos.rb SOURCE TARGET" if ARGV[1] == nil
 source_folder = ARGV[0]
 target_folder = ARGV[1]
 source_pics = Dir["#{source_folder}/*.jpg"]
