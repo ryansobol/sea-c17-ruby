@@ -45,8 +45,6 @@
 require "fileutils"
 require "pp"
 
-
-
 def photo_copy(source, target)
   #require pp
   photos = Dir["#{source}/*.jpg"]
@@ -59,8 +57,8 @@ def photo_copy(source, target)
   end
 end
 
-source = ARGV[0]
-target = ARGV[1]
+source = ARGV[0].to_s
+target = ARGV[1].to_s
 
 if source.empty? || target.empty?
   puts "Usage: 3_rename_your_photos.rb SOURCE TARGET"
