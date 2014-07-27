@@ -42,27 +42,25 @@
 #
 #     Copies the file contents of source_path to target_path, both of which must
 #     be a file path.
+
 require "fileutils"
-require "pp"
 
 def photo_copy(source, target)
-  #require pp
   photos = Dir["#{source}/*.jpg"]
-  puts photos
 
   photos.each do |photo|
     base_name = File.basename(photo, '.jpg')
     newname = "#{target}/#{base_name}_#{File.size(photo)}.jpg"
+
     FileUtils.copy_file(photo, newname)
   end
+
+  puts "=> Copied #{photos.size} photos from source to target"
 end
 
-source = ARGV[0].to_s
-target = ARGV[1].to_s
+source = ARGV[0]
+target = ARGV[1]
 
-if source.empty? || target.empty?
-  puts "Usage: 3_rename_your_photos.rb SOURCE TARGET"
-  exit
-end
+abort "Usage: 3_rename_your_photos.rb SOURCE TARGET" unless ARGV.size == 2
 
 photo_copy(source, target)

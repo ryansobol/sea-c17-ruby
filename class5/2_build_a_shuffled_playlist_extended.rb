@@ -63,54 +63,37 @@
 #     "a"   Starts at end of a file, if it exists, otherwise creates a new file
 #           for writing.
 
-def write_songs(filename, mode)
+def write_songs(filename, mode, action)
   songs = Dir["songs/*.{mp3,m4a}"].shuffle
-  counter = 0
-  file = File.open("#{filename}", mode) do |f|
-    songs.each do |song|
-      counter += 1
-      f.write song + "\n"
-    end
-  end
-  exit
-end
 
-def new_playlist(filename)
-  respond(filename)
+  File.open("#{filename}", mode) do |f|
+    songs.each { |song| f.write song + "\n" }
+  end
+
+  puts "=> #{action} #{filename} with #{songs.size} songs"
 end
 
 input = ARGV[0]
-unless input
-  puts "Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST"
+
+abort "Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST" unless input
+
+input += ".m3u" unless input.end_with?(".m3u")
+
+puts "=> Build a shuffled playlist"
+
+unless File.exist?(input)
+  write_songs(input, "w", "Created")
   exit
-else
-  input += ".m3u" unless input.end_with?(".m3u")
 end
 
-def respond(input)
+puts "=> WARNING: #{input} already exists"
+print "=> (c)ancel, (o)verwrite, or (a)ppend > "
+response = $stdin.gets.chomp
 
-  puts "=> Build a shuffled playlist"
+abort "=> Canceled" if response == "c"
 
-  if File.exist?(input)
-    puts "=> WARNING: #{input} already exists"
-    print "=> (c)ancel, (o)verwrite, or (a)ppend > "
-    response = STDIN.gets.chomp
-  else
-    write_songs(input, 'w')
-    puts "=> Created #{input} with 16 songs"
-    response = STDIN.gets.chomp
-  end
-
-  if response == "c"
-    puts "=> Canceled"
-    exit
-  elsif response == "o"
-    puts "=> Overwrote #{input} with 16 songs"
-    write_songs(input, 'w')
-  elsif response == "a"
-      puts "=> Appended #{input} with 16 songs"
-      write_songs(input, 'a')
-  end
+if response == "o"
+  write_songs(input, "w", "Overwrote")
+elsif response == "a"
+  write_songs(input, "a", "Appended")
 end
-
-new_playlist(input)
