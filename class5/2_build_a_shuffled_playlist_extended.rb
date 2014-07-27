@@ -63,56 +63,54 @@
 #     "a"   Starts at end of a file, if it exists, otherwise creates a new file
 #           for writing.
 
-def new_playlist(filename)
-
+def write_songs(filename, mode)
   songs = Dir["songs/*.{mp3,m4a}"].shuffle
   counter = 0
-  filename = "#{input}"
-  File.open(filename, "w") do |f|
+  file = File.open("#{filename}", mode) do |f|
     songs.each do |song|
-    counter += 1
-    f.write song + "\n"
+      counter += 1
+      f.write song + "\n"
     end
+  end
+  exit
+end
+
+def new_playlist(filename)
+  respond(filename)
+end
+
+input = ARGV[0]
+unless input
+  puts "Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST"
+  exit
+else
+  input += ".m3u" unless input.end_with?(".m3u")
+end
+
+def respond(input)
+
+  puts "=> Build a shuffled playlist"
+
+  if File.exist?(input)
+    puts "=> WARNING: #{input} already exists"
+    print "=> (c)ancel, (o)verwrite, or (a)ppend > "
+    response = STDIN.gets.chomp
+  else
+    write_songs(input, 'w')
+    puts "=> Created #{input} with 16 songs"
+    response = STDIN.gets.chomp
+  end
+
+  if response == "c"
+    puts "=> Canceled"
+    exit
+  elsif response == "o"
+    puts "=> Overwrote #{input} with 16 songs"
+    write_songs(input, 'w')
+  elsif response == "a"
+      puts "=> Appended #{input} with 16 songs"
+      write_songs(input, 'a')
   end
 end
 
-count = 0
-input = ARGV[0]
-
-if input.empty?
-  puts "Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST"
-  exit
-end
-
-puts "=> Build a shuffled playlist"
-input += ".m3u" unless input.end_with?(".m3u")
-#  unless File.exist?(input)
-#works gets done here
-
-    puts "=> Created #{input} with 16 songs"
-    exit
-
-#  end
-
-  puts "=> WARNING: #{input} already exists"
-  print "=> (c)ancel, (o)verwrite, or (a)ppend > "
-  response = STDIN.gets.chomp
-puts input
-
-if response == "c"
-  puts "=> Canceled"
-  exit
-end
-
-# # # work gets done here
-
-# if response == "o"
-#   puts "=> Overwrote #{input} with 16 songs"
-#   elsif response == "a"
-#     puts "=> Appended #{input} with 16 songs"
-#   else
-#     puts "something bad"
-#   end
-# end
-
-# new_playlist(input)
+new_playlist(input)
