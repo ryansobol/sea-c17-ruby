@@ -68,8 +68,6 @@ if year == 0 || month == 0 || day == 0
   exit
 end
 
-# your code here
-
 bday = Time.utc(year, month, day)
 today = Time.new.utc
 
@@ -77,4 +75,4 @@ puts "The birth date is #{bday}"
 puts "CHEER!" if today.month > bday.month || \
                 (today.month == bday.month && today.day >= bday.day)
 
-(today.year - bday.year - 1).times do puts "CHEER!" end
+(today.year - bday.year - 1).times { puts "CHEER!" }

@@ -53,19 +53,14 @@ if name.nil?
   exit
 end
 
-# your code here
-
-birth_dates = File.read("birth_dates.yml")
-birth_dates = YAML.load("#{birth_dates}")
+birth_dates = YAML.load(File.read("birth_dates.yml"))
 name = name.capitalize
 
-unless birth_dates.keys.include? name
-  puts "Unknown birth date for #{name}"
-  exit
-end
+abort "Unknown birth date for '#{name}'" unless birth_dates.keys.include?(name)
 
 bday = birth_dates[name]
 today = Time.now.utc
+
 if today.month > bday.month || \
   (today.month == bday.month && today.day >= bday.day)
   this_year_bday = 1
