@@ -63,52 +63,43 @@
 #     "a"   Starts at end of a file, if it exists, otherwise creates a new file
 #           for writing.
 
-input = ARGV[0].to_s
+abort "Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST" unless ARGV[0]
 
-def create(play, list, mode)
-  File.open(play, mode) do |f|
-    list.each do |song|
-    f.write song + "\n"
-    end
+puts "=> Build a shuffled playlist"
+
+def build_playlist(file_name, mode, action)
+  songs = Dir["songs/*.{mp3,m4a}"].shuffle
+
+  File.open(file_name, mode) do |f|
+    songs.each { |song| f.write song + "\n" }
   end
+
+  "=> #{action} #{file_name} with #{songs.length} songs"
 end
 
-if input.empty?
-  puts "Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST"
-  exit
-end
+input = ARGV[0]
 
 input += ".m3u" unless input.end_with?(".m3u")
-filename = input
-library = Dir["songs/*.{mp3,m4a}"].shuffle
 
 unless File.exists?(input)
-  puts "=> Build a shuffled playlist"
-  create(input, library, "w")
-  puts "Created #{input} with #{library.length} songs"
+  puts build_playlist(input, "w", "Created")
   exit
 end
 
-while true
-    puts "=> WARNING: #{input} already exists"
-    print "=> (c)ancel, (o)verwrite, or (a)ppend > "
-    bally = $stdin.gets.chomp.downcase
+loop do
+  puts "=> WARNING: #{input} already exists"
+  print "=> (c)ancel, (o)verwrite, or (a)ppend > "
+  bally = $stdin.gets.chomp.downcase
 
-  if bally == "c"
-    puts "=> Canceled"
-    puts
-    exit
-  end
+  abort "=> Canceled" if bally == "c"
 
   if bally == "o"
-    create(input, library, "w")
-    puts "=> Overwrote #{input} with #{library.length} songs"
+    puts build_playlist(input, "w", "Overwrote")
     exit
   elsif bally == "a"
-    create(input, library, "a")
-    puts "=> Appended #{input} with #{library.length} songs"
+    puts build_playlist(input, "a", "Appended")
     exit
   else
-    puts
+    puts "=> Invalid choice '#{bally}'"
   end
 end

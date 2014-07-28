@@ -44,20 +44,19 @@
 #     be a file path.
 
 require "fileutils"
-require "pp"
 
-unless ARGV.length == 2
-  puts "Usage: 3_rename_your_photos.rb SOURCE TARGET"
-  exit
-else
- source = ARGV[0].to_s.downcase
- target = ARGV[1].to_s.downcase
+abort "Usage: 3_rename_your_photos.rb SOURCE TARGET" unless ARGV.length == 2
+
+source = ARGV[0]
+target = ARGV[1]
+
+source_paths = Dir["#{source}/*.jpg"]
+
+source_paths.each do |source_path|
+  basename = File.basename(source_path, ".jpg")
+  target_path = "#{target}/#{basename}_#{File.size(source_path)}.jpg"
+
+  FileUtils.copy_file(source_path, target_path)
 end
 
-pic_names = Dir["#{source}/*.jpg"]
-
-pic_names.each do |rename|
-  trunk = File.basename(rename, ".jpg")
-  new_dir = "#{target}/" + trunk + "_" + File.size(rename).to_s + ".jpg"
-  FileUtils.copy_file(rename, new_dir)
-end
+puts "=> Copied #{source_paths.size} photos from #{source} to #{target}"

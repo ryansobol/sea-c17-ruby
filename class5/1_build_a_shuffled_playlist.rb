@@ -32,14 +32,16 @@
 #
 #     Dir["code/*.{rb,js}"]  #=> ["code/file1.rb", "code/file2.js"]
 
-songs = Dir["songs/*.{mp3,m4a}"].shuffle
-puts "=> Build a shuffled playlist"
-filename = "playlist.m3u"
+def build_playlist(file_name, mode)
+  songs = Dir["songs/*.{mp3,m4a}"].shuffle
 
-File.open(filename, "w") do |f|
-  songs.each do |song|
-  f.write song + "\n"
+  File.open(file_name, "w") do |f|
+    songs.each { |song| f.write song + "\n" }
   end
+
+  "=> Created #{file_name} with #{songs.length} songs"
 end
 
-puts "=> Created playlist.m3u with #{songs.length} songs"
+puts "=> Build a shuffled playlist"
+
+puts build_playlist("playlist.m3u", "w")
