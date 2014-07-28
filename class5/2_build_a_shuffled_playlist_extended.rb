@@ -63,57 +63,36 @@
 #     "a"   Starts at end of a file, if it exists, otherwise creates a new file
 #           for writing.
 
-# your code here
+abort "Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST" if ARGV.empty?
 
+def build_playlist(file_name, mode, action)
+  songs = Dir["songs/*.{mp3,m4a}"].shuffle
 
-if ARGV.empty?
-  puts "Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST"
+  File.open(file_name, mode) do |file|
+    songs.each { |song| file.write song + "\n" }
+  end
+
+  puts "=> #{action} #{file_name} with #{songs.length} songs"
+end
+
+puts "=> Build a shuffled playlist"
+
+file_name = ARGV[0]
+file_name += ".m3u" unless ARGV[0].end_with?(".m3u")
+
+unless File.exists?(file_name)
+  build_playlist(file_name, "w", "Created")
   exit
 end
 
-if ARGV[0].end_with?(".m3u")
-  filename = ARGV[0]
-else
-  filename = ARGV[0] + ".m3u"
+puts "=> WARNING: #{file_name} already exists"
+print "=> (c)ancel, (o)verwrite, or (a)ppend > "
+choice = STDIN.gets.chomp
+
+abort "=> Canceled" if choice == "c" || choice == "cancel"
+
+if choice == "o" || choice == "overwrite"
+  build_playlist(file_name, "w", "Overwrote")
+elsif choice == "a" || choice == "append"
+  build_playlist(file_name, "a", "Appended")
 end
-
-
-
-if File.exists?(filename)
-  puts "WARNING: #{filename} already exists \n(c)ancel, (o)verwrite,
-        or (a)ppend > "
-  choice = STDIN.gets.chomp
-
-
-  if choice == "c" || choice == "cancel"
-    puts "Canceled"
-    exit
-  end
-
-  if choice == "o" || choice == "overwrite"
-    File.open(filename, "w") {filename}
-
-    puts "Overwrote #{filename} with 16 songs."
-    exit
-  end
-
-  if choice == "a" || choice == "append"
-    File.open(filename, "a") {filename}
-
-    puts "Appended #{filename} with 16 songs."
-    exit
-  end
-end
-
-shuffled_playlist = Dir["songs/*.{m4a}"] + Dir["songs/*.{mp3}"]
-shuffled_playlist.shuffle!
-puts "Build a shuffled playlist"
-
-
-File.open filename, "w" do |file|
-  shuffled_playlist.each do |song|
-    file.write song + "\n"
-  end
-end
-
-puts "Created #{filename} with #{shuffled_playlist.length} songs"
