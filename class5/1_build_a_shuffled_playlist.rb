@@ -32,27 +32,15 @@
 #
 #     Dir["code/*.{rb,js}"]  #=> ["code/file1.rb", "code/file2.js"]
 
-def create_playlist folder
-  i = 0
-  number_tracks = 0
-  playlist = []
-  number_tracks = folder.length
+def create_playlist(file_name)
+  songs = Dir["songs/*.{mp3,m4a}"]
 
-  while i < number_tracks
-    track_number = i
-    if folder[track_number] != ''
-      playlist.push folder[track_number]
-      folder[track_number] = ''
-      i += 1
-    else
-    end
+  File.open(file_name, "w") do |f|
+    f.puts songs.shuffle
   end
 
-filename = "playlist.m3u"
-  File.open filename, "w" do |f|
-    f.puts playlist.shuffle
-  end
+  "=> Created #{file_name} with #{songs.size} songs"
 end
 
-songs = Dir["*/*.{mp3,m4a}"]
-create_playlist songs
+puts "=> Build a shuffled playlist"
+puts create_playlist("playlist.m3u")
