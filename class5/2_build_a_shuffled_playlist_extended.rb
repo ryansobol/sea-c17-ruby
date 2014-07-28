@@ -80,9 +80,9 @@ def create_playlist song_names, playlist, activity
     mode = "a"
   end
   File.open playlist, mode do |p|
-    p.write(song_names.to_yaml)
+    p.write song_names.join("\n")
   end
-  puts "=> #{activity} #{playlist} with #{playlist.length} songs"
+  puts "=> #{activity} #{playlist} with #{song_names.length} songs"
 end
 
 while true
@@ -97,7 +97,7 @@ while true
       answer = STDIN.gets.chomp
 
       if answer == "c"
-        puts "Canceled"
+        puts "=> Canceled"
         break
       elsif answer == "o"
         create_playlist song_names, playlist, "Overwrote"

@@ -52,7 +52,7 @@ target = ARGV[1].to_s
 
 
 while true
-  if !source || !target
+  if source == "" || target == ""
     puts "Usage: 3_rename_your_photos.rb SOURCE TARGET"
     break
   else
