@@ -60,7 +60,7 @@ def read(name)
           b_day -= 1
           end
         end
-        d += 60*60*24*365
+        d += 60*60*24*365*b_day
         puts "#{name} will be #{b_day} on #{d.utc.strftime("%F")}"
         end
       end
@@ -88,7 +88,7 @@ def write(name, year, month, day)
     puts "Birthdate #{b_day} saved for #{name}"
   end
     File.open('birth_dates.yml', 'w') do |file|
-    file.write data
+    file.write YAML.dump(data)
     end
 end
 
