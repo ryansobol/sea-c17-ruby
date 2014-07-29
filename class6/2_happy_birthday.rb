@@ -60,18 +60,18 @@
 #     hi
 
 def cheer(date)
-puts "The birth date is #{date.to_s}"
-cur = Time.new
-puts "The current date is #{cur}"
-b_day = cur.year - date.year
-  if cur.month < date.month #not bday yet
-  b_day -= 1
-  elsif cur.month == date.month #it is bday month
-    if cur.day > date.day #not date yet in month
+  puts "The birth date is #{date.to_s}"
+  cur = Time.new
+  puts "The current date is #{cur}"
+  b_day = cur.year - date.year
+    if cur.month < date.month #not bday yet
     b_day -= 1
-  end
-  end
-  b_day.times do puts "Cheers!" end
+    elsif cur.month == date.month #it is bday month
+      if cur.day > date.day #not date yet in month
+      b_day -= 1
+    end
+    end
+    b_day.times do puts "CHEER!" end
 end
 
 year = ARGV[0].to_i

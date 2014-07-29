@@ -50,24 +50,25 @@ def b_day(name)
   name = name.capitalize
   read = Hash.new
   read = File.read('birth_dates.yml')
-  h = YAML.load(read)
-  if h.has_key?(name)
-    h.each do |n, d|
+  data = YAML.load(read)
+  if data.has_key?(name)
+    data.each do |n, d|
       if n == name
         cur = Time.new
-        b_day = cur.year - d.year
+        date = cur.year - d.year + 1
         if cur.month < d.month
-        b_day -= 1
+        date -= 1
         elsif cur.month == d.month
           if cur.day > d.day
-          b_day -= 1
+          date -= 1
           end
         end
         d += 60*60*24*365
-        puts "#{name} will be #{b_day} on #{d.utc.strftime("%F")}"
+        puts "#{name} will be #{date} on #{d.utc.strftime("%F")}"
         end
       end
   else
+    puts "Unknown birth date for #{name}"
     exit
   end
 end

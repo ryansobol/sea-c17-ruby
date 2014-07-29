@@ -52,7 +52,7 @@ def read(name)
     data.each do |n, d|
       if n == name
         cur = Time.new
-        b_day = cur.year - d.year
+        b_day = cur.year - d.year + 1
         if cur.month < d.month
         b_day -= 1
         elsif cur.month == d.month
@@ -78,7 +78,7 @@ def write(name, year, month, day)
 
   if data.has_key?(name)
     data.each do |n, d|
-      if n = name
+      if n == name
         data[n] = b_day
         puts "Birthdate #{b_day} saved for #{name}"
       end
@@ -89,7 +89,7 @@ def write(name, year, month, day)
   end
     File.open('birth_dates.yml', 'w') do |file|
     file.write data
-  end
+    end
 end
 
 name = ARGV[0]

@@ -87,13 +87,50 @@
 #     "".empty?   #=> true
 #     "a".empty?  #=> false
 
-def arabic_number(num)
-  # your code here
-end
-
 class String
   def cut(str)
     slice(/^(#{str})*/)
+  end
+end
+
+def arabic_number(inp)
+
+  pairs =
+  [["M"  , 1000],
+    ["CM" , 900],
+    ["D"  , 500],
+    ["CD" , 400],
+    ["C"  , 100],
+    ["XC" ,  90],
+    ["L"  ,  50],
+    ["XL" ,  40],
+    ["X"  ,  10],
+    ["IX" ,   9],
+    ["V"  ,   5],
+    ["IV" ,   4],
+    ["I"  ,   1]]
+
+ num = inp.dup # because the input string is frozen
+ num.upcase
+ cnt = 0
+
+  pairs.each do |key, value|
+    if !inp.include?(key)
+      cnt +=1
+    end
+  end
+
+  if cnt == pairs.length
+  puts "Invalid roman numeral #{inp}"
+  else
+    ans = 0
+    pairs.each do |key, value|
+      while num.index(key) == 0
+        ans += value
+        num.slice!(key)
+      end
+    end
+    ans
   end
 end
 
@@ -104,4 +141,6 @@ if input.nil?
   exit
 end
 
-puts arabic_number(input)
+ans = arabic_number(input)
+puts ans
+
