@@ -45,6 +45,7 @@
 #     Time.new.utc.strftime("%F")   #=> "2014-07-23"
 
 require 'yaml'
+require "pp"
 
 name = ARGV.first
 
@@ -53,4 +54,28 @@ if name.nil?
   exit
 end
 
-# your code here
+def b_day(name)
+  name = name.capitalize
+  new_hash = {}
+  read = File.read("birth_dates.yml")
+  new_hash = YAML.load(read)
+  month = YAML.load(read)
+  new_hash.each do |n, d|
+    if n == name
+      t = Time.new.utc
+      d = d.utc
+      b_day = Time.gm(d.year, d.month, d.day)
+      age = t.year - d.year
+      #puts age
+      if t.month > d.month || t.month == d.month && t.day > d.day
+        age += 1
+      end
+      puts "#{n} will be #{age} on #{t.year}-#{d.month}-#{d.day} "
+      exit
+    else
+      puts "Unknown birth date for '#{name}'"
+    end
+  end
+end
+
+b_day(name)

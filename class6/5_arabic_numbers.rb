@@ -88,7 +88,38 @@
 #     "a".empty?  #=> false
 
 def arabic_number(num)
-  # your code here
+  digit_vals = {'i' =>    1,
+                'iv'=>    4,
+                'v' =>    5,
+                'ix'=>    9,
+                'x' =>   10,
+                'xl'=>   40,
+                'l' =>   50,
+                'xc'=>   90,
+                'c' =>  100,
+                'cd'=>  400,
+                'd' =>  500,
+                'cm'=>  900,
+                'm' => 1000}
+  total = 0
+  prev  = 0
+  index = num.length - 1
+  while index >= 0
+    c = num[index].downcase
+    index = index - 1
+    val = digit_vals[c]
+    if !val
+      puts "This is not a valid roman numeral!"
+      return
+    end
+    if val < prev
+      val = val * -1
+    else
+      prev = val
+    end
+    total = total + val
+  end
+  total
 end
 
 class String

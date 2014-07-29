@@ -42,6 +42,7 @@
 #     YAML.dump({ "foo" => "bar" })   #=> "---\nfoo: bar\n"
 
 require 'yaml'
+require "pp"
 
 name = ARGV[0]
 year = ARGV[1].to_i
@@ -53,4 +54,18 @@ if name.nil? || year == 0 || month == 0 || day == 0
   exit
 end
 
-# your code here
+def modify_yaml(name, year, month, day)
+  name = name.capitalize
+  new_hash = {}
+  read = File.read("birth_dates.yml")
+  new_hash = YAML.load(read)
+  b_day = "#{year}-#{month}-#{day}"
+  b_day =  Time.gm(year, month, day)
+  new_hash[name] = b_day
+  File.open("birth_dates.yml", "w") do |f|
+    f.write(new_hash.to_yaml)
+  end
+  puts "Birthday #{b_day} saved for #{name}"
+end
+
+modify_yaml(name, year, month, day)

@@ -68,4 +68,22 @@ if year == 0 || month == 0 || day == 0
   exit
 end
 
-# your code here
+def birthday_cheer(year, month, day)
+  birthday_in_utc = Time.utc(year, month, day)
+  current_time = Time.new
+  puts current_time.utc
+  #puts "The birth date is #{birthday_in_utc}"
+end
+
+t = Time.new
+age =  t.year - year
+
+birthday_cheer(year, month, day)
+
+# puts age # uncomment to check age
+
+if t.month < month || (t.month == month && t.day < day)
+  age -=1
+end
+
+age.times { puts "CHEER!"}
