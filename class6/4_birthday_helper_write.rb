@@ -53,4 +53,37 @@ if name.nil? || year == 0 || month == 0 || day == 0
   exit
 end
 
-# your code here
+name = name.capitalize
+birthday_table = YAML::load File.read("birth_dates.yml")
+
+def birthdays(year, month, day)
+  Time.utc(year, month, day, 00, 00)
+end
+
+unless birthday_table[name].nil?
+  while true
+  puts "=> WARNING:'#{name}' already exists in table."
+  puts "#{name} => #{birthday_table[name]}"
+  print "=> (c)ancel, or (o)verwrite > "
+  command = $stdin.gets.chomp.downcase
+
+    if command == "c"
+      puts "=> Canceled"
+      puts
+      exit
+    end
+
+    if command == "o"
+    break
+    end
+  end
+end
+
+birthday_table[name] = birthdays(year, month, day)
+puts "Birthday #{birthday_table[name]} saved for #{name}"
+
+birthday_string = birthday_table.to_yaml
+
+File.open("birth_dates.yml", "w") do |file|
+  file.write birthday_string
+end

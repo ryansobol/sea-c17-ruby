@@ -58,6 +58,7 @@
 #
 #     hi
 #     hi
+# your code here
 
 year = ARGV[0].to_i
 month = ARGV[1].to_i
@@ -68,4 +69,14 @@ if year == 0 || month == 0 || day == 0
   exit
 end
 
-# your code here
+puts "The birthdate is #{Time.utc(year, month, day)}"
+
+now = Time.new.utc
+current_year = now.year
+current_month = now.month
+current_day = now.day
+
+current_year -= 1 if (current_month <= month && current_day < day)
+bally = current_year - year
+
+bally.times {puts "CHEER!"}

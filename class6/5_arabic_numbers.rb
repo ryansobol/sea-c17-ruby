@@ -88,13 +88,44 @@
 #     "a".empty?  #=> false
 
 def arabic_number(num)
-  # your code here
-end
+  base = {
+    "M"  => 1000,
+    "CM" => 900,
+    "D"  => 500,
+    "CD" => 400,
+    "C"  => 100,
+    "XC" => 90,
+    "L"  => 50,
+    "XL" => 40,
+    "X"  => 10,
+    "IX" => 9,
+    "V"  => 5,
+    "IV" => 4,
+    "I"  => 1
+  }
 
-class String
-  def cut(str)
-    slice(/^(#{str})*/)
+total = 0
+length = num.length
+position = 0
+
+  while position < length
+    bally = num[position, 2]
+    cyrk  = num[position]
+    base.each do |key, value|
+      if bally == key
+        total += value
+        position += 2
+        break
+      elsif cyrk == key
+        total += value
+        position += 1
+        break
+      else
+        position += 1
+      end
+    end
   end
+    puts total
 end
 
 input = ARGV.first
@@ -102,6 +133,8 @@ input = ARGV.first
 if input.nil?
   puts "Usage: 4_arabic_numbers.rb ROMAN_NUMERAL"
   exit
+else
+  input = input.upcase
 end
 
-puts arabic_number(input)
+arabic_number(input)

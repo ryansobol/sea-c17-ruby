@@ -51,3 +51,8 @@
 #
 #     Daylight Savings begins at 2:00am on the second Sunday in March and
 #     reverts to standard time on the first Sunday in November.
+
+birth = Time.local(1971, 2, 19, 14, 55)
+puts "I was born on #{birth}"
+old = birth + 1_000_000_000
+puts "And I turn one billion seconds old on #{old}"
