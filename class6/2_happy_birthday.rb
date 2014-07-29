@@ -69,17 +69,15 @@ if year == 0 || month == 0 || day == 0
 end
 
 birthday = Time.utc(year, month, day)
-current = Time.new
-current = current.utc
-age = Time.new
-age = current - birthday
-puts age.year
-#cheers = current.year - birthday.year
+current_time = Time.new
+current_time = current_time.utc
 
-#if birthday.month == current.month
-#  cheers -= 1 if birthday.day >= current.day
-#elsif birthday.month > current.month
-#  cheers -= 1
-#end
+cheers = current_time.year - birthday.year
+
+if birthday.month == current_time.month
+  cheers -= 1 if birthday.day >= current_time.day
+elsif birthday.month > current_time.month
+  cheers -= 1
+end
 
 age.year.times { puts "CHEER!\n"}

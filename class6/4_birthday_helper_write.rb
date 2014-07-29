@@ -53,4 +53,11 @@ if name.nil? || year == 0 || month == 0 || day == 0
   exit
 end
 
-# your code here
+
+name = name.capitalize
+birth_dates = YAML.load(File.read("birth_dates.yml"))
+birth_dates[name] = Time.utc(year, month, day)
+File.open("birth_dates.yml", "w") do |file|
+  file.write YAML.dump(birth_dates)
+end
+puts "Birthday #{birth_dates[name]} saved for #{name}"

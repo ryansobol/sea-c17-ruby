@@ -52,9 +52,7 @@ photos = Dir["#{source}/*.jpg"]
 if source && target
   photos.each do |i|
     size = File.size(i).to_s
-    new_photo = File.basename(i, ".jpg")
-    new_photo += "_#{size}.jpg"
-    new_photo.prepend("#{target}/")
+    new_photo = "#{target}/#{File.basename(i, ".jpg")}_#{size}.jpg"
     FileUtils.copy_file(i, new_photo)
   end
 else

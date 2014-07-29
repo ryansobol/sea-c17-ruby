@@ -32,8 +32,7 @@
 #
 #     Dir["code/*.{rb,js}"]  #=> ["code/file1.rb", "code/file2.js"]
 
-songs = Dir["songs/*.{mp3,m4a}"]
-songs.shuffle
+songs = Dir["songs/*.{mp3,m4a}"].shuffle
 
 File.open("playlist.m3u", "w") do |f|
   songs.each {|s| f.write(s + "\n")}

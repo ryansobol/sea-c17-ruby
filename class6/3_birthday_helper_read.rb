@@ -53,4 +53,19 @@ if name.nil?
   exit
 end
 
-# your code here
+name = name.capitalize
+birth_dates = YAML.load(File.read("birth_dates.yml"))
+current_time = Time.new.utc
+age_next_birthday = current_time.year - birth_dates[name].year
+
+if birth_dates[name].month < current_time.month || birth_dates[name].month \
+== current_time.month && birth_dates[name].day < current_time.day
+  next_birthday = Time.new(current_time.year + 1, birth_dates[name].month,\
+  birth_dates[name].day)
+  age_next_birthday += 1
+else
+  next_birthday = Time.new(current_time.year, birth_dates[name].month,\
+  birth_dates[name].day)
+end
+
+puts "#{name} will be #{age_next_birthday} on #{next_birthday.strftime("%F")}"

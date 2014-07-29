@@ -88,9 +88,35 @@
 #     "a".empty?  #=> false
 
 def arabic_number(num)
-  #
-
-
+  arabic = 0
+  two_char = {
+    "CM" => 900,
+    "CD" => 400,
+    "XC" => 90,
+    "XL" => 40,
+    "IX" => 9,
+    "IV" => 4
+  }
+  one_char = {
+    "M" => 10,
+    "D" => 500,
+    "C" => 100,
+    "L" => 50,
+    "X" => 10,
+    "V" => 5
+  }
+  until num.empty?
+    if two_char.has_key?(num[0..1])
+      arabic += two_char[num[0..1]]
+      num[0..1] = ""
+    elsif one_char.has_key?(num[0])
+      arabic += one_char[num[0]]
+      num[0] = ""
+    else
+      abort "Invalid roman numeral '#{$input}'"
+    end
+  end
+  arabic
 end
 
 class String
@@ -99,11 +125,12 @@ class String
   end
 end
 
-input = ARGV.first
+$input = ARGV.first
+$input = $input.upcase
 
-if input.nil?
+if $input.nil?
   puts "Usage: 5_arabic_numbers.rb ROMAN_NUMERAL"
   exit
 end
 
-puts arabic_number(input)
+puts arabic_number($input)
