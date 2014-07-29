@@ -72,15 +72,15 @@
 #     "".empty?   #=> true
 #     "a".empty?  #=> false
 
-# STRATEGY: first look for two character matches.
-# if there is a match then i will add the corresponding number to a tally & slice out the matching letters
-# then, i will iterate through for the single character matches and do the same
-# the resulting tally should = the digit
+# NEW STRATETGY: first look for two character matches.
+# Split everything and push into an array
+# then, split the remaining array
+# then lookup the values of that array
 
+input = ARGV.first
+num = input.to_s
 
-
-def arabic_number(num)
-nums1 = {
+lookup = {
   "M"  => 1000,
   "D"  => 500,
   "C"  => 100,
@@ -88,9 +88,6 @@ nums1 = {
   "X"  => 10,
   "V"  => 5,
   "I"  => 1,
-}
-
-nums2 = {
   "CM" => 900,
   "CD" => 400,
   "XC" => 90,
@@ -99,42 +96,18 @@ nums2 = {
   "IV" => 4,
 }
 
-  i = 1
-  n = 0
-  tally = 0
+short_romans = ["M", "D", "C", "L", "X", "V", "I"]
+long_roman = ["CM", "CD", "XC", "XL", "IX","IV"]
 
-  while i < num.length
-    char = num[n..i]
-      if nums2[char] != nil
-        singles.slice num[n..i] # Want to slice this from the original string but can't find the right syntax
-        i += 2
-        n += 2
-      else
-        i += 1
-        n += 1
-      end
+add_ems = []
+
+
+i = 1
+n = 0
+while i <= 6
+    add_ems.push   # push to array if match
+
+
+    i += 1
   end
-end
-
-puts singles
-
-class String
-  def cut(str)
-    slice(/^(#{str})*/)
-  end
-end
-
-input = ARGV.first
-
-if input.nil?
-  puts "Usage: 5_arabic_numbers.rb ROMAN_NUMERAL"
-  exit
-end
-
-#puts arabic_number(input)
-
-num = input.to_s
-
-puts arabic_number(num)
-
 

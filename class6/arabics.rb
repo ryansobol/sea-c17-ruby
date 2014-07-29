@@ -81,6 +81,12 @@
 
 def arabic_number(num)
 nums1 = {
+  "CM" => 900,
+  "CD" => 400,
+  "XC" => 90,
+  "XL" => 40,
+  "IX" => 9,
+  "IV" => 4,
   "M"  => 1000,
   "D"  => 500,
   "C"  => 100,
@@ -90,15 +96,6 @@ nums1 = {
   "I"  => 1,
 }
 
-nums2 = {
-  "CM" => 900,
-  "CD" => 400,
-  "XC" => 90,
-  "XL" => 40,
-  "IX" => 9,
-  "IV" => 4,
-}
-
   i = 1
   n = 0
   tally = 0
@@ -106,7 +103,10 @@ nums2 = {
   while i < num.length
     char = num[n..i]
       if nums2[char] != nil
-        singles.slice num[n..i] # Want to slice this from the original string but can't find the right syntax
+        tally = tally + nums2[char]
+        puts num[n..i]
+        #singles.slice num[n..i] # maybe we can slice this from the original string instead?
+        puts "the tally is #{tally}"
         i += 2
         n += 2
       else
@@ -116,7 +116,7 @@ nums2 = {
   end
 end
 
-puts singles
+
 
 class String
   def cut(str)
