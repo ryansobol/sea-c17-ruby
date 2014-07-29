@@ -51,3 +51,19 @@
 #
 #     Daylight Savings begins at 2:00am on the second Sunday in March and
 #     reverts to standard time on the first Sunday in November.
+
+my_bday = Time.local(1980, 10, 12, 11, 30)
+puts "I was born on #{my_bday} in Eugene, Oregon. It was glorious."
+
+puts "Is my bday seconds in DST?: #{my_bday.isdst}"
+
+billion_seconds = my_bday + 10**9
+puts "Is billion seconds in DST?: #{billion_seconds.isdst}"
+
+#This adjusts DST if current time is in different DST - it was DST when I was born
+dst_adjust = 0
+dst_adjust = 3600 if billion_seconds.isdst == false
+billion_daylight = billion_seconds + dst_adjust
+puts "and I turn one billion seconds on #{billion_daylight}"
+
+puts ".....Damn I'm already one billion seconds old!" if billion_seconds < Time.new

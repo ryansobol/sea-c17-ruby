@@ -47,6 +47,7 @@ name = ARGV[0]
 year = ARGV[1].to_i
 month = ARGV[2].to_i
 day = ARGV[3].to_i
+name = name.capitalize
 
 if name.nil? || year == 0 || month == 0 || day == 0
   puts "Usage: 4_birthday_helper_write.rb NAME YEAR MONTH DAY"
@@ -54,3 +55,21 @@ if name.nil? || year == 0 || month == 0 || day == 0
 end
 
 # your code here
+
+new_date = "#{name}: #{year}-#{month}-#{day} 00:00:00 Z\n"
+
+file_path = Dir.pwd + "/" +"birth_dates.yml"
+str = File.read(file_path)
+bdays = YAML.load(str)
+bdays.delete("#{name}")
+#name_exists = TRUE
+#name_exists = FALSE if bdays[name].to_s == ""
+
+File.open("birth_dates.yml", "w") do |f|
+  f.write YAML.dump(bdays)
+  f.write new_date
+end
+
+bday = Time.utc(year, month, day, 00, 00).strftime("%F")
+
+puts "Birthday #{bday} saved for #{name}"
