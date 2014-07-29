@@ -59,7 +59,6 @@ def b_day(name)
   new_hash = {}
   read = File.read("birth_dates.yml")
   new_hash = YAML.load(read)
-  month = YAML.load(read)
   new_hash.each do |n, d|
     if n == name
       t = Time.new.utc
