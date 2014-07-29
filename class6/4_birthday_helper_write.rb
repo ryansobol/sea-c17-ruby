@@ -53,4 +53,44 @@ if name.nil? || year == 0 || month == 0 || day == 0
   exit
 end
 
-# your code here
+cap_name = name.capitalize
+
+new_time = Time.utc(year, month, day)
+
+birth_dates_hash = {}
+
+birth_dates_string = File.read("birth_dates.yml")
+
+birth_dates_hash = YAML.load(birth_dates_string)
+
+birth_dates_hash.each do |person, date|
+  #the name is already in file
+  if cap_name == person
+
+    #save new time to name
+    birth_dates_hash[person] = new_time
+    puts "Successfully Changed..."
+
+    new_birth_dates_string = birth_dates_hash.to_yaml
+
+    File.open("birth_dates.yml", "w") do |file|
+      file.write new_birth_dates_string
+      puts "Birthday #{new_time} saved for #{cap_name}"
+    end
+    exit
+  end
+end
+
+#name is not in file so create new name and time
+if birth_dates_hash.has_key?(cap_name) == false
+  birth_dates_hash[cap_name] = new_time
+end
+
+new_birth_dates_string = birth_dates_hash.to_yaml
+
+File.open("birth_dates.yml", "w") do |file|
+  file.write new_birth_dates_string
+
+  puts "Person Added..."
+  puts "Birthday #{new_time} saved for #{cap_name}"
+end
