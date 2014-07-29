@@ -63,7 +63,7 @@ puts "Created file #{d} in target directory."
 cnt += 1
 end
 
-putsruby
+puts
 puts "....Completed....\n\n#{cnt} files copied to:\n#{dest}\nFrom:\n#{source}"
 puts
 
