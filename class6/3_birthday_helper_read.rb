@@ -47,31 +47,29 @@
 require 'yaml'
 
 def b_day(name)
-
-name = name.capitalize
-
-Dir.chdir('/Users/balinlarson/Projects/CF/sea-c17-ruby/class6/')
-
-read = Hash.new
-read = File.read('birth_dates.yml')
-h = YAML.load(read)
-
-h.each do |n, d|
-  if n == name
-    cur = Time.new
-    # need to create a date object
-    b_day = cur.year - date.year
-    if cur.month < date.month #not bday yet
-    b_day -= 1
-    elsif cur.month == date.month #it is bday month
-      if cur.day > date.day #not date yet in month
-      b_day -= 1
+  name = name.capitalize
+  read = Hash.new
+  read = File.read('birth_dates.yml')
+  h = YAML.load(read)
+  if h.has_key?(name)
+    h.each do |n, d|
+      if n == name
+        cur = Time.new
+        b_day = cur.year - d.year
+        if cur.month < d.month
+        b_day -= 1
+        elsif cur.month == d.month
+          if cur.day > d.day
+          b_day -= 1
+          end
+        end
+        d += 60*60*24*365
+        puts "#{name} will be #{b_day} on #{d.utc.strftime("%F")}"
+        end
       end
-    end
-    date.year += 1
-    puts "#{name} will be #{b_day} on #{date}"
+  else
+    exit
   end
-end
 end
 
 name = ARGV.first
@@ -82,5 +80,3 @@ if name.nil?
 end
 
 b_day(name)
-
-
