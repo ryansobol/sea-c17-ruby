@@ -78,7 +78,7 @@ year = ARGV[0].to_i
 month = ARGV[1].to_i
 day = ARGV[2].to_i
 
-if year && month && day
+if year == 0 || month == 0 || day == 0
   puts "Usage: 2_happy_birthday.rb YEAR MONTH DAY"
   exit
 end
