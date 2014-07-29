@@ -45,20 +45,17 @@
 
 require "fileutils"
 
+abort "Usage: 3_rename_your_photos.rb SOURCE TARGET" unless ARGV.size == 2
+
 source = ARGV[0]
 target = ARGV[1]
 photos = Dir["#{source}/*.jpg"]
 
-if source && target
-  photos.each do |i|
-    size = File.size(i).to_s
-    new_photo = File.basename(i, ".jpg")
-    new_photo += "_#{size}.jpg"
-    new_photo.prepend("#{target}/")
-    FileUtils.copy_file(i, new_photo)
-  end
-else
-  puts "Usage: 3_rename_your_photos.rb SOURCE TARGET"
+photos.each do |photo|
+  size = File.size(photo)
+  new_photo = File.basename(photo, ".jpg")
+  new_photo += "_#{size}.jpg"
+  new_photo.prepend("#{target}/")
+  
+  FileUtils.copy_file(photo, new_photo)
 end
-
-

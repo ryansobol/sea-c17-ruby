@@ -63,42 +63,43 @@
 #     "a"   Starts at end of a file, if it exists, otherwise creates a new file
 #           for writing.
 
-songs = Dir["songs/*.{mp3,m4a}"]
-songs.shuffle
+abort "Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST" unless ARGV[0]
+
+def build_playlist(file_name, mode, action)
+  songs = Dir["songs/*.{mp3,m4a}"].shuffle
+
+  File.open(file_name, mode) do |f|
+    songs.each {|s| f.write(s + "\n")}
+  end
+
+  puts "=> #{action} #{file_name} with #{songs.length} songs."
+end
+
+puts "=> Build a shuffled playlist"
 
 file_name = ARGV[0]
+file_name += ".m3u" unless file_name.end_with?(".m3u")
 
-file_name += ".m3u" if file_name && !file_name.end_with?(".m3u")
+unless File.exists?(file_name)
+  build_playlist(file_name, "w", "Created")
+  exit
+end
 
-if file_name == nil
-  puts "A file name must be given."
-elsif File.exists?(file_name)
-  puts "WARNING: #{file_name} already exists"
-  loop do
-    puts "(c)ancel, (o)verwrite, or (a)ppend"
-    option = $stdin.gets.chomp
-    if option == "c"
-      puts "The program will now exit."
-      break
-    elsif option == "o"
-      puts "Overwriting #{file_name} with #{songs.length} songs."
-      File.open("#{file_name}", "w") do |f|
-        songs.each {|s| f.write(s + "\n")}
-      end
-      break
-    elsif option == "a"
-      puts "Appending #{file_name} with #{songs.length} songs."
-      File.open("#{file_name}", "a") do |f|
-        songs.each {|s| f.write(s + "\n")}
-      end
-      break
-    else
-      puts "Incorrect input."
-    end
-  end
-else
-  puts "Creating #{file_name} with #{songs.length} songs."
-  File.open("#{file_name}", "w") do |f|
-    songs.each {|s| f.write(s + "\n")}
+puts "=> WARNING: #{file_name} already exists"
+
+loop do
+  print "=> (c)ancel, (o)verwrite, or (a)ppend > "
+  option = $stdin.gets.chomp
+
+  if option == "c"
+    abort "=> Canceled"
+  elsif option == "o"
+    build_playlist(file_name, "w", "Overwrote")
+    exit
+  elsif option == "a"
+    build_playlist(file_name, "a", "Append")
+    exit
+  else
+    puts "=> Incorrect input."
   end
 end
