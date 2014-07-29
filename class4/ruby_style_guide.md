@@ -20,17 +20,31 @@ some_array[42]
 ```
 
 
+#### Prefer `size` over `length` and `count`
+
+```ruby
+# bad
+some_array.length
+some_array.count
+
+# good
+some_array.size
+```
+
+
 #### Prefer `{...}` over `do...end` for single-line iterator blocks
 
 ```ruby
 # bad
-[1, 2, 3].each do |num|
-  puts num
+[1, 2, 3].each do |element|
+  puts element
 end
 
 # good
-[1, 2, 3].each { |num| puts num }
+[1, 2, 3].each { |e| puts e }
 ```
+
+**TIP:** Name the parameter `e` for single-line iterator blocks
 
 
 #### Prefer `each` over `for` because of their block scope
