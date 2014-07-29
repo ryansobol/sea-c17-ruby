@@ -45,6 +45,8 @@
 
 require "fileutils"
 
+abort "Usage: 3_rename_your_photos.rb SOURCE TARGET" unless ARGV.size == 2
+
 source = ARGV[0]
 target = ARGV[1]
 photos = Dir["#{source}/*.jpg"]
@@ -57,6 +59,3 @@ if source && target
   end
 else
   puts "Usage: 3_rename_your_photos.rb SOURCE TARGET"
-end
-
-

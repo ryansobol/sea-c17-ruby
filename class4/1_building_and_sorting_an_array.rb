@@ -29,10 +29,12 @@
 
 words = []
 input = nil
+
 puts "Enter some words to sort them alphbetically."
+
 until input == ""
   input = gets.chomp
-  words.push input
+  words.push(input)
 end
-words = words.sort
-puts words
+
+puts words.sort

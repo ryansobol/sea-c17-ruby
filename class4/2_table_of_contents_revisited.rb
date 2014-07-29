@@ -14,11 +14,12 @@
 # Chapter 2:  Numbers                        page  9
 # Chapter 3:  Letters                        page 13
 
-table = [["Getting Started", "1"], ["Numbers", "9"],["Letters", "13"]]
+table = [["Getting Started", " 1"], ["Numbers", " 9"], ["Letters", "13"]]
 
 puts "Table of Contents".center(50)
 puts
-for i in 0..table.length-1
-  puts "Chapter #{i+1}: #{table[i][0]}".ljust(30) +
-  "page #{table[i][1]}".rjust(20)
+
+table.each.with_index do |chapter, i|
+  puts "Chapter #{i + 1}:  #{chapter.first}".ljust(30) +
+  "page #{chapter.last}".rjust(20)
 end

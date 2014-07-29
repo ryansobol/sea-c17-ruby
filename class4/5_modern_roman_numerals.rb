@@ -23,9 +23,18 @@
 #   IX
 
 def modern_roman_numeral(num)
-  numerals = [["M", 1000], ["D", 500], ["C", 100], ["L", 50], ["X", 10],
-  ["V", 5], ["I", 1]]
+  numerals = [
+    ["M", 1000],
+    ["D", 500],
+    ["C", 100],
+    ["L", 50],
+    ["X", 10],
+    ["V", 5],
+    ["I", 1]
+  ]
+
   output = ""
+
   numerals.each_index do |i|
     if i < numerals.length - 1  && (num / numerals[i + 1][1] == 9)
       output += numerals[i + 1][0] + numerals[i - 1][0]
@@ -38,7 +47,8 @@ def modern_roman_numeral(num)
       num -=  numerals[i][1] * (num / numerals[i][1])
     end
   end
-  return output
+
+  output
 end
 
 input = ARGV[0].to_i

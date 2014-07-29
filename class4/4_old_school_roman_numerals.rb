@@ -36,15 +36,29 @@
 #   VIIII
 
 def old_school_roman_numeral(num)
-  numerals = [["M", 1000], ["D", 500], ["C", 100], ["L", 50], ["X", 10],
-  ["V", 5], ["I", 1]]
+  numerals = [
+    ["M", 1000],
+    ["D", 500],
+    ["C", 100],
+    ["L", 50],
+    ["X", 10],
+    ["V", 5],
+    ["I", 1]
+  ]
+
   output = ""
-  numerals.each do |i|
-    output += i[0] * (num / i[1])
-    num -=  num / i[1] * i[1]
+
+  numerals.each do |roman_to_arabic|
+    roman = roman_to_arabic.first
+    arabic = roman_to_arabic.last
+
+    output += roman * (num / arabic)
+    num -=  num / arabic * arabic
   end
-  return output
+
+  output
 end
+
 input = ARGV[0].to_i
 
 if input <= 0 || input > 3000
