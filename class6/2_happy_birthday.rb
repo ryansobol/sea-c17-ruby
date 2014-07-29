@@ -71,8 +71,8 @@ end
 def birthday_cheer(year, month, day)
   birthday_in_utc = Time.utc(year, month, day)
   current_time = Time.new
-  puts current_time.utc
-  #puts "The birth date is #{birthday_in_utc}"
+  #puts current_time.utc
+  puts "The birth date is #{birthday_in_utc}"
 end
 
 t = Time.new
