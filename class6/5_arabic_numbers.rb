@@ -106,7 +106,12 @@ nums2 = {
   while i < num.length
     char = num[n..i]
       if nums2[char] != nil
-        singles.slice num[n..i] # Want to slice this from the original string but can't find the right syntax
+        tally = tally + nums2[char]
+        puts num[n..i]
+        result = num.split(char) # make this match the character
+        result = result.join
+        puts "the tally is #{tally}"
+        puts "the remaining string is #{result}"
         i += 2
         n += 2
       else
@@ -116,7 +121,7 @@ nums2 = {
   end
 end
 
-puts singles
+
 
 class String
   def cut(str)
