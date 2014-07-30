@@ -57,7 +57,7 @@
 
 class Integer
   def hours_in_seconds
-    # your code here
+    60 * 60 * self
   end
 end
 
@@ -65,7 +65,7 @@ puts 10.hours_in_seconds == 36000
 
 class String
   def indent(amount = 2)
-    # your code here
+    " " * amount + self
   end
 end
 
@@ -74,7 +74,39 @@ puts "foo".indent(3) == "   foo"
 
 class Integer
   def to_roman
-    # your code here
+
+    def modern_roman_numeral(num)
+      arabics_to_romans = [
+        [1000, "M"],
+        [900, "CM"],
+        [500, "D"],
+        [400, "CD"],
+        [100, "C"],
+        [90, "XC"],
+        [50, "L"],
+        [40, "XL"],
+        [10, "X"],
+        [9, "IX"],
+        [5, "V"],
+        [4, "IV"],
+        [1, "I"]
+      ]
+
+      result = []
+
+      arabics_to_romans.each do |arabic_to_roman|
+        arabic, roman = arabic_to_roman
+
+        while num >= arabic
+          result.push(roman)
+          num -= arabic
+        end
+      end
+
+      result.join
+    end
+
+    modern_roman_numeral(self)
   end
 end
 
