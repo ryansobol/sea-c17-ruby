@@ -53,6 +53,5 @@
 #     reverts to standard time on the first Sunday in November.
 
 time = Time.new(1995, 1, 4, 0, 0, 0, "-05:00")
-time += 1000000000
-puts time
+puts time += 1000000000
 
