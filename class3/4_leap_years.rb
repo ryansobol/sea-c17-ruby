@@ -26,7 +26,6 @@ while i < end_year.to_i
   end
   i += 1
 end
-
 #Ryan's solution
 # puts
 
