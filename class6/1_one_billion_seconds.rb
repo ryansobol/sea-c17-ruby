@@ -54,4 +54,4 @@
 
 my_bday = Time.new(1987, 11, 26, 07, 00, 00, "-06:00")
 puts "I was born on #{my_bday}"
-puts "And I turn 1 billion seconds old on : #{my_bday + 1000000000}"
+puts "And I turn 1 billion seconds old on : #{my_bday + 1_000_000_000}"
