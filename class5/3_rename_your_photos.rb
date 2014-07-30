@@ -50,14 +50,17 @@ unless ARGV.length == 2
   puts "Usage: 3_rename_your_photos.rb SOURCE TARGET"
   exit
 else
- source = ARGV[0].to_s.downcase
- target = ARGV[1].to_s.downcase
+ source = ARGV[0].to_s
+ target = ARGV[1].to_s
 end
 
 pic_names = Dir["#{source}/*.jpg"]
-
+photos = 0
 pic_names.each do |rename|
+  photos += 1
   trunk = File.basename(rename, ".jpg")
   new_dir = "#{target}/" + trunk + "_" + File.size(rename).to_s + ".jpg"
   FileUtils.copy_file(rename, new_dir)
 end
+
+puts "=> Copied #{photos} from #{source} to #{target}"
