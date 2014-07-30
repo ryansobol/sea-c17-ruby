@@ -7,15 +7,23 @@
 # BYE three times but not in a row, you should still be talking to Grandma.
 
 print "Type your message to Grandma here: "
-speak = gets.chomp
 bye_count = 0
 
 while bye_count < 3
-  puts "HUH?! SPEAK UP, SONNY!"
   speak = gets.chomp
+
   if speak == "BYE"
     bye_count += 1
-  else bye_count = 0
+  else
+    bye_count = 0
+  end
+
+  break if bye_count >= 3
+
+  if said != said.upcase
+    puts "HUH?! SPEAK UP, SONNY!"
+  else
+    "NO, NOT SINCE #{rand(21) + 1930}!"
   end
 end
 
