@@ -57,15 +57,21 @@
 
 class Integer
   def hours_in_seconds
-    # your code here
+    self * 3600
   end
 end
 
 puts 10.hours_in_seconds == 36000
 
+#class String
+  #def indent(amount = 2)
+
+  #end
+#end
+
 class String
   def indent(amount = 2)
-    # your code here
+    " " * amount + self
   end
 end
 
@@ -74,7 +80,7 @@ puts "foo".indent(3) == "   foo"
 
 class Integer
   def to_roman
-    # your code here
+    # your code here # NOT num anymore, use self
   end
 end
 
@@ -83,15 +89,15 @@ puts 444.to_roman == "CDXLIV"
 
 class Array
   def second
-    # your code here
+    self[1]
   end
 
   def third
-    # your code here
+    self[2]
   end
 
   def fourth
-    # your code here
+    self[3]
   end
 end
 

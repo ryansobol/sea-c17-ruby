@@ -62,8 +62,6 @@ file_path = Dir.pwd + "/" +"birth_dates.yml"
 str = File.read(file_path)
 bdays = YAML.load(str)
 bdays.delete("#{name}")
-#name_exists = TRUE
-#name_exists = FALSE if bdays[name].to_s == ""
 
 File.open("birth_dates.yml", "w") do |f|
   f.write YAML.dump(bdays)
