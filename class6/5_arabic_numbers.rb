@@ -109,7 +109,7 @@ def arabic_number(num)
     index = index - 1
     val = vals[c]
     if !val
-      puts "This is not a valid roman numeral!"
+      puts "Invalid roman numeral"
       return
     end
     if val < prev
