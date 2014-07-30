@@ -43,7 +43,7 @@
 
 require 'yaml'
 
-name = ARGV[0]
+name = ARGV[0].capitalize
 year = ARGV[1].to_i
 month = ARGV[2].to_i
 day = ARGV[3].to_i
@@ -53,4 +53,24 @@ if name.nil? || year == 0 || month == 0 || day == 0
   exit
 end
 
-# your code here
+birth_dates = File.read("birth_dates.yml")
+birthday = YAML.load(birth_dates)[name]
+
+if birthday.nil?
+  birth_date = Time.new(year, month, day)
+
+  File.open("birth_dates.yml", "a") do |file|
+    file.write "#{name}: #{birth_date.utc}"
+  end
+  puts "Birthday #{birth_date} saved for #{name}"
+else
+  birthdays = YAML.load(birth_dates) # storing birthdays in an array
+  birthdays[name] =  Time.new(year, month, day).utc # updating value
+  birth_date = birthdays[name]
+  File.open("birth_dates.yml", "w") do |file|
+    file.write(birthdays.to_yaml)
+  end
+
+  puts "Birthday #{birth_date} saved for #{name}"
+
+end
