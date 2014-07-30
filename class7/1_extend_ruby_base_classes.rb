@@ -115,15 +115,15 @@ puts 444.to_roman == "CDXLIV"
 
 class Array
   def second
-    # your code here
+    self[1]
   end
 
   def third
-    # your code here
+    self[2]
   end
 
   def fourth
-    # your code here
+    self[3]
   end
 end
 
