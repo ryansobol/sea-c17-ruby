@@ -55,7 +55,7 @@
 
   birth = Time.new(1991, 6, 26, 20, 11, 0, "-05:00")
 
-  billion_sec = birth + 1000000000
+  billion_sec = birth + 1_000_000_000
 
   puts "I was born on #{birth}"
 
