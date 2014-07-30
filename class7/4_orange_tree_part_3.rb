@@ -32,8 +32,28 @@
 #     OrangeTree.new(20) != OrangeTree.new(10)
 
 class OrangeTree
-  # your code here
+
+  def initialize(fruit = 50)
+    @fruit = fruit
+    return fruit
+  end
+
+  def fruit
+    return @fruit
+  end
+
+  def pick!(amount = 1)
+    return nil if @fruit < amount
+    @fruit = fruit - amount if @fruit >= amount
+  end
+
+  def ==(other) #returns true if both objects have the same amount of fruit, else false
+    return true if self.fruit == other.fruit
+    return false if self.fruit != other.fruit
+  end
+
 end
+
 
 puts OrangeTree.new == OrangeTree.new(50)
 puts OrangeTree.new(20) == OrangeTree.new(20)
