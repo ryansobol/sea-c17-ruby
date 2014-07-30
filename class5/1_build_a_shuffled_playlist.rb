@@ -32,25 +32,11 @@
 #
 #     Dir["code/*.{rb,js}"]  #=> ["code/file1.rb", "code/file2.js"]
 
-puts "     -----------      "
-puts "Build a shuffled playlist"
-puts "  "
+puts "=> Build a shuffled playlist"
 
-def playlister
-Dir.pwd
-  #Search song directory for mp3 and mp4 files and store in an array
-  song_names = Dir['**/*.{mp3,MP3,m4a,M4A}']
-  #randomize song names
-  random_list = song_names.shuffle
-  puts random_list #Remove
+songs = Dir["**/*.{mp3,MP3,m4a,M4A}"].shuffle
 
-  #Writes to file
-  f = File.open("playlist.m3u", "w")
-  f.puts random_list
+f = File.open("playlist.m3u", "w")
+f.puts songs
 
-  puts "  "
-  puts "Created playlist.m3u with 16 songs"
-  puts "     -----------      "
-end
-
-playlister
+puts "=> Created playlist.m3u with #{songs.size} songs"

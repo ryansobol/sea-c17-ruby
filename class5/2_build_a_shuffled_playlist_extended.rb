@@ -63,68 +63,42 @@
 #     "a"   Starts at end of a file, if it exists, otherwise creates a new file
 #           for writing.
 
-# your code here
+abort "Usage 2_build_a_shuffled_playlist_extended.rb PLAYLIST" unless ARGV.first
 
+def playlister(file_name, mode, action)
+  songs = Dir["**/*.{mp3,MP3,m4a,M4A}"].shuffle
 
-file_name = ARGV[0]
-file_name = file_name.to_s
+  f = File.open(file_name, mode)
+  f.puts songs
 
-#Checks to see if file ends with .m3u extension & adds if it does not
-is_m3u = file_name.end_with?(".m3u")
-file_name = file_name + ".m3u" if is_m3u == false
-file_blank = true if file_name == ""
-
-#Writes this if the file name is blank
-puts "Usage 2_build_a_shuffled_playlist_extended.rb PLAYLIST" if file_name == ""
-
-var = "w" # default value is write. This will happen if playlister is run & if file doesn't exist.
-
-def playlister(file_name, var)
-puts "     -----------      "
-Dir.pwd
-  #Search song directory for mp3 and mp4 files and store in an array
-  song_names = Dir['**/*.{mp3,MP3,m4a,M4A}']
-  #randomize song names
-  random_list = song_names.shuffle
-  puts random_list #Remove
-
-  #Writes to file
-  f = File.open(file_name, var)
-  f.puts random_list
-
-  puts "  "
-  puts "Created playlist.m3u with 16 songs"
-  puts "     -----------      "
+  puts "=> #{action} #{file_name} with #{songs.size} songs"
 end
 
-#Checks to see if file exists, if it exists then give warning
-file_exists = File.exists?(file_name)
+file_name = ARGV[0]
+file_name += ".m3u" unless file_name.end_with?(".m3u")
 
-if file_exists == true
-  valid_answer = false
-  puts "WARNING: #{file_name} already exists"
-  puts "(c)ancel, (o)verwrite, or (a)ppend"
-  action = STDIN.gets.chomp ## Not totally sure why get.chomp doesn't work but this does
-  while valid_answer == false
+puts "=> Build a shuffled playlist"
+
+if File.exists?(file_name)
+  puts "=> WARNING: #{file_name} already exists"
+
+  loop do
+    print "=> (c)ancel, (o)verwrite, or (a)ppend > "
+    action = $stdin.gets.chomp
+
     if action == "c"
-      puts "Canceled"
-      valid_answer = true
+      puts "=> Canceled"
+      break
     elsif action == "o"
-      puts "Writing over"
-      playlister(file_name, "w")
-      valid_answer = true
+      playlister(file_name, "w", "Overwrote")
+      break
     elsif action == "a"
-      "Appending to existing file"
-      playlister(file_name, "a")
-      valid_answer = true
+      playlister(file_name, "a", "Appended")
+      break
     else
-      puts "Please enter c, o, or a"
-      puts "(c)ancel, (o)verwrite, or (a)ppend"
-      action = STDIN.gets.chomp
-      valid_answer = false
+      puts "=> Invalid choice. Please enter c, o, or a"
     end
   end
 else
-  playlister(file_name, "w") #if file_blank == false
+  playlister(file_name, "w", "Created")
 end
-
