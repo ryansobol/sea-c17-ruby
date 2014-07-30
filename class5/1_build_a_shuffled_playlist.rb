@@ -36,7 +36,7 @@ songs = Dir["songs/*.{mp3,m4a}"]
 filename = "playlist.m3u"
 puts "=> Build a shuffled playlist"
 
-File.open filename, "w" do |f|
+File.open(filename, "w") do |f|
   songs.shuffle.each { |song| f.write "#{song}\n" }
 end
 
