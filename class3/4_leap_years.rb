@@ -16,16 +16,13 @@ y = gets.chomp.to_i
 
 i = x
 leap_years = []
+
 while i <= y
-  if i % 400 == 0
-    leap_years.push i
-    i += 1
-  elsif i % 4 == 0 and i % 100 != 0
-    leap_years.push i
-    i += 1
-  else
-    i += 1
+  if i % 400 == 0 || i % 4 == 0 && i % 100 != 0
+    leap_years.push(i)
   end
+
+  i += 1
 end
 
 puts "These are the leaps years: "

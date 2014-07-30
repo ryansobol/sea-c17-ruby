@@ -5,9 +5,9 @@
 # "99 Bottles of Beer on the Wall."
 i = 99
 while i > 2
-    puts "#{i} bottles of beer on the wall, #{i} bottles of beer!"
-    puts "Take one down, pass it around, #{ i - 1 } bottles of beer on the wall!"
-    i = i - 1
+  puts "#{i} bottles of beer on the wall, #{i} bottles of beer!"
+  i -= 1
+  puts "Take one down, pass it around, #{i} bottles of beer on the wall!"
 end
 
 #for grammatical correctness when refering the the plurality of bottles
