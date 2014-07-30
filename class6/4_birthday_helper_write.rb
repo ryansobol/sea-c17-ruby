@@ -60,7 +60,7 @@ def modify_yaml(name, year, month, day)
   read = File.read("birth_dates.yml")
   new_hash = YAML.load(read)
   b_day = "#{year}-#{month}-#{day}"
-  b_day =  Time.gm(year, month, day)
+  b_day =  Time.utc(year, month, day)
   new_hash[name] = b_day
   File.open("birth_dates.yml", "w") do |f|
     f.write(new_hash.to_yaml)
