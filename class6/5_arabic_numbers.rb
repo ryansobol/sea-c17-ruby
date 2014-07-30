@@ -88,7 +88,7 @@
 #     "a".empty?  #=> false
 
 def arabic_number(num)
-  digit_vals = {'i' =>    1,
+        vals = {'i' =>    1,
                 'iv'=>    4,
                 'v' =>    5,
                 'ix'=>    9,
@@ -107,7 +107,7 @@ def arabic_number(num)
   while index >= 0
     c = num[index].downcase
     index = index - 1
-    val = digit_vals[c]
+    val = vals[c]
     if !val
       puts "This is not a valid roman numeral!"
       return
