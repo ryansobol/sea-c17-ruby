@@ -46,7 +46,8 @@
 
 require 'yaml'
 
-name = ARGV.first.capitalize
+name = ARGV.first
+name = name.capitalize
 
 if name.nil?
   puts "Usage: 3_birthday_helper_read.rb NAME"
@@ -54,13 +55,13 @@ if name.nil?
 end
 
 birth_dates = File.read("birth_dates.yml")
-birthday = YAML.load(birth_dates)[name]
+birthday = YAML.load(birth_dates)[name]  # a hash is returned
 
 if birthday.nil?
   puts "Unknown birth date for '#{name}'\n"
 else
-  now = Time.new
-  birth_seconds = now.utc - birthday.utc
+  now = Time.new.utc
+  birth_seconds = now - birthday.utc
 
   years = birth_seconds.to_i / 31557600
   years += 1

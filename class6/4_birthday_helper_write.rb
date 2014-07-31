@@ -66,11 +66,11 @@ if birthday.nil?
 else
   birthdays = YAML.load(birth_dates) # storing birthdays in an array
   birthdays[name] =  Time.new(year, month, day).utc # updating value
-  birth_date = birthdays[name]
+
   File.open("birth_dates.yml", "w") do |file|
     file.write(YAML.dump(birthdays))
   end
 
-  puts "Birthday #{birth_date} saved for #{name}"
+  puts "Birthday #{birthdays[name]} saved for #{name}"
 
 end

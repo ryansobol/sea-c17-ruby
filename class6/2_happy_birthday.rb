@@ -68,9 +68,9 @@ if year == 0 || month == 0 || day == 0
   exit
 end
 
-birthday = Time.new(year, month, day)
+birthday = Time.utc(year, month, day)
 now = Time.new
-birth_seconds = now.utc - birthday.utc
+birth_seconds = now.utc - birthday
 years = birth_seconds.to_i / 31557600
 puts "The birthdate is #{birthday}"
 years.times {puts "CHEER!"}

@@ -87,9 +87,55 @@
 #     "".empty?   #=> true
 #     "a".empty?  #=> false
 
+
 def arabic_number(num)
-  # your code here
+
+  num = num.upcase
+  start = 0
+  finish = num.size - 1
+  arabic_num = 0
+  slice = 0
+  test = ""
+
+  numerals_to_arabic_number = {
+  "M"  => 1000,
+  "CM" => 900,
+  "D"  => 500,
+  "CD" => 400,
+  "C"  => 100,
+  "XC" => 90,
+  "L"  => 50,
+  "XL" => 40,
+  "X"  => 10,
+  "IX" => 9,
+  "V"  => 5,
+  "IV" => 4,
+  "I"  => 1
+}
+
+  numerals_to_arabic_number.each do |k, v|
+    test = num[start..finish]
+    if(test.size >= 1)
+      slice = test.cut(k)
+      if slice != ""
+        if slice.to_i > 1
+          arabic_num += v * slice.size
+        else
+          arabic_num += v
+        end
+        start += slice.size
+      end
+    end
+  end
+  if test.empty?
+    return arabic_num
+  else
+    puts "Invalid roman numeral '#{num}'"
+  end
+
 end
+
+
 
 class String
   def cut(str)
@@ -105,3 +151,5 @@ if input.nil?
 end
 
 puts arabic_number(input)
+
+
