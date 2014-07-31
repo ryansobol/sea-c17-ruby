@@ -39,7 +39,33 @@
 # should stop and rethink your approach.
 
 class OrangeTree
-  # your code here
+  def initialize(fruit = 50)
+    @fruit = fruit
+  end
+  def fruit
+    @fruit
+  end
+  def pick!(amount = 1)
+    if @fruit < amount
+      nil
+    else
+      @fruit -= amount
+    end
+  end
+  def ==(other)
+    if other.fruit == self.fruit
+      true
+    else
+      false
+    end
+  end
+  def pick(amount = 1)
+    if @fruit < amount
+      self
+    else
+      OrangeTree.new(@fruit - amount)
+    end
+  end
 end
 
 orange_tree = OrangeTree.new
