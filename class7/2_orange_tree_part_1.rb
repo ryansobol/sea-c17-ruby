@@ -21,7 +21,13 @@
 #     orange_tree.fruit  #=> 50
 
 class OrangeTree
-  # your code here
+  def initialize
+    @fruit = 50
+  end
+
+  def fruit
+    @fruit
+  end
 end
 
 orange_tree = OrangeTree.new

@@ -56,7 +56,7 @@
 
 class Integer
   def hours_in_seconds
-    # your code here
+    self * 60 * 60
   end
 end
 
@@ -64,7 +64,8 @@ puts 10.hours_in_seconds == 36000
 
 class String
   def indent(amount = 2)
-    # your code here
+    amount.times { self.prepend(" ") }
+    self
   end
 end
 
@@ -73,7 +74,32 @@ puts "foo".indent(3) == "   foo"
 
 class Integer
   def to_roman
-    # your code here
+   numerals = [
+    ["M", 1000],
+    ["D", 500],
+    ["C", 100],
+    ["L", 50],
+    ["X", 10],
+    ["V", 5],
+    ["I", 1]
+    ]
+
+    num = self
+    output = ""
+
+    numerals.each_index do |i|
+      if i < numerals.length - 1  && (num / numerals[i + 1][1] == 9)
+        output += numerals[i + 1][0] + numerals[i - 1][0]
+        num -= 9 * numerals[i + 1][1]
+      elsif num / numerals[i][1] == 4
+        output += numerals[i][0] + numerals[i - 1][0]
+        num -=  4 * numerals[i][1]
+      else
+        output += numerals[i][0] * (num / numerals[i][1])
+        num -=  numerals[i][1] * (num / numerals[i][1])
+      end
+    end
+  output
   end
 end
 
@@ -82,15 +108,15 @@ puts 444.to_roman == "CDXLIV"
 
 class Array
   def second
-    # your code here
+    self[1]
   end
 
   def third
-    # your code here
+    self[2]
   end
 
   def fourth
-    # your code here
+    self[3]
   end
 end
 
