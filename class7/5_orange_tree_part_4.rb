@@ -54,9 +54,9 @@ class OrangeTree
   def pick(amount = 1)
 
     if @fruit >= amount
-      self.new.fruit = (@fruit - amount)
+      OrangeTree.new(@fruit - amount)
     else
-      OrangeTree
+      self
     end
 
   end
