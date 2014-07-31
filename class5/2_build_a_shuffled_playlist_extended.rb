@@ -64,3 +64,46 @@
 #           for writing.
 
 # your code here
+
+def create_playlist(file_name)
+  songs = Dir["songs/*.{mp3,m4a}"]
+
+  While File.exists?(file_name) == true
+    puts "WARNING: " + file_name.to_s + " already exists."
+    puts "(c)ancel, (o)verwrite, or (a)ppend"
+    answer = gets.chomp
+
+    if answer == "o"
+      File.open(file_name, "w") do |f|
+      f.puts songs.shuffle
+    elsif answer == "a"
+      File.open(file_name, "a") do |f|
+    f.puts songs.shuffle
+    elsif answer == "c"
+      abort("Operation cancelled.")
+    else
+     puts "Please answer only (c)ancel, (o)verwrite, or (a)ppend"
+    end
+  end
+
+  While File.exists?(file_name) == false
+    File.open(file_name, "w") do |f|
+    f.puts songs.shuffle
+
+
+  "=> Created #{file_name} with #{songs.size} songs"
+end
+
+input = ARGV[0].to_s
+  if input == ""
+    abort("Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST")
+  else
+    if input.end_with?(".m3u") == false
+      input = input + ".m3u"
+    else
+    end
+  end
+
+
+puts "=> Build a shuffled playlist"
+puts create_playlist(input)
