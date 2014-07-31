@@ -57,7 +57,8 @@
 
 class Integer
   def hours_in_seconds
-    # your code here
+    ret = self * 60 * 60
+    ret
   end
 end
 
@@ -65,7 +66,9 @@ puts 10.hours_in_seconds == 36000
 
 class String
   def indent(amount = 2)
-    # your code here
+    ret = self
+    amount.times {ret = " " + ret}
+    ret
   end
 end
 
@@ -74,7 +77,22 @@ puts "foo".indent(3) == "   foo"
 
 class Integer
   def to_roman
-    # your code here
+    num = self
+    roman_numeral = "" #values will be appended
+    numerals = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX",
+                "V", "IV", "I"]
+    arabic =   [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+
+    i = 0 #iterate through the arrays
+
+    while i <= 12 #while within the array length
+      while num >= arabic[i]
+        num -= arabic[i] # remove the val
+        roman_numeral += numerals[i] # assign the rom
+      end
+      i += 1 # increment
+    end
+    roman_numeral # return the rom to terminal
   end
 end
 
@@ -83,15 +101,15 @@ puts 444.to_roman == "CDXLIV"
 
 class Array
   def second
-    # your code here
+    self[1]
   end
 
   def third
-    # your code here
+    self[2]
   end
 
   def fourth
-    # your code here
+    self[3]
   end
 end
 
