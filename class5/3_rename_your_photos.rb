@@ -15,13 +15,13 @@
 #
 # For example, the program should output to the shell:
 #
-#   $ ruby 2_rename_your_photos.rb target source
+#   $ ruby 3_rename_your_photos.rb source target
 #   => Copied 10 photos from source to target
 #
 # If both source and target directories are not given, the program should output
 # a helpful usage message and immediately exit. For example:
 #
-#   $ ruby 2_rename_your_photos.rb
+#   $ ruby 3_rename_your_photos.rb
 #   Usage: 3_rename_your_photos.rb SOURCE TARGET
 #
 # A few methods you might find useful are:

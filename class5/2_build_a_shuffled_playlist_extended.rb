@@ -63,47 +63,44 @@
 #     "a"   Starts at end of a file, if it exists, otherwise creates a new file
 #           for writing.
 
-# your code here
-
-def create_playlist(file_name)
+def create_playlist(file_name, mode, action)
   songs = Dir["songs/*.{mp3,m4a}"]
 
-  While File.exists?(file_name) == true
-    puts "WARNING: " + file_name.to_s + " already exists."
-    puts "(c)ancel, (o)verwrite, or (a)ppend"
-    answer = gets.chomp
-
-    if answer == "o"
-      File.open(file_name, "w") do |f|
-      f.puts songs.shuffle
-    elsif answer == "a"
-      File.open(file_name, "a") do |f|
+  File.open(file_name, mode) do |f|
     f.puts songs.shuffle
-    elsif answer == "c"
-      abort("Operation cancelled.")
-    else
-     puts "Please answer only (c)ancel, (o)verwrite, or (a)ppend"
-    end
   end
 
-  While File.exists?(file_name) == false
-    File.open(file_name, "w") do |f|
-    f.puts songs.shuffle
-
-
-  "=> Created #{file_name} with #{songs.size} songs"
+  "=> #{action} #{file_name} with #{songs.size} songs"
 end
 
-input = ARGV[0].to_s
-  if input == ""
-    abort("Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST")
-  else
-    if input.end_with?(".m3u") == false
-      input = input + ".m3u"
-    else
-    end
-  end
+input = ARGV[0]
 
+abort("Usage: 2_build_a_shuffled_playlist_extended.rb PLAYLIST") if input.nil?
+
+input += ".m3u" unless input.end_with?(".m3u")
 
 puts "=> Build a shuffled playlist"
-puts create_playlist(input)
+
+unless File.exists?(input)
+  puts create_playlist(input, "w", "Created")
+  exit
+end
+
+puts "=> WARNING: #{input} already exists"
+
+loop do
+  print "=> (c)ancel, (o)verwrite, or (a)ppend > "
+  answer = $stdin.gets.chomp.downcase
+
+  if answer == "o"
+    puts create_playlist(input, "w", "Overwrote")
+    exit
+  elsif answer == "a"
+    puts create_playlist(input, "a", "Appended")
+    exit
+  elsif answer == "c"
+    abort("=> Canceled")
+  else
+    puts "=> Please answer only (c)ancel, (o)verwrite, or (a)ppend"
+  end
+end
