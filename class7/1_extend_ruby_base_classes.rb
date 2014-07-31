@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 #
 # 4 points
 #
