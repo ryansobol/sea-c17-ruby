@@ -76,7 +76,7 @@ current_year = now.year
 current_month = now.month
 current_day = now.day
 
-current_year -= 1 if (current_month <= month && current_day < day)
+current_year -= 1 if (now.month <= month && now.day < day)
 bally = current_year - year
 
 bally.times {puts "CHEER!"}

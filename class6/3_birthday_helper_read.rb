@@ -46,13 +46,14 @@
 
 require 'yaml'
 
-name = ARGV.first.capitalize
+name = ARGV.first
 
 if name.nil?
   puts "Usage: 3_birthday_helper_read.rb NAME"
   exit
 end
 
+name = name.capitalize
 birthday_table = YAML::load File.read("birth_dates.yml")
 
 if birthday_table[name].nil?
