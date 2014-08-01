@@ -60,7 +60,7 @@ class OrangeTree
 
   def pick(amount = 1)
     return OrangeTree.new(@fruit - amount) if amount <= @fruit
-    return OrangeTree
+    OrangeTree
   end
 end
 
