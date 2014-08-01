@@ -109,7 +109,7 @@ class Person
   end
 
   def name
-    "#{name}-san"
+    "#{@name}-san"
   end
 
   def greet
@@ -127,7 +127,7 @@ class Person
   end
 
   def name
-    "#{name}-san"
+    "#{@name}-san"
   end
 
   def greet
@@ -150,7 +150,7 @@ class Person
   end
 
   def name
-    "#{name}-san"
+    "#{@name}-san"
   end
 
   def greet
@@ -168,7 +168,7 @@ class Person
   end
 
   def name
-    "#{name}-san"
+    "#{@name}-san"
   end
 
   def greet
@@ -217,7 +217,7 @@ end
 ```ruby
 # bad
 class Person
-  def new(name, age)
+  def initialize(name, age)
     @name = name
     @age = age
   end
@@ -234,7 +234,7 @@ person.update("Sierra", 27)  #=> true
 
 # good
 class Person
-  def new(name, age)
+  def initialize(name, age)
     @name = name
     @age = age
   end
@@ -251,7 +251,7 @@ class Person
 end
 
 person = Person.new("Sierra", 26)
-person.update("Sierra", 27)   #=> Person.new("Sierra", 27)
+sierra = person.update("Sierra", 27)   #=> Person.new("Sierra", 27)
 person.update!("Sierra", 27)  #=> true
 ```
 
