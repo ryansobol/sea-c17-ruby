@@ -61,9 +61,9 @@ class OrangeTree
      end
    end
 
-  # def ==(other)
-  #   return self.fruit == fruit
-  # end
+  def ==(other)
+    return self.fruit == fruit
+  end
 
 end
 
