@@ -64,7 +64,7 @@ class OrangeTree
   end
 end
 
-orange_tree = OrangeTree.new()
+orange_tree = OrangeTree.new
 
 puts orange_tree.fruit == 50
 puts orange_tree.pick == OrangeTree.new(49)
