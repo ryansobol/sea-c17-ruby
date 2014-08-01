@@ -33,7 +33,28 @@
 #     orange_tree.fruit     #=> 44
 
 class OrangeTree
-  # your code here
+  def initialize
+    @pick
+    @fruit = 50
+  end
+
+  def fruit
+    @fruit
+  end
+
+  def pick
+    @pick
+  end
+
+  def pick(value = 1)
+    @pick = value
+    #puts "Picking " + @pick.to_s + "from " + @fruit.to_s
+    if @fruit >= @pick
+      @fruit -= @pick
+    else
+      nil
+    end
+  end
 end
 
 orange_tree = OrangeTree.new
