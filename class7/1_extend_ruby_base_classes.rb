@@ -16,11 +16,11 @@
 #
 # The following methods must be fixed:
 #
-#   Integer#seconds_from_now → Time
+#   Integer#hours_in_seconds → Integer
 #
-#     Returns the current Time plus an Integer of seconds.
+#     Returns the number of hours converted to seconds.
 #
-#     10.seconds_from_now  #=> 2014-07-28 11:45:43 -0700
+#     10.hours_in_seconds  #=> 36000
 #
 #   String#indent(amount = 2) → String
 #
