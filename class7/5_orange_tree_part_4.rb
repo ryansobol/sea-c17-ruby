@@ -12,7 +12,7 @@
 #   true
 #   true
 #
-# Copy the previous OrangeTree class and replace the following method:
+# Copy the previous OrangeTree class and extend it with the following method:
 #
 #   OrangeTree#pick(amount = 1) → OrangeTree
 #
