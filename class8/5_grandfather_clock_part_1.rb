@@ -24,6 +24,14 @@
 
 # your code here
 
+def grandfather_clock(&block)
+  now = Time.new
+  hour = now.hour
+  hour = hour - 12 if hour > 12
+  puts "The hour is #{hour}"
+  hour.times {block.call}
+end
+
 grandfather_clock do
   puts "DONG!"
 end
