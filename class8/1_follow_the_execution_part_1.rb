@@ -15,9 +15,8 @@
 # Hint: Don't over think this one. The simpler the better.
 
 def follow_the_execution(&block)
-  # your code here
+  puts "Executing the method"
+  yield
 end
 
-follow_the_execution do
-  # your code here
-end
+follow_the_execution {puts "Executing the block"}
