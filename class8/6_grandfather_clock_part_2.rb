@@ -21,6 +21,14 @@
 
 # your code here
 
+def grandfather_clock(str, &block)
+  hour = Time.new.hour
+  puts "The hour is #{hour}"
+  hour.times do
+   block.call str
+  end
+end
+
 grandfather_clock("GONGGGGGGG!") do |sound|
   puts sound
 end

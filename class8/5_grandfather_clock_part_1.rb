@@ -24,6 +24,14 @@
 
 # your code here
 
+def grandfather_clock(&block)
+  hour = Time.new.hour
+  puts "The hour is #{hour}"
+  hour.times do
+   block.call
+  end
+end
+
 grandfather_clock do
   puts "DONG!"
 end
