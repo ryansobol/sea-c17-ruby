@@ -16,6 +16,17 @@
 #     OMG
 #     Life is too short
 
-# your code here
+
+class Array
+
+  def each_without_yolo(&block)
+
+    self.each do |object|
+      object = "Life is too short" if object == "YOLO" || object == "yolo"
+
+      block.call object
+    end
+  end
+end
 
 ["OMG", "YOLO", "ROTFL", "yolo", "FTW"].each_without_yolo { |e| puts e }
