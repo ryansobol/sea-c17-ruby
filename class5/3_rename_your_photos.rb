@@ -53,8 +53,12 @@ def copy_photos(source, target)
     new_name = "target/#{orig_name}" + "_" + "#{photo_size}" +".jpg"
     FileUtils.copy_file(f, new_name)
   end
-  puts "=> Copied #{photos.length} photos from #{source} to #{target}"
+  puts "=> Copied #{photos.length} photos from source to target"
 end
 
 input1, input2 = ARGV[0, 1]
+while ARGV[0].nil? || ARGV[1].nil?
+  abort("Usage: 3_rename_your_photos.rb SOURCE TARGET")
+end
+
 copy_photos(input1, input2)
