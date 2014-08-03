@@ -64,9 +64,7 @@ month = ARGV[1].to_i
 day = ARGV[2].to_i
 
 if year == 0 || month == 0 || day == 0
-  puts "Usage: 2_happy_birthday.rb YEAR MONTH DAY"
-
-  exit
+  abort "Usage: 2_happy_birthday.rb YEAR MONTH DAY"
 end
 
 input = Time.utc(year, month, day)
@@ -74,17 +72,15 @@ input = Time.utc(year, month, day)
 current = Time.new.utc
 
 if input.year <= current.year
-  if input.month <= current.month && input.day <= current.day
+  if input.month < current.month || (input.month < current.month && input.day <= current.day)
     diff = current.year - input.year
 
-    diff.to_i.times {puts "CHEER!"}
+    diff.times { puts "CHEER!" }
   else
-    diff2 = (current.year - input.year) - 1
+    diff2 = current.year - input.year - 1
 
-    diff2.to_i.times {puts "CHEER!"}
+    diff2.times { puts "CHEER!" }
   end
 else
-  puts "Please enter birthday in YEAR MONTH DAY format. Try again!"
-
-  exit
+  abort "Please enter birthday in YEAR MONTH DAY format. Try again!"
 end
