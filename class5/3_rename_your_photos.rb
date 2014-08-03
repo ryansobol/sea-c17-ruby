@@ -45,4 +45,16 @@
 
 require "fileutils"
 
-# your code here
+def copy_photos(source, target)
+  photos = Dir["#{source}/*.{jpg}"]
+  photos.each do |f|
+    orig_name = File.basename(f, ".jpg")
+    photo_size = File.size(f)
+    new_name = "target/#{orig_name}" + "_" + "#{photo_size}" +".jpg"
+    FileUtils.copy_file(f, new_name)
+  end
+  puts "=> Copied #{photos.length} photos from #{source} to #{target}"
+end
+
+input1, input2 = ARGV[0, 1]
+copy_photos(input1, input2)
