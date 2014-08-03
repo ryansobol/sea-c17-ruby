@@ -47,40 +47,22 @@
 require 'yaml'
 
 name = ARGV.first
-cap_name = name.capitalize
 
-if name.nil?
- puts "Usage: 3_birthday_helper_read.rb NAME"
- exit
-end
+abort "Usage: 3_birthday_helper_read.rb NAME" unless name
 
-birth_dates_hash = {}
+birth_dates = YAML.load(File.read('birth_dates.yml'))
 
-birth_dates_string = File.read("birth_dates.yml")
+name = name.capitalize
+bd = birth_dates[name]
 
-birth_dates_hash = YAML.load(birth_dates_string)
+abort "Unknown birth date for '#{name}'" unless bd
 
-birth_dates_hash.each do |person, date|
-  current = Time.new.utc
+now = Time.new.utc
+year = now.year
 
-  if cap_name == person
+year += 1 if now.month > bd.month || (now.month == bd.month && now.day > bd.day)
 
-    if current.month >= date.month && current.day >= date.day
-      name_year = current.year + 1
-    else
-      name_year = current.year
-    end
+age = year - bd.year
+nbd = Time.utc(year, bd.month, bd.day)
 
-    age = name_year - date.year
-
-    set_date = Time.utc(name_year, date.month, date.day)
-
-    puts "#{cap_name} will be #{age} on #{set_date.strftime("%F")}"
-    exit
-  end
-
-  unless birth_dates_hash.has_value?(date)
-    puts "Unknown birth date for '#{cap_name}'"
-    exit
-  end
-end
+puts "#{name} will be #{age} on #{nbd.strftime("%F")}"

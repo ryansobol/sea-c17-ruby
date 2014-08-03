@@ -48,49 +48,18 @@ year = ARGV[1].to_i
 month = ARGV[2].to_i
 day = ARGV[3].to_i
 
-if name.nil? || year == 0 || month == 0 || day == 0
-  puts "Usage: 4_birthday_helper_write.rb NAME YEAR MONTH DAY"
-  exit
+unless name && year && month && day
+  abort "Usage: 4_birthday_helper_write.rb NAME YEAR MONTH DAY"
 end
 
-cap_name = name.capitalize
+name = name.capitalize
 
-new_time = Time.utc(year, month, day)
+birth_dates = YAML.load(File.read('birth_dates.yml'))
 
-birth_dates_hash = {}
-
-birth_dates_string = File.read("birth_dates.yml")
-
-birth_dates_hash = YAML.load(birth_dates_string)
-
-birth_dates_hash.each do |person, date|
-  #the name is already in file
-  if cap_name == person
-
-    #save new time to name
-    birth_dates_hash[person] = new_time
-    puts "Successfully Changed..."
-
-    new_birth_dates_string = birth_dates_hash.to_yaml
-
-    File.open("birth_dates.yml", "w") do |file|
-      file.write new_birth_dates_string
-      puts "Birthday #{new_time} saved for #{cap_name}"
-    end
-    exit
-  end
-end
-
-#name is not in file so create new name and time
-if birth_dates_hash.has_key?(cap_name) == false
-  birth_dates_hash[cap_name] = new_time
-end
-
-new_birth_dates_string = birth_dates_hash.to_yaml
+birth_dates[name] = Time.utc(year, month, day)
 
 File.open("birth_dates.yml", "w") do |file|
-  file.write new_birth_dates_string
-
-  puts "Person Added..."
-  puts "Birthday #{new_time} saved for #{cap_name}"
+  file.write YAML.dump(birth_dates)
 end
+
+puts "Birthday #{birth_dates[name]} saved for #{name}"

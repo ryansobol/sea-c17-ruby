@@ -67,20 +67,11 @@ if year == 0 || month == 0 || day == 0
   abort "Usage: 2_happy_birthday.rb YEAR MONTH DAY"
 end
 
-input = Time.utc(year, month, day)
+puts "The birth date is #{Time.utc(year, month, day)}"
 
-current = Time.new.utc
+now = Time.new.utc
+age = now.year - year
 
-if input.year <= current.year
-  if input.month < current.month || (input.month < current.month && input.day <= current.day)
-    diff = current.year - input.year
+age -= 1 if now.month < month || (now.month == month && now.day < day)
 
-    diff.times { puts "CHEER!" }
-  else
-    diff2 = current.year - input.year - 1
-
-    diff2.times { puts "CHEER!" }
-  end
-else
-  abort "Please enter birthday in YEAR MONTH DAY format. Try again!"
-end
+age.times { puts "CHEER!" }

@@ -89,48 +89,42 @@
 
 def arabic_number(num)
   romans_to_arabics = {
-    "M" => 1000,
+    "M"  => 1000,
     "CM" => 900,
-    "D" => 500,
+    "D"  => 500,
     "CD" => 400,
-    "C" => 100,
+    "C"  => 100,
     "XC" => 90,
-    "L" => 50,
+    "L"  => 50,
     "XL" => 40,
-    "X" => 10,
+    "X"  => 10,
     "IX" => 9,
-    "V" => 5,
+    "V"  => 5,
     "IV" => 4,
-    "I" => 1,}
+    "I"  => 1
+  }
 
-    num = num.upcase
+  num = num.upcase
 
-    final_answer = 0
+  final_answer = 0
 
-    count = 0
+  # iterate over romans to arabics hash
+  # if computer recognizes letter(key), add number value to final answer
 
-    # iterate over romans to arabics hash
-    # if computer recognizes letter(key), add number value to final answer
+  romans_to_arabics.each do |key, value|
+    # loop checks each beginning letter of input string, changing string after
+    # its finished with that letter.
+    while !num.empty? && num.start_with?(key)
+      num = num[key.length, num.length]
 
-    romans_to_arabics.each do |key, value|
-      # loop checks each beginning letter of input string, changing string after
-      # its finished with that letter.
-      while num.empty? == false && num.start_with?(key)
-        num = num[key.length, num.length]
-
-        final_answer += value
-
-        count += 1
-
-        break if num.empty?
-
-      end
+      final_answer += value
     end
+  end
 
-    # the input should be empty at this point. If not, it wasn't a roman num
-    abort "Invalid roman numeral" if num.length > 0
+  # the input should be empty at this point. If not, it wasn't a roman num
+  abort "Invalid roman numeral" if num.length > 0
 
-    final_answer
+  final_answer
 end
 
 class String
@@ -141,9 +135,6 @@ end
 
 input = ARGV.first
 
-if input.nil?
-  puts "Usage: 5_arabic_numbers.rb ROMAN_NUMERAL"
-  exit
-end
+abort "Usage: 5_arabic_numbers.rb ROMAN_NUMERAL" if input.nil?
 
 puts arabic_number(input)
