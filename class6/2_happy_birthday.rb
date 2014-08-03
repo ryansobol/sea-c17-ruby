@@ -68,4 +68,11 @@ if year == 0 || month == 0 || day == 0
   exit
 end
 
-# your code here
+birthday = Time.utc(year, month, day)
+current_time = Time.new
+age = (current_time.utc - birthday) / (60 * 60 * 24 * 365)
+
+puts "The birth date is #{birthday}"
+age.to_i.times do
+  puts "CHEER!"
+end
