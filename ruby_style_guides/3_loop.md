@@ -1,4 +1,4 @@
-## Loop Guidelines
+## Looping Guidelines
 
 #### Favor modifier usage of `while/until` when you have a single-line body
 

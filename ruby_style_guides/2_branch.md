@@ -1,4 +1,4 @@
-## Condition Guidelines
+## Branching Guidelines
 
 #### Use `!` instead of `not`
 
