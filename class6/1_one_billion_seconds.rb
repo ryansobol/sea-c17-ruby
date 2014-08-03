@@ -53,7 +53,7 @@
 #     reverts to standard time on the first Sunday in November.
 
 birthday = Time.new(1974, 6, 19, 0, 0, 0, "-07:00")
-birthday_billion = birthday + 1000000000
+birthday_billion = birthday + 1_000_000_000
 
 puts "I was born on #{birthday}"
 puts "And I turn one billion seconds old on #{birthday_billion}"

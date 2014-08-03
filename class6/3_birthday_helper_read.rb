@@ -45,36 +45,24 @@
 #     Time.new.utc.strftime("%F")   #=> "2014-07-23"
 
 require 'yaml'
-require "pp"
 
 name = ARGV.first
 
-if name.nil?
-  puts "Usage: 3_birthday_helper_read.rb NAME"
-  exit
-end
+abort "Usage: 3_birthday_helper_read.rb NAME" unless name
 
-def b_day(name)
-  name = name.capitalize
-  new_hash = {}
-  read = File.read("birth_dates.yml")
-  new_hash = YAML.load(read)
-  new_hash.each do |n, d|
-    if n == name
-      t = Time.new.utc
-      d = d.utc
-      b_day = Time.gm(d.year, d.month, d.day)
-      age = t.year - d.year
-      #puts age
-      if t.month > d.month || t.month == d.month && t.day > d.day
-        age += 1
-      end
-      puts "#{n} will be #{age} on #{t.year}-#{d.month}-#{d.day} "
-      exit
-    else
-      puts "Unknown birth date for '#{name}'"
-    end
-  end
-end
+birth_dates = YAML.load(File.read('birth_dates.yml'))
 
-b_day(name)
+name = name.capitalize
+bd = birth_dates[name]
+
+abort "Unknown birth date for '#{name}'" unless bd
+
+now = Time.new.utc
+year = now.year
+
+year += 1 if now.month > bd.month || (now.month == bd.month && now.day > bd.day)
+
+age = year - bd.year
+nbd = Time.utc(year, bd.month, bd.day)
+
+puts "#{name} will be #{age} on #{nbd.strftime("%F")}"
