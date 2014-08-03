@@ -53,10 +53,10 @@
 #     reverts to standard time on the first Sunday in November.
 
 
-  birth = Time.new(1991, 6, 26, 20, 11, 0, "-05:00")
+birth = Time.new(1991, 6, 26, 20, 11, 0, "-05:00")
 
-  billion_sec = birth + 1_000_000_000
+billion_sec = birth + 1_000_000_000
 
-  puts "I was born on #{birth}"
+puts "I was born on #{birth}"
 
-  puts "And I turn one billion seconds old on #{billion_sec}"
+puts "And I turn one billion seconds old on #{billion_sec}"
