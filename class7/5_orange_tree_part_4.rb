@@ -51,14 +51,13 @@ class OrangeTree
     amount > @fruit ? nil : @fruit -= amount
   end
 
-  def ==(othertree)
-    self.fruit == othertree.fruit ? true : false
+  def ==(other)
+    fruit == other.fruit
   end
 
   def pick(amount = 1)
     amount > @fruit ? self : OrangeTree.new(@fruit - amount)
   end
-
 end
 
 orange_tree = OrangeTree.new
