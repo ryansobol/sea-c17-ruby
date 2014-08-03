@@ -36,32 +36,30 @@
 #   VIIII
 
 def old_school_roman_numeral(num)
-  values = [1000, 500, 100, 50, 10, 5, 1]
+  arabics_to_romans = [
+    [1000, "M"],
+    [500, "D"],
+    [100, "C"],
+    [50, "L"],
+    [10, "X"],
+    [5, "V"],
+    [1, "I"]
+  ]
 
-  m_remainder = num % values[0]
-  d_remainder = num % values[1]
-  c_remainder = num % values[2]
-  l_remainder = num % values[3]
-  x_remainder = num % values[4]
-  v_remainder = num % values[5]
+  answer = []
 
-  m_number = num / values[0]
-  d_number = m_remainder / values[1]
-  c_number = d_remainder / values[2]
-  l_number = c_remainder / values[3]
-  x_number = l_remainder / values[4]
-  v_number = x_remainder / values[5]
-  i_number = v_remainder / values[6]
+  arabics_to_romans.each do |arabic_to_roman|
+    arabic = arabic_to_roman.first
+    roman = arabic_to_roman.last
 
-  m = "M" * m_number
-  d = "D" * d_number
-  c = "C" * c_number
-  l = "L" * l_number
-  x = "X" * x_number
-  v = "V" * v_number
-  i = "I" * i_number
+    quotient = num / arabic
+    next if quotient == 0
 
-  puts m + d + c + l + x + v + i
+    answer.push(roman * quotient)
+    num %= arabic
+  end
+
+  answer.join
 end
 
 input = ARGV[0].to_i
@@ -72,4 +70,3 @@ if input <= 0 || input > 3000
 end
 
 puts old_school_roman_numeral(input)
-
