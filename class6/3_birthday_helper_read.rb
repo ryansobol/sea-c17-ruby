@@ -46,38 +46,23 @@
 
 require 'yaml'
 
-def b_day(name)
-  name = name.capitalize
-  read = Hash.new
-  read = File.read('birth_dates.yml')
-  data = YAML.load(read)
-  if data.has_key?(name)
-    data.each do |n, d|
-      if n == name
-        cur = Time.new
-        date = cur.year - d.year + 1
-        if cur.month < d.month
-        date -= 1
-        elsif cur.month == d.month
-          if cur.day > d.day
-          date -= 1
-          end
-        end
-        d += 60*60*24*365
-        puts "#{name} will be #{date} on #{d.utc.strftime("%F")}"
-        end
-      end
-  else
-    puts "Unknown birth date for #{name}"
-    exit
-  end
-end
-
 name = ARGV.first
 
-if name.nil?
-  puts "Usage: 3_birthday_helper_read.rb NAME"
-  exit
-end
+abort "Usage: 3_birthday_helper_read.rb NAME" unless name
 
-b_day(name)
+birth_dates = YAML.load(File.read('birth_dates.yml'))
+
+name = name.capitalize
+bd = birth_dates[name]
+
+abort "Unknown birth date for '#{name}'" unless bd
+
+now = Time.new.utc
+year = now.year
+
+year += 1 if now.month > bd.month || (now.month == bd.month && now.day > bd.day)
+
+age = year - bd.year
+nbd = Time.utc(year, bd.month, bd.day)
+
+puts "#{name} will be #{age} on #{nbd.strftime("%F")}"

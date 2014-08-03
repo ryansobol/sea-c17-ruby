@@ -54,5 +54,5 @@
 
 birth_date = Time.new(1992, 5, 9, 7, 11, 0, "-08:00")
 puts "\nI was born on #{birth_date}\n\n"
-bill = birth_date + 1000000000
+bill = birth_date + 1_000_000_000
 puts "And I turn one billion seconds old on #{bill}\n\n"

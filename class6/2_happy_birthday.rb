@@ -64,14 +64,12 @@ def cheer(date)
   cur = Time.new
   puts "The current date is #{cur}"
   b_day = cur.year - date.year
-    if cur.month < date.month #not bday yet
+
+  if cur.month < date.month || (cur.month == date.month && cur.day > date.day)
     b_day -= 1
-    elsif cur.month == date.month #it is bday month
-      if cur.day > date.day #not date yet in month
-      b_day -= 1
-    end
-    end
-    b_day.times do puts "CHEER!" end
+  end
+
+  b_day.times { puts "CHEER!" }
 end
 
 year = ARGV[0].to_i
@@ -79,9 +77,8 @@ month = ARGV[1].to_i
 day = ARGV[2].to_i
 
 if year == 0 || month == 0 || day == 0
-  puts "Usage: 2_happy_birthday.rb YEAR MONTH DAY"
-  exit
+  abort "Usage: 2_happy_birthday.rb YEAR MONTH DAY"
 end
 
-date = Time.utc(year,month,day)
+date = Time.utc(year, month, day)
 cheer(date)
