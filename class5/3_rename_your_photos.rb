@@ -46,19 +46,20 @@
 require "fileutils"
 
 def copy_photos(source, target)
-  photos = Dir["#{source}/*.{jpg}"]
-  photos.each do |f|
-    orig_name = File.basename(f, ".jpg")
-    photo_size = File.size(f)
-    new_name = "target/#{orig_name}" + "_" + "#{photo_size}" +".jpg"
-    FileUtils.copy_file(f, new_name)
+  photos = Dir["#{source}/*.jpg"]
+
+  photos.each do |photo|
+    orig_name = File.basename(photo, ".jpg")
+    photo_size = File.size(photo)
+    new_name = "target/#{orig_name}_#{photo_size}.jpg"
+    FileUtils.copy_file(photo, new_name)
   end
+
   puts "=> Copied #{photos.length} photos from source to target"
 end
 
 input1, input2 = ARGV[0, 1]
-while ARGV[0].nil? || ARGV[1].nil?
-  abort("Usage: 3_rename_your_photos.rb SOURCE TARGET")
-end
+
+abort("Usage: 3_rename_your_photos.rb SOURCE TARGET") unless ARGV[0] && ARGV[1]
 
 copy_photos(input1, input2)
