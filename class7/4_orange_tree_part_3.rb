@@ -32,7 +32,22 @@
 #     OrangeTree.new(20) != OrangeTree.new(10)
 
 class OrangeTree
-  # your code here
+  def initialize(fruit = 50)
+    @fruit = fruit
+  end
+  def fruit
+    @fruit
+  end
+  def pick!(amount = 1)
+    if @fruit >= amount
+      @fruit -= amount
+    else
+      return nil
+    end
+  end
+  def ==(other)
+    @fruit == other
+  end
 end
 
 puts OrangeTree.new == OrangeTree.new(50)
