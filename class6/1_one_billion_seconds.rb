@@ -53,5 +53,5 @@
 #     reverts to standard time on the first Sunday in November.
 
 time = Time.new(1995, 1, 4, 0, 0, 0, "-05:00")
-puts time += 1000000000
-
+puts "I was born on #{time}"
+puts "And I turn one billion seconds old on #{time + 1_000_000_000}"

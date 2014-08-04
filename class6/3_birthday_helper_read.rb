@@ -49,12 +49,14 @@ require 'yaml'
 name = ARGV.first
 
 if name.nil?
-  puts "Usage: 3_birthday_helper_read.rb NAME"
-  exit
+  abort "Usage: 3_birthday_helper_read.rb NAME"
 end
 
 name = name.capitalize
 birth_dates = YAML.load(File.read("birth_dates.yml"))
+
+abort "Unknown birth date for '#{name}'" unless birth_dates[name]
+
 current_time = Time.new.utc
 age_next_birthday = current_time.year - birth_dates[name].year
 

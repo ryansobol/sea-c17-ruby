@@ -64,8 +64,7 @@ month = ARGV[1].to_i
 day = ARGV[2].to_i
 
 if year == 0 || month == 0 || day == 0
-  puts "Usage: 2_happy_birthday.rb YEAR MONTH DAY"
-  exit
+  abort "Usage: 2_happy_birthday.rb YEAR MONTH DAY"
 end
 
 birthday = Time.utc(year, month, day)
@@ -74,10 +73,10 @@ current_time = current_time.utc
 
 cheers = current_time.year - birthday.year
 
-if birthday.month == current_time.month
-  cheers -= 1 if birthday.day >= current_time.day
+if birthday.month == current_time.month && birthday.day >= current_time.day
+  cheers -= 1
 elsif birthday.month > current_time.month
   cheers -= 1
 end
 
-age.year.times { puts "CHEER!\n"}
+cheers.times { puts "CHEER!" }
