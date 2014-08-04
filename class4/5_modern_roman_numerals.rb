@@ -23,7 +23,36 @@
 #   IX
 
 def modern_roman_numeral(num)
-  # your solution here
+arabics_to_romans = [
+    [1000, "M"],
+    [900, "DM"],
+    [500, "D"],
+    [400, "CD"],
+    [100, "C"],
+    [90, "XC"],
+    [50, "L"],
+    [40, "XL"],
+    [10, "X"],
+    [9, "IX"],
+    [5, "V"],
+    [4, "IV"],
+    [1, "I"]
+  ]
+
+  answer = []
+
+  arabics_to_romans.each do |arabic_to_roman|
+    arabic = arabic_to_roman.first
+    roman = arabic_to_roman.last
+
+    quotient = num / arabic
+    next if quotient == 0
+
+    answer.push(roman * quotient)
+    num %= arabic
+  end
+
+  answer.join
 end
 
 input = ARGV[0].to_i
