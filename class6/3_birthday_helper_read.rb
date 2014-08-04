@@ -46,11 +46,31 @@
 
 require 'yaml'
 
-name = ARGV.first
+name = ARGV.first.capitalize
 
 if name.nil?
   puts "Usage: 3_birthday_helper_read.rb NAME"
   exit
 end
 
-# your code here
+name_list = "birth_dates.yml"
+list = File.read("birth_dates.yml")
+yread = YAML.load(list)
+birthdate = yread["#{name}"]
+
+abort("Unknown birth date for '#{name}'") if birthdate.nil?
+
+bdate_s = Time.new.utc.strftime("#{birthdate}")
+birthday = Time.utc(2014,bdate_s[5,2],bdate_s[8,2])
+today = Time.new.utc
+
+if birthday < today
+  next_birthday = Time.utc(2015,bdate_s[5,2],bdate_s[8,2])
+  age = (next_birthday - birthdate)/(60*60*24*365)
+  age = age.to_i
+  puts name + " will be #{age} on " + next_birthday.strftime("%F")
+else
+  age = (birthday - birthdate)/(60*60*24*365)
+  age = age.to_i
+  puts name + " will be #{age} on " + birthday.strftime("%F")
+end
