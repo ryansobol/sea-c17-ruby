@@ -36,15 +36,14 @@ class OrangeTree
   def initialize
     @fruit = 50
   end
+
   def fruit
     @fruit
   end
+
   def pick!(amount = 1)
-    if @fruit < amount
-      nil
-    else
-      @fruit -= amount
-    end
+    return nil if fruit < amount
+    @fruit -= amount
   end
 end
 

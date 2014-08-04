@@ -24,6 +24,7 @@ class OrangeTree
   def initialize
     @fruit = 50
   end
+  
   def fruit
     @fruit
   end

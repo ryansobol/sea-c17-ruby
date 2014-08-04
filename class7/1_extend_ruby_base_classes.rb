@@ -57,8 +57,7 @@
 
 class Integer
   def hours_in_seconds
-    ret = self * 60 * 60
-    ret
+    self * 60 * 60
   end
 end
 
@@ -66,9 +65,7 @@ puts 10.hours_in_seconds == 36000
 
 class String
   def indent(amount = 2)
-    ret = self
-    amount.times {ret = " " + ret}
-    ret
+    " " * amount + self
   end
 end
 
@@ -77,22 +74,34 @@ puts "foo".indent(3) == "   foo"
 
 class Integer
   def to_roman
+    arabics_to_romans = {
+      1000 => "M",
+      900  => "CM",
+      500  => "D",
+      400  => "CD",
+      100  => "C",
+      90   => "XC",
+      50   => "L",
+      40   => "XL",
+      10   => "X",
+      9    => "IX",
+      5    => "V",
+      4    => "IV",
+      1    => "I"
+    }
+
     num = self
-    roman_numeral = "" #values will be appended
-    numerals = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX",
-                "V", "IV", "I"]
-    arabic =   [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    answer = []
 
-    i = 0 #iterate through the arrays
+    arabics_to_romans.each do |arabic, roman|
+      quotient = num / arabic
+      next if quotient == 0
 
-    while i <= 12 #while within the array length
-      while num >= arabic[i]
-        num -= arabic[i] # remove the val
-        roman_numeral += numerals[i] # assign the rom
-      end
-      i += 1 # increment
+      answer.push(roman * quotient)
+      num %= arabic
     end
-    roman_numeral # return the rom to terminal
+
+    answer.join
   end
 end
 

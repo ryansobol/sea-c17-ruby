@@ -42,29 +42,23 @@ class OrangeTree
   def initialize(fruit = 50)
     @fruit = fruit
   end
+
   def fruit
     @fruit
   end
+
   def pick!(amount = 1)
-    if @fruit < amount
-      nil
-    else
-      @fruit -= amount
-    end
+    return nil if fruit < amount
+    @fruit -= amount
   end
+
   def ==(other)
-    if other.fruit == self.fruit
-      true
-    else
-      false
-    end
+    other.fruit == fruit
   end
+
   def pick(amount = 1)
-    if @fruit < amount
-      self
-    else
-      OrangeTree.new(@fruit - amount)
-    end
+    return self if fruit < amount
+    OrangeTree.new(@fruit - amount)
   end
 end
 
