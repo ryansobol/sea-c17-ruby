@@ -48,18 +48,16 @@ class OrangeTree
   end
 
   def pick!(amount = 1)
-    return nil if amount > @fruit
+    return nil if amount > fruit
     @fruit -= amount
-    @fruit
   end
 
   def ==(other)
-    return true if @fruit == other.fruit
-    false
+    fruit == other.fruit
   end
 
   def pick(amount = 1)
-    return OrangeTree.new(@fruit - amount) if amount <= @fruit
+    return OrangeTree.new(fruit - amount) if amount <= fruit
     self
   end
 end

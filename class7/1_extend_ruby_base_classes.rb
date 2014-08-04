@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 #
 # 4 points
 #
@@ -64,8 +65,7 @@ puts 10.hours_in_seconds == 36000
 
 class String
   def indent(amount = 2)
-    amount.times { self.prepend(" ") }
-    self
+    " " * amount + self
   end
 end
 
@@ -74,14 +74,14 @@ puts "foo".indent(3) == "   foo"
 
 class Integer
   def to_roman
-   numerals = [
-    ["M", 1000],
-    ["D", 500],
-    ["C", 100],
-    ["L", 50],
-    ["X", 10],
-    ["V", 5],
-    ["I", 1]
+    numerals = [
+      ["M", 1000],
+      ["D", 500],
+      ["C", 100],
+      ["L", 50],
+      ["X", 10],
+      ["V", 5],
+      ["I", 1]
     ]
 
     num = self
@@ -99,7 +99,8 @@ class Integer
         num -=  numerals[i][1] * (num / numerals[i][1])
       end
     end
-  output
+
+    output
   end
 end
 
