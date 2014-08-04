@@ -48,41 +48,21 @@ require 'yaml'
 
 name = ARGV.first
 
-if name.nil?
-  puts "Usage: 3_birthday_helper_read.rb NAME"
-  exit
-end
+abort "Usage: 3_birthday_helper_read.rb NAME" unless name
+
+birth_dates = YAML.load(File.read('birth_dates.yml'))
 
 name = name.capitalize
-birthday_table = YAML::load File.read("birth_dates.yml")
+bd = birth_dates[name]
 
-if birthday_table[name].nil?
-  puts "Unknown birth date for '#{name}'"
-  exit
-end
+abort "Unknown birth date for '#{name}'" unless bd
 
-birth = birthday_table[name]
-present = Time.new.utc
+now = Time.new.utc
+year = now.year
 
-b_year  = birth.year
-b_month = birth.month
-  if b_month <10
-    b_month = "0#{b_month}".to_i
-  end
-b_day   = birth.day
-p_year  = present.year
-p_month = present.month
-p_day   = present.day
+year += 1 if now.month > bd.month || (now.month == bd.month && now.day > bd.day)
 
-if (p_month >= b_month && p_day >= b_day)
-   last_birthday = p_year
-   next_birthday = p_year + 1
- else
-  last_birthday = p_year - 1
-  next_birthday = p_year
-end
-age = last_birthday - b_year
-n_bday_to_time = Time.utc(next_birthday, b_month, b_day, 00, 00).strftime("%F")
+age = year - bd.year
+nbd = Time.utc(year, bd.month, bd.day)
 
-puts "#{name} will be #{age + 1} on #{n_bday_to_time}"
-puts
+puts "#{name} will be #{age} on #{nbd.strftime("%F")}"

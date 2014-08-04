@@ -88,7 +88,7 @@
 #     "a".empty?  #=> false
 
 def arabic_number(num)
-  base = {
+  roman_to_arabic = {
     "M"  => 1000,
     "CM" => 900,
     "D"  => 500,
@@ -104,37 +104,33 @@ def arabic_number(num)
     "I"  => 1
   }
 
-total = 0
-length = num.length
-position = 0
+  original = num
+  num = num.upcase
+  result = 0
 
-  while position < length
-    bally = num[position, 2]
-    cyrk  = num[position]
-    base.each do |key, value|
-      if bally == key
-        total += value
-        position += 2
-        break
-      elsif cyrk == key
-        total += value
-        position += 1
-        break
-      else
-        position += 1
-      end
-    end
+  roman_to_arabic.each do |roman, arabic|
+    prefix = num.cut(roman)
+    next if prefix.empty?
+
+    result += arabic * prefix.size / roman.size
+
+    num = num[prefix.size..-1]
+    break if num.empty?
   end
-    puts total
+
+  abort "Invalid roman numeral '#{original}'" unless num.empty?
+
+  result
+end
+
+class String
+  def cut(str)
+    slice(/^(#{str})*/)
+  end
 end
 
 input = ARGV.first
 
-if input.nil?
-  puts "Usage: 5_arabic_numbers.rb ROMAN_NUMERAL"
-  exit
-else
-  input = input.upcase
-end
+abort "Usage: 4_arabic_numbers.rb ROMAN_NUMERAL" unless input
 
-arabic_number(input)
+puts arabic_number(input)
