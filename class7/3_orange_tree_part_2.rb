@@ -34,7 +34,6 @@
 
 class OrangeTree
   def initialize
-    @pick
     @fruit = 50
   end
 
@@ -42,18 +41,9 @@ class OrangeTree
     @fruit
   end
 
-  def pick
-    @pick
-  end
-
-  def pick(value = 1)
-    @pick = value
-    #puts "Picking " + @pick.to_s + "from " + @fruit.to_s
-    if @fruit >= @pick
-      @fruit -= @pick
-    else
-      nil
-    end
+  def pick(amount = 1)
+    return nil if fruit < amount
+    @fruit -= amount
   end
 end
 

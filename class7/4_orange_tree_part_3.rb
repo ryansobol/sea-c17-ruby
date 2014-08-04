@@ -40,10 +40,14 @@ class OrangeTree
     @fruit
   end
 
-  def ==(other)
-    return self.fruit == other.fruit
+  def pick(amount = 1)
+    return nil if fruit < amount
+    @fruit -= amount
   end
 
+  def ==(other)
+    fruit == other.fruit
+  end
 end
 
 puts OrangeTree.new == OrangeTree.new(50)
