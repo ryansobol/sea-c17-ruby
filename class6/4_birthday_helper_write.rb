@@ -49,37 +49,30 @@ month = ARGV[2].to_i
 day = ARGV[3].to_i
 
 if name.nil? || year == 0 || month == 0 || day == 0
-  puts "Usage: 4_birthday_helper_write.rb NAME YEAR MONTH DAY"
-  exit
+  abort "Usage: 4_birthday_helper_write.rb NAME YEAR MONTH DAY"
 end
 
 name = name.capitalize
-birthday_table = YAML::load File.read("birth_dates.yml")
+birthday_table = YAML.load(File.read("birth_dates.yml"))
 
-def birthdays(year, month, day)
-  Time.utc(year, month, day, 00, 00)
-end
+if birthday_table[name]
+  loop do
+    puts "=> WARNING:'#{name}' already exists in table."
+    puts "#{name} => #{birthday_table[name]}"
+    print "=> (c)ancel, or (o)verwrite > "
 
-unless birthday_table[name].nil?
-  while true
-  puts "=> WARNING:'#{name}' already exists in table."
-  puts "#{name} => #{birthday_table[name]}"
-  print "=> (c)ancel, or (o)verwrite > "
-  command = $stdin.gets.chomp.downcase
+    command = $stdin.gets.chomp.downcase
 
     if command == "c"
       puts "=> Canceled"
-      puts
       exit
     end
 
-    if command == "o"
-    break
-    end
+    break if command == "o"
   end
 end
 
-birthday_table[name] = birthdays(year, month, day)
+birthday_table[name] = Time.utc(year, month, day)
 puts "Birthday #{birthday_table[name]} saved for #{name}"
 
 birthday_string = birthday_table.to_yaml
