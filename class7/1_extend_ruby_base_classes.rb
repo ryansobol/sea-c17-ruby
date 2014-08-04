@@ -65,7 +65,7 @@ puts 10.hours_in_seconds == 36000
 
 class String
   def indent(amount = 2)
-    (" " * amount) + self
+    " " * amount + self
   end
 end
 
