@@ -74,39 +74,36 @@ puts "foo".indent(3) == "   foo"
 
 class Integer
   def to_roman
+    num = self
 
-    def modern_roman_numeral(num)
-      arabics_to_romans = [
-        [1000, "M"],
-        [900, "CM"],
-        [500, "D"],
-        [400, "CD"],
-        [100, "C"],
-        [90, "XC"],
-        [50, "L"],
-        [40, "XL"],
-        [10, "X"],
-        [9, "IX"],
-        [5, "V"],
-        [4, "IV"],
-        [1, "I"]
-      ]
+    arabics_to_romans = [
+      [1000, "M"],
+      [900, "CM"],
+      [500, "D"],
+      [400, "CD"],
+      [100, "C"],
+      [90, "XC"],
+      [50, "L"],
+      [40, "XL"],
+      [10, "X"],
+      [9, "IX"],
+      [5, "V"],
+      [4, "IV"],
+      [1, "I"]
+    ]
 
-      result = []
+    result = []
 
-      arabics_to_romans.each do |arabic_to_roman|
-        arabic, roman = arabic_to_roman
+    arabics_to_romans.each do |arabic_to_roman|
+      arabic, roman = arabic_to_roman
 
-        while num >= arabic
-          result.push(roman)
-          num -= arabic
-        end
+      while num >= arabic
+        result.push(roman)
+        num -= arabic
       end
-
-      result.join
     end
 
-    modern_roman_numeral(self)
+    result.join
   end
 end
 
