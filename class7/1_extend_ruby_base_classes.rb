@@ -65,12 +65,7 @@ puts 10.hours_in_seconds == 36000
 
 class String
   def indent(amount = 2)
-    final_word = ''
-    amount.times do |n|
-      final_word << ' '
-    end
-    final_word << self.to_s
-    final_word
+    " " * amount + self
   end
 end
 
@@ -80,32 +75,36 @@ puts "foo".indent(3) == "   foo"
 class Integer
   def to_roman
     arabics_to_romans = [
-    [1000, "M"],
-    [900, "CM"],
-    [500, "D"],
-    [400, "CD"],
-    [100, "C"],
-    [90, "XC"],
-    [50, "L"],
-    [40, "XL"],
-    [10, "X"],
-    [9, "IX"],
-    [5, "V"],
-    [4, "IV"],
-    [1, "I"]
+      [1000, "M"],
+      [900, "CM"],
+      [500, "D"],
+      [400, "CD"],
+      [100, "C"],
+      [90, "XC"],
+      [50, "L"],
+      [40, "XL"],
+      [10, "X"],
+      [9, "IX"],
+      [5, "V"],
+      [4, "IV"],
+      [1, "I"]
     ]
 
+    num = self
     answer = []
 
     arabics_to_romans.each do |arabic_to_roman|
       arabic = arabic_to_roman.first
       roman = arabic_to_roman.last
-    num = self
-    quotient = num / arabic
-    next if quotient == 0
-    answer.push(roman * quotient)
-    num %= arabic
+
+      quotient = num / arabic
+      next if quotient == 0
+
+      answer.push(roman * quotient)
+      num %= arabic
     end
+
+    answer.join
   end
 end
 
