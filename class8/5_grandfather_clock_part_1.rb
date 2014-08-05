@@ -22,7 +22,11 @@
 # Integer between 0 and 23. You'll have to alter the return value to ensure
 # the program uses a number that appears on a clock-face. (i.e. 1 to 12)
 
-# your code here
+def grandfather_clock &block
+  hour = (Time.new.hour + 11) % 12 + 1
+  puts "The hour is #{hour}"
+  hour.times(&block)
+end
 
 grandfather_clock do
   puts "DONG!"
