@@ -17,15 +17,11 @@
 #     Life is too short
 
 class Array
-
   def each_without_yolo(&block)
-    self.each do |x|
-      x = x.upcase
-      if x == "YOLO"
-        puts "Life is too short"
-      else
-        block.call(x)
-      end
+    each do |element|
+      element = "Life is too short" if element.upcase == "YOLO"
+
+      block.call(element)
     end
   end
 end

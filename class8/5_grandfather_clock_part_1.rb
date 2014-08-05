@@ -25,13 +25,13 @@
 def grandfather_clock(&block)
   now = Time.new.hour
   now -= 12 if now > 12
+  now = 12 if now == 0
+
   puts "The hour is #{now}"
 
-  now.times do block.call
-  end
+  now.times { block.call }
 end
 
 grandfather_clock do
   puts "DONG!"
 end
-
