@@ -21,5 +21,5 @@ def follow_the_execution(method_param, &block)
 end
 
 follow_the_execution("dinner") do
-  puts "Executing the block."
+  puts "Executing the block"
 end
