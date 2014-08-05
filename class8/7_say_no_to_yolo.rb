@@ -16,14 +16,11 @@
 #     OMG
 #     Life is too short
 
-# your code here
-
 class Array
   def each_without_yolo(&block)
-    i = 0
-    while i < self.size
-      self[i].downcase == "yolo" ? yield("Life is too short") : yield(self[i])
-      i += 1
+    each do |element|
+      element = "Life is too short" if element.downcase == "yolo"
+      block.call(element)
     end
   end
 end
