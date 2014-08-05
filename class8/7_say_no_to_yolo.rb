@@ -18,13 +18,11 @@
 
 
 class Array
-
   def each_without_yolo(&block)
+    each do |element|
+      element = "Life is too short" if element.upcase == "YOLO"
 
-    self.each do |object|
-      object = "Life is too short" if object == "YOLO" || object == "yolo"
-
-      block.call object
+      block.call(element)
     end
   end
 end
