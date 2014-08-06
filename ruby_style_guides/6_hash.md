@@ -1,3 +1,5 @@
+## Hash Guidelines
+
 #### One space after `{` and before `}`
 
 ```ruby
