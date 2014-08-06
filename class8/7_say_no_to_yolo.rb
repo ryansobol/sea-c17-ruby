@@ -15,12 +15,14 @@
 #
 #     OMG
 #     Life is too short
+
 class Array
   def each_without_yolo(&block)
-    e = "YOLO" || "yolo"
-    if self == e self.each do
-      block.call("Life is too short")
+    each do |element|
+      element = "Life is too short" if element.upcase == "YOLO"
+      block.call(element)
     end
   end
 end
+
 ["OMG", "YOLO", "ROTFL", "yolo", "FTW"].each_without_yolo { |e| puts e }
