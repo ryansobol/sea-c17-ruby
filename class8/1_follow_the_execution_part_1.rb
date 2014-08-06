@@ -16,11 +16,9 @@
 
 def follow_the_execution(&block)
   puts "Executing the method"
-  yield
+  block.call
 end
 
 follow_the_execution do
   puts "Executing the block"
 end
-
-

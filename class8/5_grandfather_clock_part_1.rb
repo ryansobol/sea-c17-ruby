@@ -22,17 +22,17 @@
 # Integer between 0 and 23. You'll have to alter the return value to ensure
 # the program uses a number that appears on a clock-face. (i.e. 1 to 12)
 
-# your code here
-
 def grandfather_clock(&block)
   cur = Time.new.hour
-  cur -= 12 if cur > 11
-  yield(cur)
+  cur -= 12 if cur > 12
+  cur = 12 if cur == 0
+
+  puts "The hour is #{cur}"
+
+  cur.times { block.call }
 end
 
 
-grandfather_clock do |hours|
-  puts "The hour is #{hours}"
-  hours.times {puts "DONG!"}
+grandfather_clock do
+  puts "DONG!"
 end
-

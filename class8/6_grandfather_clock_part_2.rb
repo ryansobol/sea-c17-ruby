@@ -21,12 +21,14 @@
 
 def grandfather_clock(str, &block)
   cur = Time.new.hour
-  cur -= 12 if cur > 11
+  cur -= 12 if cur > 12
+  cur = 12 if cur == 0
+
   puts "The hour is #{cur}"
-  cur.times {yield(str)}
+
+  cur.times { block.call }
 end
 
 grandfather_clock("GONGGGGGGG!") do |sound|
   puts sound
 end
-
