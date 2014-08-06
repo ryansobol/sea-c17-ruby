@@ -18,12 +18,9 @@
 
 class Array
   def each_without_yolo(&block)
-    self.each do |e|
-      if e == "yolo" || e == "YOLO"
-        puts "Life is too short"
-      else
-        puts e
-      end
+    each do |element|
+      element = "Life is too short" if element.upcase == "YOLO"
+      block.call(element)
     end
   end
 end

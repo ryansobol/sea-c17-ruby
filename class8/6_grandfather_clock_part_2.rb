@@ -21,12 +21,10 @@
 
 # your code here
 
-def grandfather_clock (parameter, &block)
+def grandfather_clock(str, &block)
   hour = (Time.new.hour + 11) % 12 + 1
   puts "The hour is #{hour}"
-  hour.times do |n|
-    puts parameter
-  end
+  hour.times { block.call(str) }
 end
 
 grandfather_clock("GONGGGGGGG!") do |sound|
