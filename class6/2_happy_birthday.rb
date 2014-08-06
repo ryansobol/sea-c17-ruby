@@ -64,15 +64,12 @@ month = ARGV[1].to_i
 day = ARGV[2].to_i
 
 if year == 0 || month == 0 || day == 0
-  puts "Usage: 2_happy_birthday.rb YEAR MONTH DAY"
-  exit
+  abort "Usage: 2_happy_birthday.rb YEAR MONTH DAY"
 end
 
 birthday = Time.utc(year, month, day)
-current_time = Time.new
-age = (current_time.utc - birthday) / (60 * 60 * 24 * 365)
+current_time = Time.new.utc
+age = (current_time - birthday) / (60 * 60 * 24 * 365)
 
 puts "The birth date is #{birthday}"
-age.to_i.times do
-  puts "CHEER!"
-end
+age.to_i.times { puts "CHEER!" }
