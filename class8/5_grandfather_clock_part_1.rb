@@ -24,6 +24,15 @@
 
 # your code here
 
-grandfather_clock do
-  puts "DONG!"
+def grandfather_clock(&block)
+  cur = Time.new.hour
+  cur -= 12 if cur > 11
+  yield(cur)
 end
+
+
+grandfather_clock do |hours|
+  puts "The hour is #{hours}"
+  hours.times {puts "DONG!"}
+end
+
