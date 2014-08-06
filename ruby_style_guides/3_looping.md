@@ -1,5 +1,6 @@
 ## Looping Guidelines
 
+
 #### Favor modifier usage of `while/until` when you have a single-line body
 
 ```ruby
@@ -11,6 +12,7 @@ end
 # good
 do_something while some_condition
 ```
+
 
 #### Favor `until` over `while` for negative conditions
 
@@ -24,6 +26,7 @@ do_something while not some_condition
 # good
 do_something until some_condition
 ```
+
 
 #### Always put the condition on the same line as the `while/until`
 
@@ -42,6 +45,7 @@ while some_condition
 end
 ```
 
+
 #### Don't use parentheses around the condition of an `while/until`
 
 ```ruby
@@ -55,6 +59,7 @@ while chapter < 15
   # body omitted
 end
 ```
+
 
 #### Use `loop` instead of `while/until` when you need an infinite loop
 
@@ -74,6 +79,7 @@ loop do
   do_something
 end
 ```
+
 
 #### For post-loop tests, use `loop` with `break` rather than `begin/end while/until`
 

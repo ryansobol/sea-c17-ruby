@@ -33,6 +33,7 @@ some_array.count
 some_array.size
 ```
 
+
 #### Prefer `{...}` over `do...end` for single-line iterator blocks
 
 ```ruby
@@ -89,6 +90,7 @@ item = 99
 item # => 99
 ```
 
+
 #### Use `next` to prematurely skip to the next iteration
 
 ```ruby
@@ -105,6 +107,7 @@ end
   puts item
 end
 ```
+
 
 #### Use `break` to prematurely exit an iterator
 

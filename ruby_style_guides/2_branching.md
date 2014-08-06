@@ -1,5 +1,6 @@
 ## Branching Guidelines
 
+
 #### Use `!` instead of `not`
 
 ```ruby
@@ -9,6 +10,7 @@ not true
 # good
 !true
 ```
+
 
 #### Favor modifier usage of `if/unless` when you have a single-line body
 
@@ -22,6 +24,7 @@ end
 do_something if some_condition
 ```
 
+
 #### Favor `unless` over `if` for negative conditions
 
 ```ruby
@@ -34,6 +37,7 @@ do_something if not some_condition
 # good
 do_something unless some_condition
 ```
+
 
 #### Never use `unless` with `else`
 
@@ -53,6 +57,7 @@ else
 end
 ```
 
+
 #### Always put the condition on the same line as the `if/unless`
 
 ```ruby
@@ -69,6 +74,7 @@ if some_condition
   do_something_else
 end
 ```
+
 
 #### Don't use parentheses around the condition of an `if/unless`
 
