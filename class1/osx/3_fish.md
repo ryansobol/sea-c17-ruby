@@ -36,7 +36,7 @@ mkdir ~/.config/fish/functions
 Then download the fish prompt:
 
 ```
-curl -fsSL https://raw.github.com/ryansobol/config/master/fish/functions/fish_prompt.fish > ~/.config/fish/functions/fish_prompt.fish
+curl -fsSL http://git.io/ykpkfQ > ~/.config/fish/functions/fish_prompt.fish
 ```
 
 Verify the change by relaunching the Terminal app. You should see:
