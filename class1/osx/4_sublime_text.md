@@ -22,18 +22,6 @@ And Fish's startup file should open in Sublime Text.
 While Fish's startup file is handy, add the following settings:
 
 ```
-# Fish colors
-set fish_color_command normal --bold
-set fish_color_comment black
-set fish_color_history_current cyan
-set fish_color_param normal
-set fish_color_quote green
-set fish_color_search_match --background=515151
-set fish_color_cwd blue
-set fish_pager_color_prefix normal
-set fish_pager_color_completion blue
-set fish_pager_color_description black
-
 # Sublime Text
 set -gx EDITOR 'subl -w'
 ```
@@ -101,38 +89,3 @@ You should see:
 ```
 
 Now, the `/usr/local/bin` directory is listed first. This means Fish (and any shell that leverages `/etc/paths`) will prefer Homebrew-installed commands over the pre-installed ones.
-
-
-### Create fish_prompt.fish
-
-The prompt is the visual cornerstone of every command line shell. Let's build a prompt for Fish that not only looks good, but shows relevant information.
-
-First, make a directory for your fish prompt by running the following command:
-
-```
-mkdir ~/.config/fish/functions
-```
-
-Then download the fish prompt:
-
-```
-curl -fsSL https://raw.github.com/ryansobol/config/master/fish/functions/fish_prompt.fish > ~/.config/fish/functions/fish_prompt.fish
-```
-
-Verify the change by relaunching the Terminal app. You should see:
-
-```
-~ $
-```
-
-When changing directories:
-
-```
-cd .config
-```
-
-You should see:
-
-```
-~/.config $
-```

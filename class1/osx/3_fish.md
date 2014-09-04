@@ -23,7 +23,42 @@ chsh -s /usr/local/bin/fish
 Now, relaunch your Terminal app. Welcome to Fish!
 
 
-### Update completion files
+### Improve the prompt
+
+The prompt is the visual cornerstone of every command line shell. Let's build a prompt for Fish that not only looks good, but shows relevant information.
+
+First, make a directory for your fish prompt by running the following command:
+
+```
+mkdir ~/.config/fish/functions
+```
+
+Then download the fish prompt:
+
+```
+curl -fsSL https://raw.github.com/ryansobol/config/master/fish/functions/fish_prompt.fish > ~/.config/fish/functions/fish_prompt.fish
+```
+
+Verify the change by relaunching the Terminal app. You should see:
+
+```
+~ $
+```
+
+When changing directories:
+
+```
+cd .config
+```
+
+You should see:
+
+```
+~/.config $
+```
+
+
+### Update the auto-completions
 
 Fish's auto-completion feature enhances the user experience of most command line tools.
 
