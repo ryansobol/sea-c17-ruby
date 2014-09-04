@@ -106,57 +106,19 @@ Now, the `/usr/local/bin` directory is listed first. This means Fish (and any sh
 
 The prompt is the visual cornerstone of every command line shell. Let's build a prompt for Fish that not only looks good, but shows relevant information.
 
-Run the following command to get started:
+First, make a directory for your fish prompt by running the following command:
 
 ```
-subl ~/.config/fish/functions/fish_prompt.fish
+mkdir ~/.config/fish/functions
 ```
 
-Copy the following content and paste it into the file **replacing everything**:
+Then download the fish prompt:
 
 ```
-function _git_branch_name
-  echo (git symbolic-ref --short HEAD ^/dev/null)
-end
-
-function _is_git_dirty
-  echo (git status --short --ignore-submodules=dirty ^/dev/null)
-end
-
-function fish_prompt
-  if test $status -eq 0
-    set_color $fish_color_cwd
-  else
-    set_color $fish_color_error
-  end
-
-  echo -n (prompt_pwd)
-
-  set -l branch (_git_branch_name)
-
-  if test -n $branch
-    set_color yellow
-    echo -n " $branch "
-
-    if test -n (_is_git_dirty)
-      set_color red
-      echo -n "✖ "
-    else
-      set_color green
-      echo -n "✔ "
-    end
-  else
-    set_color magenta
-    echo -n ' $ '
-  end
-
-  set_color normal
-end
+curl -fsSL https://raw.github.com/ryansobol/config/master/fish/functions/fish_prompt.fish > ~/.config/fish/functions/fish_prompt.fish
 ```
 
-Save the file and verify the change by relaunching the Terminal app.
-
-You should see:
+Verify the change by relaunching the Terminal app. You should see:
 
 ```
 ~ $
