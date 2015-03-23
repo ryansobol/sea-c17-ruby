@@ -105,7 +105,7 @@ end
 
 # good
 [1, 2, 3].each do |item|
-  break unless item < 2
+  break if item >= 2
   puts item
 end
 ```

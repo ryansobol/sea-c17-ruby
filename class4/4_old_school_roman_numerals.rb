@@ -36,26 +36,30 @@
 #   VIIII
 
 def old_school_roman_numeral(num)
-  #           _                           _
-  #          / `._        \+O+/        _.' \
-  #         ( @ : `.      //`\\      .' : @ )
-  #          \  `.  `.   ((a a))   .'  .'  /
-  #           \;' `.  `.((( - ))).'  .' `;/
-  #            \`.  `.  ((()=()))  .'  .'/
-  #             ) :-._`/`(("Y"))`\'_.-: (
-  #             (`..../ /(_ * _)\ \....')
-  #              >---/ /  )   (  \ \---<
-  #             / .'.\ \_/\\_//\_/ /.'. \
-  #             |o _.-\/_) '*' (_\/-._ o|
-  #             |`'   ;/         \;   `'|
-  #             ".o_.-/           \-._o."
-  #               "._/             \_."
-  #                 /               \
-  #                /                 \
-  #               /                   \
-  #     jgs/mk   /                     \
-  #             /                       \
-  #             `----....._____.....----'
+  arabics_to_romans = [
+    [1000, "M"],
+    [500, "D"],
+    [100, "C"],
+    [50, "L"],
+    [10, "X"],
+    [5, "V"],
+    [1, "I"]
+  ]
+
+  answer = []
+
+  arabics_to_romans.each do |arabic_to_roman|
+    arabic = arabic_to_roman.first
+    roman = arabic_to_roman.last
+
+    quotient = num / arabic
+    next if quotient == 0
+
+    answer.push(roman * quotient)
+    num %= arabic
+  end
+
+  answer.join
 end
 
 input = ARGV[0].to_i

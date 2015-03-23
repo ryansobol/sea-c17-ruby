@@ -43,7 +43,7 @@ def modern_roman_numeral(num)
   #        \  /   \ \             _/ /
   #        ] ]     )_\_         /__\/
   #        /_\     ]___\
-  #       (___)  
+  #       (___)
 end
 
 input = ARGV[0].to_i
